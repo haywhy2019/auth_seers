@@ -1,3 +1,5 @@
+@use '@carbon/react/scss/spacing' as *;
+
 .container {
   min-height: 100vh; 
   display: flex;
@@ -6,7 +8,7 @@
 }
 
 .center {
-  margin: 60px auto;
+  margin: $spacing-10 auto;
   width: 100%;
   max-width: 600px;
 }
@@ -19,5 +21,5 @@
 }
 
 .authHeaderSvg {
-  margin-bottom: 40px;
+  margin-bottom: $spacing-05;
 }
