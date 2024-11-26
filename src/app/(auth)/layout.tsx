@@ -20,7 +20,7 @@ const AuthLayout = ({
                   alt=""
                   width={60}
                   height={16}
-                  className={styles.authHeader}
+                  className={styles.authHeaderSvg}
                />
                {children}
             </div>
