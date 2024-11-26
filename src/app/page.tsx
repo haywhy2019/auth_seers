@@ -1,14 +1,6 @@
-"use client";
-import { Add } from "@carbon/icons-react";
-import { Button } from "@carbon/react";
+import { authRoutes } from "@/helpers/routes";
+import { redirect } from "next/navigation";
 
-const Home = () => {
-  return (
-    <div>
-      <Add size="24" />
-      <Button>Login</Button>
-    </div>
-  );
-};
-
-export default Home;
+export default function Home() {
+  redirect(authRoutes.login);
+}
