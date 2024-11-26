@@ -1,11 +1,11 @@
-import styles from "./auth.module.scss";
+// import styles from "./auth.module.scss";
 
 const AuthLayout = ({
-  children,
+   children,
 }: Readonly<{
-  children: React.ReactNode;
+   children: React.ReactNode
 }>) => {
-  return <div>{children}</div>;
-};
+   return <div>{children}</div>
+}
 
-export default AuthLayout;
+export default AuthLayout

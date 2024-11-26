@@ -1,7 +1,7 @@
 export const initialState = {
-  app: {},
-  auth: {
-    user: {},
-    isAuthenticated: false,
-  },
-};
+   app: {},
+   auth: {
+      user: {},
+      isAuthenticated: false,
+   },
+}
