@@ -1,20 +1,12 @@
 @use '@carbon/react/scss/spacing' as *;
 
 .container {
-  min-height: 100vh; 
-  display: flex;
-  justify-items: center;
   background-color: #ffffff; 
-}
-
-.center {
+  gap: $spacing-05;
   margin: $spacing-10 auto;
-  width: 100%;
-  max-width: 600px;
 }
 
 .children {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
