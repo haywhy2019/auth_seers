@@ -4,7 +4,6 @@
 
 .container {
   background-color: #ffffff; 
-  gap: $spacing-05;
   margin: $spacing-10 auto;
 }
 
@@ -46,6 +45,52 @@
 
 .auth_link {
   @include type-style('heading-compact-01');
-  text-align: right !important; 
+  text-align: right; 
   text-decoration: none;
+  max-width: fit-content;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.auth_options {
+  display: flex;
+  align-items: center;
+  gap: $spacing-05;
+
+  & p {
+    @include type-style('body-01');
+    flex: 0 1 auto; 
+    text-align: center;
+  }
+
+  & img {
+    @media screen and (max-width: 768px) {
+      width: 80px;
+    }
+  }
+}
+
+.auth_socials_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-05;
+  margin: layout.$spacing-05 0px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.auth_socials_tile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-04;
+
+  & p {
+    @include type-style('heading-compact-01');
+  }
 }

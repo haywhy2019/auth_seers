@@ -1,10 +1,19 @@
 "use client"
 
-import { Button, FluidForm, PasswordInput, Stack, TextInput } from "@carbon/react"
+import {
+   Button,
+   Link as CarbonLink,
+   ClickableTile,
+   FluidForm,
+   PasswordInput,
+   Stack,
+   TextInput,
+} from "@carbon/react"
 import { Formik } from "formik"
 
 import React from "react"
 
+import Image from "next/image"
 import Link from "next/link"
 
 import { authRoutes } from "@/helpers/routes"
@@ -65,9 +74,11 @@ const Login = () => {
                               style={{ borderBottom: "none" }}
                            />
 
-                           <Link href={authRoutes.forgotPassword} className={styles.auth_link}>
-                              Forgot Password?
-                           </Link>
+                           <div style={{ display: "flex", justifyContent: "end" }}>
+                              <Link href={authRoutes.forgotPassword} className={styles.auth_link}>
+                                 Forgot Password?
+                              </Link>
+                           </div>
                         </Stack>
 
                         <Button
@@ -85,6 +96,23 @@ const Login = () => {
                )
             }}
          </Formik>
+
+         <div className={styles.auth_options}>
+            <Image src="/svg/divider.svg" alt="" width={122} height={1} />
+            <p>Or login with</p>
+            <Image src="/svg/divider.svg" alt="" width={122} height={1} />
+         </div>
+
+         <div className={styles.auth_socials_container}>
+            <ClickableTile className={styles.auth_socials_tile}>
+               <Image src="/svg/google.svg" alt="Google" width={24} height={24} />
+               <p> Google</p>
+            </ClickableTile>
+            <ClickableTile className={styles.auth_socials_tile}>
+               <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
+               <p>Microsoft</p>
+            </ClickableTile>
+         </div>
 
          <p className={styles.auth_description}>
             You do not have an account?{" "}
