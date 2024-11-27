@@ -1,17 +1,8 @@
 import type { Metadata } from "next"
 
-import { Inter } from "next/font/google"
-
 import AppLayout from "@/layouts/AppLayout"
 
 import "./globals.scss"
-
-const inter = Inter({
-   subsets: ["latin"],
-   display: "swap",
-   weight: ["400", "700"],
-   variable: "--font-inter",
-})
 
 export const metadata: Metadata = {
    title: "LafiaEMR Authentication",
@@ -25,7 +16,7 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
-         <body className={inter.className}>
+         <body>
             <AppLayout>{children}</AppLayout>
          </body>
       </html>
