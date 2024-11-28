@@ -36,6 +36,7 @@ const VerifyEmailModal: FC<Props> = ({ ...props }) => {
             // value={props.values.email}
             // onBlur={props.handleBlur}
             size="lg"
+            data-modal-primary-focus
             style={{
                marginBottom: "0.5rem",
                borderBottom: "none",
