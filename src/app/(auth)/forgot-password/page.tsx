@@ -3,7 +3,7 @@
 import { Button, FluidForm, Stack, TextInput } from "@carbon/react"
 import { Formik } from "formik"
 
-import React from "react"
+import React, { useState } from "react"
 
 import Link from "next/link"
 
@@ -11,9 +11,14 @@ import { authRoutes } from "@/helpers/routes"
 
 import styles from "../auth.module.scss"
 import { forgotPasswordSchema } from "../auth.validators"
+import VerifyEmailModal from "../components/VerifyEmailModal"
 
 const ForgotPassword = () => {
-   const handleSubmit = (values: any) => {}
+   const [open, setOpen] = useState(false)
+
+   const handleSubmit = (values: any) => {
+      setOpen(true)
+   }
 
    return (
       <>
@@ -29,6 +34,7 @@ const ForgotPassword = () => {
             isInitialValid={false}
             validationSchema={forgotPasswordSchema}
             initialValues={{ email: "" }}
+            autocomplete="off"
          >
             {(props) => {
                return (
@@ -70,6 +76,8 @@ const ForgotPassword = () => {
                Back to Login
             </Link>
          </p>
+
+         <VerifyEmailModal open={open} setOpen={setOpen} />
       </>
    )
 }

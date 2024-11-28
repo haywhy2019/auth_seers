@@ -1,6 +1,7 @@
 @use '@carbon/react/scss/spacing' as *;
 @use '@carbon/react/scss/type' as *;
 @use '@carbon/layout';
+@use '@carbon/colors';
 
 .container {
   background-color: #ffffff; 
@@ -57,12 +58,13 @@
 .auth_options {
   display: flex;
   align-items: center;
-  gap: $spacing-10;
+  gap: $spacing-05;
 
   & p {
     @include type-style('body-01');
     flex: 0 1 auto; 
     text-align: center;
+    min-width: fit-content;
   }
 
   & img {
@@ -98,4 +100,49 @@
 
 .auth_select {
   border-bottom: none;
+}
+
+.auth_2_columns_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-03;
+
+  & * {
+    flex: 1;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.auth_verify_modal {
+
+  & p{
+    & button {
+      appearance: none;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      @include type-style('heading-02');
+      cursor: pointer;
+      color: colors.$blue-50;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:focus {
+        border: outset;
+      }
+    }
+  }
+}
+
+.auth_verify_timer {
+  @include type-style('heading-03');
+  color: #008080;
+  font-weight: 600;
 }

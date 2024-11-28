@@ -23,7 +23,7 @@ import { Help } from "@carbon/react/icons"
 import FluidSelect from "@carbon/react/lib/components/FluidSelect"
 import { Formik } from "formik"
 
-import React from "react"
+import React, { useState } from "react"
 
 import Image from "next/image"
 import Link from "next/link"
@@ -32,9 +32,14 @@ import { authRoutes } from "@/helpers/routes"
 
 import styles from "../auth.module.scss"
 import { signupSchema } from "../auth.validators"
+import VerifyEmailModal from "../components/VerifyEmailModal"
 
 const Signup = () => {
-   const handleSubmit = (values: any) => {}
+   const [open, setOpen] = useState(false)
+
+   const handleSubmit = (values: any) => {
+      setOpen(true)
+   }
 
    return (
       <>
@@ -56,59 +61,57 @@ const Signup = () => {
                   <FluidForm onSubmit={props.handleSubmit} className={styles.auth_form_container}>
                      <Stack gap={7}>
                         <Stack gap={3}>
-                           <Grid fullWidth>
-                              <Column lg={3} md={4} sm={4}>
-                                 <FluidSelect
-                                    id="type"
-                                    labelText={
-                                       <div
-                                          style={{
-                                             display: "flex",
-                                             alignItems: "center",
-                                          }}
-                                       >
-                                          <ToggletipLabel>Facility Type</ToggletipLabel>
-                                          <Toggletip>
-                                             <ToggletipButton label="Show information">
-                                                <Help />
-                                             </ToggletipButton>
-                                             <ToggletipContent>
-                                                <p>
-                                                   Lorem ipsum dolor sit amet, di os consectetur
-                                                   adipiscing elit, sed do eiusmod tempor incididunt
-                                                   ut fsil labore et dolore magna aliqua.
-                                                </p>
-                                             </ToggletipContent>
-                                          </Toggletip>
-                                       </div>
-                                    }
-                                    invalidText={props.errors.type}
-                                    invalid={!!(props.touched && props.errors.type)}
-                                    onChange={props.handleChange}
-                                    className={styles.auth_select}
-                                 >
-                                    <SelectItem value="" text="Select Facility Type" disabled />
-                                    <SelectItem value="hospital" text="Hospital" />
-                                    <SelectItem value="laboratory" text="Laboratory" />
-                                    <SelectItem value="clinic" text="Clinic" />
-                                 </FluidSelect>
-                              </Column>
-                              <Column lg={3} md={4} sm={4}>
-                                 <TextInput
-                                    id="name"
-                                    name="name"
-                                    invalidText={props.errors.name}
-                                    labelText="Organisation Name"
-                                    placeholder="e.g Acme Corp"
-                                    invalid={!!(props.touched && props.errors.name)}
-                                    onChange={props.handleChange}
-                                    value={props.values.name}
-                                    onBlur={props.handleBlur}
-                                    size="lg"
-                                    style={{ borderBottom: "none" }}
-                                 />
-                              </Column>
-                           </Grid>
+                           <div className={styles.auth_2_columns_container}>
+                              <FluidSelect
+                                 id="type"
+                                 labelText={
+                                    <div
+                                       style={{
+                                          display: "flex",
+                                          alignItems: "center",
+                                          maxWidth: "fit-content",
+                                       }}
+                                    >
+                                       <ToggletipLabel>Facility Type</ToggletipLabel>
+                                       <Toggletip>
+                                          <ToggletipButton label="Show information">
+                                             <Help />
+                                          </ToggletipButton>
+                                          <ToggletipContent>
+                                             <p>
+                                                Lorem ipsum dolor sit amet, di os consectetur
+                                                adipiscing elit, sed do eiusmod tempor incididunt ut
+                                                fsil labore et dolore magna aliqua.
+                                             </p>
+                                          </ToggletipContent>
+                                       </Toggletip>
+                                    </div>
+                                 }
+                                 invalidText={props.errors.type}
+                                 invalid={!!(props.touched && props.errors.type)}
+                                 onChange={props.handleChange}
+                                 className={styles.auth_select}
+                              >
+                                 <SelectItem value="" text="Select" />
+                                 <SelectItem value="hospital" text="Hospital" />
+                                 <SelectItem value="laboratory" text="Laboratory" />
+                                 <SelectItem value="clinic" text="Clinic" />
+                              </FluidSelect>
+
+                              <TextInput
+                                 id="name"
+                                 name="name"
+                                 invalidText={props.errors.name}
+                                 labelText="Organisation Name"
+                                 placeholder="e.g Acme Corp"
+                                 invalid={!!(props.touched && props.errors.name)}
+                                 onChange={props.handleChange}
+                                 value={props.values.name}
+                                 onBlur={props.handleBlur}
+                                 size="lg"
+                                 style={{ borderBottom: "none" }}
+                              />
+                           </div>
 
                            <TextInput
                               id="name"
@@ -123,41 +126,41 @@ const Signup = () => {
                               onBlur={props.handleBlur}
                               size="lg"
                               style={{ borderBottom: "none" }}
+                              autoComplete="off"
                            />
 
-                           <Grid fullWidth>
-                              <Column lg={3} md={4} sm={4}>
-                                 <PasswordInput
-                                    id="password"
-                                    type="password"
-                                    name="password"
-                                    invalidText={props.errors.password}
-                                    labelText="Password"
-                                    placeholder="Type here..."
-                                    invalid={!!(props.touched && props.errors.password)}
-                                    onChange={props.handleChange}
-                                    value={props.values.password}
-                                    onBlur={props.handleBlur}
-                                    size="lg"
-                                    style={{ borderBottom: "none" }}
-                                 />
-                              </Column>
-                              <Column lg={3} md={4} sm={4}>
-                                 <PasswordInput
-                                    id="confirmPassword"
-                                    name="confirmPassword"
-                                    invalidText={props.errors.confirmPassword}
-                                    labelText="Confirm Password"
-                                    placeholder="Type here..."
-                                    invalid={!!(props.touched && props.errors.confirmPassword)}
-                                    onChange={props.handleChange}
-                                    value={props.values.confirmPassword}
-                                    onBlur={props.handleBlur}
-                                    size="lg"
-                                    style={{ borderBottom: "none" }}
-                                 />
-                              </Column>
-                           </Grid>
+                           <div className={styles.auth_2_columns_container}>
+                              <PasswordInput
+                                 id="password"
+                                 type="password"
+                                 name="password"
+                                 invalidText={props.errors.password}
+                                 labelText="Password"
+                                 placeholder="Type here..."
+                                 invalid={!!(props.touched && props.errors.password)}
+                                 onChange={props.handleChange}
+                                 value={props.values.password}
+                                 onBlur={props.handleBlur}
+                                 size="lg"
+                                 style={{ borderBottom: "none" }}
+                                 autoComplete="off"
+                              />
+
+                              <PasswordInput
+                                 id="confirmPassword"
+                                 name="confirmPassword"
+                                 invalidText={props.errors.confirmPassword}
+                                 labelText="Confirm Password"
+                                 placeholder="Type here..."
+                                 invalid={!!(props.touched && props.errors.confirmPassword)}
+                                 onChange={props.handleChange}
+                                 value={props.values.confirmPassword}
+                                 onBlur={props.handleBlur}
+                                 size="lg"
+                                 style={{ borderBottom: "none" }}
+                                 autoComplete="off"
+                              />
+                           </div>
                         </Stack>
 
                         <p className={styles.auth_description}>
@@ -209,6 +212,8 @@ const Signup = () => {
                Kindly Login
             </Link>
          </p>
+
+         <VerifyEmailModal open={open} setOpen={setOpen} />
       </>
    )
 }
