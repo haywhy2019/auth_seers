@@ -1,14 +1,6 @@
 "use client"
 
-import {
-   Button,
-   Link as CarbonLink,
-   ClickableTile,
-   FluidForm,
-   PasswordInput,
-   Stack,
-   TextInput,
-} from "@carbon/react"
+import { Button, ClickableTile, FluidForm, PasswordInput, Stack, TextInput } from "@carbon/react"
 import { Formik } from "formik"
 
 import React from "react"
@@ -84,7 +76,6 @@ const Login = () => {
                         <Button
                            disabled={!props.isValid}
                            style={{ maxWidth: "none", width: "100%" }}
-                           //  className={styles.button}
                            kind="primary"
                            type="submit"
                            size="lg"
