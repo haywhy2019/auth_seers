@@ -13,14 +13,14 @@ const AuthLayout = ({
 }>) => {
    return (
       <Grid as="main" fullWidth className={styles.container}>
-         <Column lg={8} md={6} sm={12} className={styles.center}>
+         <Column xlg={{ span: 6, offset: 5 }} lg={{ span: 8, offset: 4 }} md={8} sm={4}>
             <div className={styles.children}>
                <Image
-                  src="/svg/auth-header.svg"
+                  src="/svg/logo.svg"
                   alt=""
-                  width={60}
-                  height={16}
-                  className={styles.authHeaderSvg}
+                  width={109}
+                  height={24}
+                  className={styles.auth_logo}
                />
                {children}
             </div>
