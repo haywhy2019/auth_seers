@@ -15,13 +15,13 @@ const AuthLayout = ({
       <Grid as="main" fullWidth className={styles.container}>
          <Column lg={8} md={6} sm={12} className={styles.center}>
             <div className={styles.children}>
-               <Image
+               {/* <Image
                   src="/svg/auth-header.svg"
                   alt=""
                   width={60}
                   height={16}
                   className={styles.authHeaderSvg}
-               />
+               /> */}
                {children}
             </div>
          </Column>

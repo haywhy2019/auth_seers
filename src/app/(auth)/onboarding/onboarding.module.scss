@@ -1,0 +1,22 @@
+@use '@carbon/colors';
+@use '@carbon/react/scss/spacing' as *;
+
+.container {
+  background: colors.$blue-50;
+  min-height: 100vh; 
+  display: flex;
+  justify-items: center;
+}
+
+.center {
+  margin: $spacing-10 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.children {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
