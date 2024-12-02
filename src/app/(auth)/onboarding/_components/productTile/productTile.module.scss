@@ -1,0 +1,47 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/colors' as *;
+@use '@carbon/themes' as *;
+
+
+.tile {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+    background-color: $layer-02;
+    border: 1px solid $border-subtle-00; 
+    margin:  $spacing-05 0px;
+      
+}
+
+.tile_flex{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.product_logo{
+    max-width: 100%;
+    display: block;
+    margin-right: $spacing-03;
+}
+
+.heading{
+    @include type-style('heading-02');
+}
+
+.body {
+    @include type-style('helper-text-01');
+}
+
+.features{
+    @include type-style('helper-text-01');
+    width: max-content;
+    color: $link-primary; 
+    margin-left: $spacing-02;
+    cursor: pointer;
+    @media screen and (max-width: 768px) {
+        width: min-content
+      }
+}

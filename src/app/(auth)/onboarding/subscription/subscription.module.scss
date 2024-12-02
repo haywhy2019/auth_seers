@@ -1,7 +1,8 @@
-@use '@carbon/colors';
+@use '@carbon/colors' as *;
 @use '@carbon/react/scss/spacing' as *;
 @use '@carbon/react/scss/type' as *;
-@use '@carbon/layout';
+@use '@carbon/layout' as *;
+@use '@carbon/themes' as *;
 
 
 
@@ -19,17 +20,24 @@
   text-align: center;
 }
 
-.button_container{
+.body {
+  @include type-style('helper-text-01');
+}
+
+
+.flex_display {
   display: flex;
-  justify-content: flex-end;
- }
- .button {
+  align-items: center;
+  
+}
+
+.features{
+  @include type-style('helper-text-01');
+  width: max-content;
+  color: $link-primary; 
+  margin-left: $spacing-02;
+  cursor: pointer;
   @media screen and (max-width: 768px) {
-    width: 100%; 
-    max-width: 100%; 
-    display: block; 
-    margin: 0 auto; 
-    text-align: center;
-   
-  }
- }
+      width: min-content
+    }
+}

@@ -1,22 +1,22 @@
 'use client'
+import React ,{useState} from 'react'
 import { Grid, Column } from '@carbon/react';
 import styles from './onboarding.module.scss'
-import LafiaLogo from '@/assets/svg/lafiaLogo';
-import OnBoardingSteper from '@/components/onBoardingSteper';
+import OnBoardingSteper from '@/app/(auth)/onboarding/_components/stepper/onBoardingSteper';
+import StepperContext from './_components/stepper/stepperContext';
 
-export default function DashboardLayout({
+
+export default function OnboardingLayout({
     children, // will be a page or nested layout
   }: {
     children: React.ReactNode
   }) {
+      const [index, setIndex] = useState(0)
     return (
-        <Grid className={styles.container} fullWidth>
-            <Column lg={8} md={6} sm={12} >  
-            <LafiaLogo />
-            <OnBoardingSteper />
+        <StepperContext.Provider value={{index, setIndex}}>
+            <OnBoardingSteper/>
             {children}
-            </Column>
-        </Grid>
+        </StepperContext.Provider>
    
     )
   }
