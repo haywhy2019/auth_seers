@@ -1,0 +1,23 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/colors' as *;
+
+.container {
+    display: flex;
+    
+}
+
+
+.steper{
+    margin: $spacing-06 0px;
+    @media screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column; /* Stack steps vertically on small screens */
+        align-items: flex-start;
+
+      
+      }
+
+    }
+

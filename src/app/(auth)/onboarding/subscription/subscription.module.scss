@@ -1,0 +1,43 @@
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/themes' as *;
+
+
+
+.onboard_heading {
+  @include type-style('heading-03');
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: $spacing-01;
+  margin: $spacing-03 0px;
+}
+
+
+.onboard_subheading{
+  @include type-style('body-compact-02');
+  text-align: center;
+}
+
+.body {
+  @include type-style('helper-text-01');
+}
+
+
+.flex_display {
+  display: flex;
+  align-items: center;
+  
+}
+
+.features{
+  @include type-style('helper-text-01');
+  width: max-content;
+  color: $link-primary; 
+  margin-left: $spacing-02;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+      width: min-content
+    }
+}
