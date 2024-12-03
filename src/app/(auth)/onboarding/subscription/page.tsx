@@ -1,62 +1,69 @@
 "use client"
-import React, { useState } from 'react'
-import styles from "./subscription.module.scss"
-import { Tile, Checkbox } from '@carbon/react'
 
+import { Checkbox, Column, FlexGrid, Grid, Row, Tile, Tab, TabList, TabPanels, Tabs, TabPanel, Layer, Button, TextInput} from "@carbon/react"
+
+import React, { useState } from "react"
+
+import styles from "./subscription.module.scss"
+import SubscriptionTab from "../_components/subscriptionTab"
+import SelectedProduct from "../_components/selectedProduct/selectedProducts"
 
 function SubscriptionPage() {
-    const [isChecked, setIsChecked] = useState(false);
-    const features = ['LafiaHMS', "LafiaLabs", "LafiaERP"]
-    return (
-        <div>
-
+   const [isChecked, setIsChecked] = useState(false)
+   const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
+   return (
+      <Grid>
+         <Column lg={16} md={8} sm={4}>
             <div>
-                <h1 className={styles.onboard_heading}>Subscription</h1>
-                <p className={styles.onboard_subheading}>Review the subscription plans and pick the one you prefer. Note that the cost is affected by the number of product you picked.</p>
-            </div>
+               <div className="">
+                  <h1 className={styles.heading}>Subscription</h1>
+                  <p className={styles.subheading}>
+                     Review the subscription plans and pick the one you prefer. Note that the cost
+                     is affected by the number of product you picked.
+                  </p>
+               </div>
 
-            <div>
-                <Tile id="subscription-tile">
-
-                    <p>Selected Products</p>
-                    <p>These are the products you selected in the previous page.</p>
-                    <div className={styles.flex_display}>
-                        {features.map(item => (
-                            <Features feature={item} key={item} />
+               {/* <div className={styles.tile_margin}>
+                  <Tile id="subscription-tile">
+                     <p className={styles.tile_heading}>Selected Products</p>
+                     <p className={styles.text_body}>
+                        These are the products you selected in the previous page.
+                     </p>
+                     <div className={styles.tile}>
+                        {features.map((item) => (
+                           <Features feature={item} key={item} />
                         ))}
-
-                    </div>
-
-                </Tile>
+                     </div>
+                  </Tile>
+               </div> */}
+     
+     <SelectedProduct />
+               <p>in progress</p>
+     <SubscriptionTab />
+     <p>in progress</p>
             </div>
+            <div>
+            <Tile id="pricing-tile" className={styles.tile_padding}>
+                <div className={styles.pricing_container}>
+                <div className={styles.pricing}>
+                <span className={styles.currency}>&#8358;</span>
+                    <p className={styles.amount}>1,000</p>
+                    <p className={styles.currency_text}>.00</p>
+                    <p className={styles.currency_text}>/credit</p>
+                  
+                </div>
+                <Button size="xl">
+                    Select Plan
+                </Button>
+                </div>
+                
 
-
-
-        </div>
-    )
+</Tile>
+            </div>
+           
+         </Column>
+      </Grid>
+   )
 }
 
 export default SubscriptionPage
-
-
-
-const Features = ({ feature }: { feature: String }) => {
-    const [isChecked, setIsChecked] = useState(false);
-    return (
-        <div className={styles.flex_display}>
-            <div className={styles.flex_display}>
-                <Checkbox
-                    id="checkbox"
-                    labelText=""
-                    checked={isChecked}
-                    onChange={(_, { checked }: any) => setIsChecked(checked)}
-                />
-                 <p className={styles.body}>LafiaHMS</p>
-            </div>
-
-           
-            <p className={styles.features}>Features</p>
-        </div>
-    )
-
-}

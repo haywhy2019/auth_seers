@@ -6,7 +6,7 @@
 
 
 
-.onboard_heading {
+.heading {
   @include type-style('heading-03');
   font-weight: 600;
   text-align: center;
@@ -15,29 +15,50 @@
 }
 
 
-.onboard_subheading{
+.subheading{
   @include type-style('body-compact-02');
   text-align: center;
+  margin: $spacing-03 0px;
 }
 
-.body {
-  @include type-style('helper-text-01');
+.text_body {
+  @include type-style('body-02');
+  margin: $spacing-03 0px;
 }
 
 
-.flex_display {
+.pricing_container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+}
+
+.pricing {
+  display: flex;
+  align-items: baseline;
+  
+ 
+}
+
+.currency{
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  padding-left: $spacing-06
+}
+
+
+.amount {
+  @include type-style('heading-04');
+  font-weight: 600;
+}
+
+.currency_text{
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
   
 }
 
-.features{
-  @include type-style('helper-text-01');
-  width: max-content;
-  color: $link-primary; 
-  margin-left: $spacing-02;
-  cursor: pointer;
-  @media screen and (max-width: 768px) {
-      width: min-content
-    }
+.tile_padding{
+  padding: 0px;
+  min-height: fit-content;
 }
