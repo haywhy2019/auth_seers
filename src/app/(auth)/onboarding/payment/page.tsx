@@ -7,9 +7,11 @@ import React from "react"
 
 import PaystackLogo from "../../../../../public/svg/paystack"
 import SelectedProduct from "../_components/selectedProduct/selectedProducts"
+import StepperContext from "../_components/stepper/stepperContext"
 import styles from "./payment.module.scss"
 
 function PaymentPage() {
+   const { setIndex } = StepperContext()
    const options = [
       { label: "Pay As You Go", amount: "N1,000/credit" },
       { label: "Monthly", amount: "N10,000/monthly" },
@@ -55,18 +57,18 @@ function PaymentPage() {
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
                   <div className={styles.pricing_container}>
-                  <div className={styles.pricing}>
+                     <div className={styles.pricing_amount}>
                         <span className={styles.currency}>&#8358;</span>
-                        <p className={styles.amount}>1,000</p>
+                        <p className={styles.payment_amount}>1,000</p>
                         <p className={styles.currency_text}>.00</p>
                         <p className={styles.currency_text}>/credit</p>
                      </div>
-                  <Button size="lg">
-                     Pay
-                     <div className={styles.logo}>
-                        <PaystackLogo />
-                     </div>
-                  </Button>
+                     <Button size="xl" className={styles.button} onClick={() => setIndex(3)}>
+                        Pay
+                        <div className={styles.logo}>
+                           <PaystackLogo />
+                        </div>
+                     </Button>
                   </div>
                </Tile>
             </div>

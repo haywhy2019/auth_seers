@@ -72,10 +72,9 @@
 }
 
 .logo{
-  background-color: red;
-  // display: flex;
-  margin-top: $spacing-03;
-  margin-left: $spacing-03;
+  height: $spacing-04;
+  margin-top: $spacing-05;
+  padding: 0 $spacing-04;
 }
 
 
@@ -83,9 +82,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-04;
+  }
 }
 
-.pricing {
+.pricing_amount {
   display: flex;
   align-items: baseline;
   flex-grow: 3;
@@ -119,4 +122,11 @@
 .tile_padding{
   padding: 0px;
   min-height: fit-content;
+}
+
+.button {
+ padding-right: 0;
+ @media screen and (max-width: 768px) {
+  width: 100%;
+}
 }
