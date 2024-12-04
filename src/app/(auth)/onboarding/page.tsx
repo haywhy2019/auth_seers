@@ -2,16 +2,13 @@
 
 import React, { useContext } from "react"
 
+import StepperContext from "./_components/stepper/stepperContext"
 import PaymentPage from "./payment/page"
 import ProductList from "./products/productList"
 import SubscriptionPage from "./subscription/page"
-import StepperContext from "./_components/stepper/stepperContext"
-
 
 const Onboarding = () => {
-   const { index, setIndex } = StepperContext()
-
-  
+   const { index } = StepperContext()
 
    return (
       <div className={""}>

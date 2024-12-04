@@ -2,7 +2,7 @@
 
 import { Button, Column, Grid, Tile } from "@carbon/react"
 
-import React, { useContext} from "react"
+import React from "react"
 
 import SelectedProduct from "../_components/selectedProduct/selectedProducts"
 import StepperContext from "../_components/stepper/stepperContext"

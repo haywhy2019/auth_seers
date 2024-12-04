@@ -3,14 +3,13 @@
 import { Button, Column, Grid, RadioButton, TextInput, Tile } from "@carbon/react"
 import { ChevronLeft, ChevronRight } from "@carbon/react/icons"
 
-import React, { useState } from "react"
+import React from "react"
 
 import PaystackLogo from "../../../../../public/svg/paystack"
 import SelectedProduct from "../_components/selectedProduct/selectedProducts"
 import styles from "./payment.module.scss"
 
 function PaymentPage() {
-   // const [selectedIdx, setSelectedIdx] = useState(0)
    const options = [
       { label: "Pay As You Go", amount: "N1,000/credit" },
       { label: "Monthly", amount: "N10,000/monthly" },
@@ -34,13 +33,7 @@ function PaymentPage() {
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
                   {options.map((item, i) => (
-                     <Pricing
-                        label={item.label}
-                        amount={item.amount}
-                        disabled={false}
-                        key={i}
-                        idx={i}
-                     />
+                     <Pricing label={item.label} amount={item.amount} key={i} idx={i} />
                   ))}
                </Tile>
             </div>
@@ -76,17 +69,7 @@ function PaymentPage() {
 
 export default PaymentPage
 
-const Pricing = ({
-   label,
-   amount,
-   disabled,
-   idx,
-}: {
-   label: string
-   amount: string
-   disabled: boolean
-   idx: number
-}) => {
+const Pricing = ({ label, amount, idx }: { label: string; amount: string; idx: number }) => {
    return (
       <div className={styles.pricing}>
          <RadioButton labelText={label} value={idx.toString()} id={idx.toString()} />
