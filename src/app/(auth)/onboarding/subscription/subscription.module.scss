@@ -36,6 +36,7 @@
 .pricing {
   display: flex;
   align-items: baseline;
+  flex-grow: 3;
   
  
 }
@@ -43,13 +44,20 @@
 .currency{
   @include type-style('helper-text-02');
   color: $text-placeholder;
-  padding-left: $spacing-06
+  padding-left: $spacing-06;
+  @media screen and (max-width: 768px) {
+    padding-left: $spacing-02;
+   
+  }
 }
 
 
 .amount {
   @include type-style('heading-04');
   font-weight: 600;
+  @media screen and (max-width: 768px) {
+    @include type-style('heading-02');
+  }
 }
 
 .currency_text{

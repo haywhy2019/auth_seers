@@ -1,16 +1,18 @@
 "use client"
 
-import { Checkbox, Column, FlexGrid, Grid, Row, Tile, Tab, TabList, TabPanels, Tabs, TabPanel, Layer, Button, TextInput} from "@carbon/react"
+import { Button, Column, Grid, Tile } from "@carbon/react"
 
-import React, { useState } from "react"
+import React, { useContext} from "react"
 
-import styles from "./subscription.module.scss"
-import SubscriptionTab from "../_components/subscriptionTab"
 import SelectedProduct from "../_components/selectedProduct/selectedProducts"
+import StepperContext from "../_components/stepper/stepperContext"
+import SubscriptionTab from "../_components/subscriptionTab"
+import styles from "./subscription.module.scss"
 
 function SubscriptionPage() {
-   const [isChecked, setIsChecked] = useState(false)
-   const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
+   // const [isChecked, setIsChecked] = useState(false)
+
+   const { setIndex } = StepperContext()
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
@@ -23,44 +25,26 @@ function SubscriptionPage() {
                   </p>
                </div>
 
-               {/* <div className={styles.tile_margin}>
-                  <Tile id="subscription-tile">
-                     <p className={styles.tile_heading}>Selected Products</p>
-                     <p className={styles.text_body}>
-                        These are the products you selected in the previous page.
-                     </p>
-                     <div className={styles.tile}>
-                        {features.map((item) => (
-                           <Features feature={item} key={item} />
-                        ))}
-                     </div>
-                  </Tile>
-               </div> */}
-     
-     <SelectedProduct />
+               <SelectedProduct />
                <p>in progress</p>
-     <SubscriptionTab />
-     <p>in progress</p>
+               <SubscriptionTab />
+               <p>in progress</p>
             </div>
             <div>
-            <Tile id="pricing-tile" className={styles.tile_padding}>
-                <div className={styles.pricing_container}>
-                <div className={styles.pricing}>
-                <span className={styles.currency}>&#8358;</span>
-                    <p className={styles.amount}>1,000</p>
-                    <p className={styles.currency_text}>.00</p>
-                    <p className={styles.currency_text}>/credit</p>
-                  
-                </div>
-                <Button size="xl">
-                    Select Plan
-                </Button>
-                </div>
-                
-
-</Tile>
+               <Tile id="pricing-tile" className={styles.tile_padding}>
+                  <div className={styles.pricing_container}>
+                     <div className={styles.pricing}>
+                        <span className={styles.currency}>&#8358;</span>
+                        <p className={styles.amount}>1,000</p>
+                        <p className={styles.currency_text}>.00</p>
+                        <p className={styles.currency_text}>/credit</p>
+                     </div>
+                     <Button size="xl" onClick={() => setIndex(2)}>
+                        Select Plan
+                     </Button>
+                  </div>
+               </Tile>
             </div>
-           
          </Column>
       </Grid>
    )

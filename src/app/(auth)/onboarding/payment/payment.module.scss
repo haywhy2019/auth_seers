@@ -1,0 +1,79 @@
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/themes' as *;
+
+.heading {
+  @include type-style('heading-03');
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: $spacing-01;
+  margin: $spacing-03 0px;
+}
+
+
+.subheading{
+  @include type-style('body-compact-02');
+  text-align: center;
+  margin: $spacing-03 0px;
+}
+
+.pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount {
+  @include type-style('helper-text-02');
+  font-weight: 600;
+}
+
+.amount_disabled {
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  font-weight: 600;
+}
+
+.pricing {
+  padding: $spacing-03;
+ 
+}
+
+.input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // align-items: baseline;
+  height: $spacing-11;
+  margin-top: $spacing-06;
+  background-color: $background-hover;
+  gap: $spacing-01
+
+}
+
+.icon_container ,
+.icon_container:hover
+{
+  background-color: #F4F4F4;
+  padding: $spacing-06;
+ cursor: pointer;
+
+}
+
+.input{
+  flex-grow: 1;
+}
+
+.input_label{
+  @include type-style('helper-text-02');
+  background-color: #F4F4F4;
+}
+
+.logo{
+  background-color: red;
+  // display: flex;
+  margin-top: $spacing-03;
+  margin-left: $spacing-03;
+}

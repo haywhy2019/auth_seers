@@ -1,10 +1,9 @@
 "use client"
-import React from 'react'
+
+import React from "react"
 
 function PageNotFound() {
-  return (
-    <div>not-found</div>
-  )
+   return <div>not-found</div>
 }
 
 export default PageNotFound
