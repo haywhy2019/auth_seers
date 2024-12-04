@@ -26,27 +26,20 @@ function SelectedProduct() {
 
 export default SelectedProduct
 
-
-
 const Features = ({ feature }: { feature: string }) => {
    const [isChecked, setIsChecked] = useState(false)
 
    const handleChange = (
       event: React.ChangeEvent<HTMLInputElement>,
-      data: { checked: boolean }
-    ) => {
-      setIsChecked(data.checked);
-    };
+      data: { checked: boolean },
+   ) => {
+      setIsChecked(data.checked)
+   }
 
    return (
       <div className={styles.feature_container}>
          <div className={styles.feature_flex}>
-            <Checkbox
-               id="checkbox"
-               labelText=""
-               checked={isChecked}
-               onChange={handleChange}
-            />
+            <Checkbox id="checkbox" labelText="" checked={isChecked} onChange={handleChange} />
             <p className={styles.feature_text}>LafiaHMS</p>
          </div>
 

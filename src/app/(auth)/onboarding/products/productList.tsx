@@ -1,6 +1,6 @@
 import { Button } from "@carbon/react"
 
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 
 import ProductModal from "../_components/productModal/productModal"
 import ProductTile from "../_components/productTile/productTile"

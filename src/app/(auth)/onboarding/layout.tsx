@@ -4,7 +4,7 @@ import OnBoardingSteper from "@/app/(auth)/onboarding/_components/stepper/onBoar
 
 import React, { useState } from "react"
 
-import {initialContext} from "./_components/stepper/stepperContext"
+import { initialContext } from "./_components/stepper/stepperContext"
 
 export default function OnboardingLayout({
    children, // will be a page or nested layout

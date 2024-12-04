@@ -77,9 +77,7 @@ const FeatureList = ({ item }: { item: string }) => {
          }}
       >
          <Image src="/svg/featureList.svg" alt="" width={15} height={15} className={""} />
-         <p style={{  fontSize: ".875rem", fontWeight: 400 }}>
-            {item}
-         </p>
+         <p style={{ fontSize: ".875rem", fontWeight: 400 }}>{item}</p>
       </div>
    )
 }

@@ -1,20 +1,14 @@
 "use client"
 
-import { ProgressIndicator, ProgressStep} from "@carbon/react"
+import { ProgressIndicator, ProgressStep } from "@carbon/react"
 
-import React, { useContext } from "react"
+import React from "react"
 
 import styles from "./stepper.module.scss"
 import StepperContext from "./stepperContext"
 
 const OnBoardingSteper = () => {
    const { index } = StepperContext()
-
-//    const changeIndex = () => {
-//    if (index < 4) {
-//          setIndex(index + 1)
-//    }
-//    }
    return (
       <ProgressIndicator
          currentIndex={index}
