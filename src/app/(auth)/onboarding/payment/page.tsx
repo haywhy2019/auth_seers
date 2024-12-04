@@ -53,13 +53,21 @@ function PaymentPage() {
             </div>
 
             <div>
-               <Tile>
+               <Tile id="pricing-tile" className={styles.tile_padding}>
+                  <div className={styles.pricing_container}>
+                  <div className={styles.pricing}>
+                        <span className={styles.currency}>&#8358;</span>
+                        <p className={styles.amount}>1,000</p>
+                        <p className={styles.currency_text}>.00</p>
+                        <p className={styles.currency_text}>/credit</p>
+                     </div>
                   <Button size="lg">
                      Pay
                      <div className={styles.logo}>
                         <PaystackLogo />
                      </div>
                   </Button>
+                  </div>
                </Tile>
             </div>
          </Column>

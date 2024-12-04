@@ -4,8 +4,6 @@
 @use '@carbon/layout' as *;
 @use '@carbon/themes' as *;
 
-
-
 .heading {
   @include type-style('heading-03');
   font-weight: 600;
@@ -13,7 +11,6 @@
   padding-bottom: $spacing-01;
   margin: $spacing-03 0px;
 }
-
 
 .subheading{
   @include type-style('body-compact-02');
@@ -26,7 +23,6 @@
   margin: $spacing-03 0px;
 }
 
-
 .pricing_container {
   display: flex;
   justify-content: space-between;
@@ -37,8 +33,6 @@
   display: flex;
   align-items: baseline;
   flex-grow: 3;
-  
- 
 }
 
 .currency{
@@ -50,7 +44,6 @@
    
   }
 }
-
 
 .amount {
   @include type-style('heading-04');

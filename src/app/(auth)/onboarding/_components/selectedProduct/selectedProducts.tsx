@@ -40,10 +40,10 @@ const Features = ({ feature }: { feature: string }) => {
       <div className={styles.feature_container}>
          <div className={styles.feature_flex}>
             <Checkbox id="checkbox" labelText="" checked={isChecked} onChange={handleChange} />
-            <p className={styles.feature_text}>LafiaHMS</p>
+            <p className={styles.feature_text}>{feature}</p>
          </div>
 
-         <p className={styles.features}>{feature}</p>
+         <p className={styles.features}>features</p>
       </div>
    )
 }

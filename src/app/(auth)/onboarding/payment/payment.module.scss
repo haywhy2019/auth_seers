@@ -77,3 +77,46 @@
   margin-top: $spacing-03;
   margin-left: $spacing-03;
 }
+
+
+.pricing_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pricing {
+  display: flex;
+  align-items: baseline;
+  flex-grow: 3;
+}
+
+.currency{
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  padding-left: $spacing-06;
+  @media screen and (max-width: 768px) {
+    padding-left: $spacing-02;
+   
+  }
+}
+
+
+.payment_amount {
+  @include type-style('heading-04');
+  font-weight: 600;
+  @media screen and (max-width: 768px) {
+    @include type-style('heading-02');
+  }
+}
+
+.currency_text{
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  
+}
+
+.tile_padding{
+  padding: 0px;
+  min-height: fit-content;
+}
