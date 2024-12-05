@@ -14,7 +14,9 @@ import styles from "../auth.module.scss"
 import { loginSchema } from "../auth.validators"
 
 const Login = () => {
-   const handleSubmit = (values: any) => {}
+   const handleSubmit = () =>
+      // values: any
+      {}
 
    return (
       <>
