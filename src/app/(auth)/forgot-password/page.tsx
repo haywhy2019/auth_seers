@@ -16,9 +16,11 @@ import VerifyEmailModal from "../components/VerifyEmailModal"
 const ForgotPassword = () => {
    const [open, setOpen] = useState(false)
 
-   const handleSubmit = (values: any) => {
-      setOpen(true)
-   }
+   const handleSubmit = () =>
+      // values: any
+      {
+         setOpen(true)
+      }
 
    return (
       <>

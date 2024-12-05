@@ -13,7 +13,9 @@ import styles from "../auth.module.scss"
 import { resetPasswordSchema } from "../auth.validators"
 
 const ResetPassword = () => {
-   const handleSubmit = (values: any) => {}
+   const handleSubmit = () =>
+      // values: any
+      {}
 
    return (
       <>
