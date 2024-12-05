@@ -1,0 +1,132 @@
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/themes' as *;
+
+.heading {
+  @include type-style('heading-03');
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: $spacing-01;
+  margin: $spacing-03 0px;
+}
+
+
+.subheading{
+  @include type-style('body-compact-02');
+  text-align: center;
+  margin: $spacing-03 0px;
+}
+
+.pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount {
+  @include type-style('helper-text-02');
+  font-weight: 600;
+}
+
+.amount_disabled {
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  font-weight: 600;
+}
+
+.pricing {
+  padding: $spacing-03;
+ 
+}
+
+.input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // align-items: baseline;
+  height: $spacing-11;
+  margin-top: $spacing-06;
+  background-color: $background-hover;
+  gap: $spacing-01
+
+}
+
+.icon_container ,
+.icon_container:hover
+{
+  background-color: #F4F4F4;
+  padding: $spacing-06;
+ cursor: pointer;
+
+}
+
+.input{
+  flex-grow: 1;
+}
+
+.input_label{
+  @include type-style('helper-text-02');
+  background-color: #F4F4F4;
+}
+
+.logo{
+  height: $spacing-04;
+  margin-top: $spacing-05;
+  padding: 0 $spacing-04;
+}
+
+
+.pricing_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: $spacing-04;
+  }
+}
+
+.pricing_amount {
+  display: flex;
+  align-items: baseline;
+  flex-grow: 3;
+}
+
+.currency{
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  padding-left: $spacing-06;
+  @media screen and (max-width: 768px) {
+    padding-left: $spacing-02;
+   
+  }
+}
+
+
+.payment_amount {
+  @include type-style('heading-04');
+  font-weight: 600;
+  @media screen and (max-width: 768px) {
+    @include type-style('heading-02');
+  }
+}
+
+.currency_text{
+  @include type-style('helper-text-02');
+  color: $text-placeholder;
+  
+}
+
+.tile_padding{
+  padding: 0px;
+  min-height: fit-content;
+}
+
+.button {
+ padding-right: 0;
+ @media screen and (max-width: 768px) {
+  width: 100%;
+}
+}
