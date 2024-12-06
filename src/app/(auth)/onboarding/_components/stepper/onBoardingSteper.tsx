@@ -1,17 +1,17 @@
 "use client"
 
+import { useAppSelector } from "@/redux/hooks"
 import { ProgressIndicator, ProgressStep } from "@carbon/react"
 
 import React from "react"
 
 import styles from "./stepper.module.scss"
-import StepperContext from "./stepperContext"
 
 const OnBoardingSteper = () => {
-   const { index } = StepperContext()
+   const count = useAppSelector((state) => state.onBoard.onBoard.counter)
    return (
       <ProgressIndicator
-         currentIndex={index}
+         currentIndex={count}
          // onChange={changeIndex}
          className={styles.steper}
       >
