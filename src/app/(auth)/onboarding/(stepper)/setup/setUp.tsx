@@ -7,11 +7,12 @@ import React, { useState } from "react"
 
 import Image from "next/image"
 
-import SelectedProduct from "../_components/selectedProduct/selectedProducts"
+import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import styles from "./setup.module.scss"
 
 function SetupPage() {
    const [priColor, setPriColor] = useState(false)
+
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>

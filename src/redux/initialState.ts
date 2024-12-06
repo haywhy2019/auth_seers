@@ -4,4 +4,7 @@ export const initialState = {
       user: {},
       isAuthenticated: false,
    },
+   onBoard: {
+      counter: 0,
+   },
 }

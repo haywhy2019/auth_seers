@@ -1,15 +1,16 @@
+import { increment } from "@/redux/features/onboard.slice"
+import { useAppDispatch } from "@/redux/hooks"
 import { Button } from "@carbon/react"
 
 import React, { useState } from "react"
 
-import ProductModal from "../_components/productModal/productModal"
-import ProductTile from "../_components/productTile/productTile"
-import StepperContext from "../_components/stepper/stepperContext"
+import ProductModal from "../../_components/productModal/productModal"
+import ProductTile from "../../_components/productTile/productTile"
 import styles from "./productList.module.scss"
 
 function ProductList() {
    const [open, setOpen] = useState(false)
-   const { setIndex } = StepperContext()
+   const dispatch = useAppDispatch()
 
    const products = [
       { title: "LafiaHMS", details: "Manage your clinical services. Powered by OpenMRS" },
@@ -33,7 +34,7 @@ function ProductList() {
             ))}
          </div>
          <div className={styles.button_container}>
-            <Button isExpressive className={styles.button} onClick={() => setIndex(1)}>
+            <Button isExpressive className={styles.button} onClick={() => dispatch(increment())}>
                Next
             </Button>
          </div>

@@ -1,18 +1,17 @@
 "use client"
 
+import { increment } from "@/redux/features/onboard.slice"
+import { useAppDispatch } from "@/redux/hooks"
 import { Button, Column, Grid, Tile } from "@carbon/react"
 
 import React from "react"
 
-import SelectedProduct from "../_components/selectedProduct/selectedProducts"
-import StepperContext from "../_components/stepper/stepperContext"
-import SubscriptionTab from "../_components/subscriptionTab"
+import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
+import SubscriptionTab from "../../_components/subscriptionTab/subscriptionTab"
 import styles from "./subscription.module.scss"
 
 function SubscriptionPage() {
-   // const [isChecked, setIsChecked] = useState(false)
-
-   const { setIndex } = StepperContext()
+   const dispatch = useAppDispatch()
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
@@ -24,11 +23,8 @@ function SubscriptionPage() {
                      is affected by the number of product you picked.
                   </p>
                </div>
-
                <SelectedProduct />
-               <p>in progress</p>
                <SubscriptionTab />
-               <p>in progress</p>
             </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
@@ -39,7 +35,7 @@ function SubscriptionPage() {
                         <p className={styles.currency_text}>.00</p>
                         <p className={styles.currency_text}>/credit</p>
                      </div>
-                     <Button size="xl" onClick={() => setIndex(2)}>
+                     <Button size="xl" onClick={() => dispatch(increment())}>
                         Select Plan
                      </Button>
                   </div>

@@ -1,32 +1,36 @@
 "use client"
 
+import { increment } from "@/redux/features/onboard.slice"
+import { useAppDispatch } from "@/redux/hooks"
 import { Button, Column, Grid, RadioButton, TextInput, Tile } from "@carbon/react"
 import { ChevronLeft, ChevronRight } from "@carbon/react/icons"
 
 import React from "react"
 
-import PaystackLogo from "../../../../../public/svg/paystack"
-import SelectedProduct from "../_components/selectedProduct/selectedProducts"
-import StepperContext from "../_components/stepper/stepperContext"
+import PaystackLogo from "../../../../../../public/svg/paystack"
+import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import styles from "./payment.module.scss"
 
 function PaymentPage() {
-   const { setIndex } = StepperContext()
+   const dispatch = useAppDispatch()
+
    const options = [
       { label: "Pay As You Go", amount: "N1,000/credit" },
       { label: "Monthly", amount: "N10,000/monthly" },
       { label: "3 Months", amount: "N25,000/3 months" },
       { label: "Yearly", amount: "N85,000/yearly" },
    ]
+
+   // data-testId="unique-name"
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
             <div>
                <div className="">
-                  <h1 className={styles.heading}>Subscription</h1>
+                  <h1 className={styles.heading}>Payment</h1>
                   <p className={styles.subheading}>
-                     Review the subscription plans and pick the one you prefer. Note that the cost
-                     is affected by the number of product you picked.
+                     Review the product and subscription plan you selected, then proceed to make
+                     payment. Note that you can still change the product and the plan.
                   </p>
                </div>
 
@@ -63,7 +67,11 @@ function PaymentPage() {
                         <p className={styles.currency_text}>.00</p>
                         <p className={styles.currency_text}>/credit</p>
                      </div>
-                     <Button size="xl" className={styles.button} onClick={() => setIndex(3)}>
+                     <Button
+                        size="xl"
+                        className={styles.button}
+                        onClick={() => dispatch(increment())}
+                     >
                         Pay
                         <div className={styles.logo}>
                            <PaystackLogo />
