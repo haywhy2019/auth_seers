@@ -2,9 +2,9 @@ import { Button } from "@carbon/react"
 
 import React, { useState } from "react"
 
-import ProductModal from "../_components/productModal/productModal"
-import ProductTile from "../_components/productTile/productTile"
-import StepperContext from "../_components/stepper/stepperContext"
+import ProductModal from "../../_components/productModal/productModal"
+import ProductTile from "../../_components/productTile/productTile"
+import StepperContext from "../../_components/stepper/stepperContext"
 import styles from "./productList.module.scss"
 
 function ProductList() {

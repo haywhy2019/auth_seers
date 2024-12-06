@@ -4,9 +4,9 @@ import { Button, Column, Grid, Tile } from "@carbon/react"
 
 import React from "react"
 
-import SelectedProduct from "../_components/selectedProduct/selectedProducts"
-import StepperContext from "../_components/stepper/stepperContext"
-import SubscriptionTab from "../_components/subscriptionTab/subscriptionTab"
+import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
+import StepperContext from "../../_components/stepper/stepperContext"
+import SubscriptionTab from "../../_components/subscriptionTab/subscriptionTab"
 import styles from "./subscription.module.scss"
 
 function SubscriptionPage() {

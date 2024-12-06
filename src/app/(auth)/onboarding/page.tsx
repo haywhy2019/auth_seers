@@ -2,11 +2,11 @@
 
 import React from "react"
 
+import PaymentPage from "./(stepper)/payment/payment"
+import ProductList from "./(stepper)/products/productList"
+import SetupPage from "./(stepper)/setup/setUp"
+import SubscriptionPage from "./(stepper)/subscription/subscription"
 import StepperContext from "./_components/stepper/stepperContext"
-import PaymentPage from "./payment/page"
-import ProductList from "./products/productList"
-import SetupPage from "./setup/page"
-import SubscriptionPage from "./subscription/page"
 
 const Onboarding = () => {
    const { index } = StepperContext()

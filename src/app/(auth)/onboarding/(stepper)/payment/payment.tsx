@@ -5,9 +5,9 @@ import { ChevronLeft, ChevronRight } from "@carbon/react/icons"
 
 import React from "react"
 
-import PaystackLogo from "../../../../../public/svg/paystack"
-import SelectedProduct from "../_components/selectedProduct/selectedProducts"
-import StepperContext from "../_components/stepper/stepperContext"
+import PaystackLogo from "../../../../../../public/svg/paystack"
+import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
+import StepperContext from "../../_components/stepper/stepperContext"
 import styles from "./payment.module.scss"
 
 function PaymentPage() {
