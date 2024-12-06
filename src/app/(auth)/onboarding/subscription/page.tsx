@@ -46,6 +46,7 @@ function SubscriptionPage() {
                </Tile>
             </div>
          </Column>
+         
       </Grid>
    )
 }
