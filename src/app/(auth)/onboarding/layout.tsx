@@ -11,7 +11,7 @@ export default function OnboardingLayout({
 }: {
    children: React.ReactNode
 }) {
-   const [index, setIndex] = useState<number>(1)
+   const [index, setIndex] = useState<number>(0)
    return (
       <initialContext.Provider value={{ index, setIndex }}>
          <OnBoardingSteper />

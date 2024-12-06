@@ -2,7 +2,7 @@
 
 import { Button, Column, Grid, Tile } from "@carbon/react"
 
-import React from "react"
+import React, { useContext} from "react"
 
 import SelectedProduct from "../_components/selectedProduct/selectedProducts"
 import StepperContext from "../_components/stepper/stepperContext"
@@ -12,7 +12,7 @@ import styles from "./subscription.module.scss"
 function SubscriptionPage() {
    // const [isChecked, setIsChecked] = useState(false)
 
-   const { setIndex } = StepperContext()
+   const { setIndex } = useContext(StepperContext)
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
@@ -26,9 +26,9 @@ function SubscriptionPage() {
                </div>
 
                <SelectedProduct />
-               
+               <p>in progress</p>
                <SubscriptionTab />
-              
+               <p>in progress</p>
             </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
@@ -46,7 +46,6 @@ function SubscriptionPage() {
                </Tile>
             </div>
          </Column>
-         
       </Grid>
    )
 }

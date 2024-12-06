@@ -1,0 +1,25 @@
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/colors' as *;
+
+.panel {
+    margin: $spacing-04 0 $spacing-08 0;
+    background-color: #FAFFFF;
+}
+
+
+.select_tab_label {
+    background-color: #FAFFFF !important
+}
+.tab_header{
+    @include type-style('heading-03');
+    font-weight: 600;
+    padding-bottom: $spacing-01;
+    margin: $spacing-03 0px;
+}
+
+.tab_body{
+    @include type-style('body-02');
+    margin: $spacing-03 0px;
+}

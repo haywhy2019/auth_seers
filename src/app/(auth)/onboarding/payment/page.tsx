@@ -23,10 +23,9 @@ function PaymentPage() {
          <Column lg={16} md={8} sm={4}>
             <div>
                <div className="">
-                  <h1 className={styles.heading}>Subscription</h1>
+                  <h1 className={styles.heading}>Payment</h1>
                   <p className={styles.subheading}>
-                     Review the subscription plans and pick the one you prefer. Note that the cost
-                     is affected by the number of product you picked.
+                  Review the product and subscription plan you selected, then proceed to make payment. Note that you can still change the product and the plan.
                   </p>
                </div>
 
