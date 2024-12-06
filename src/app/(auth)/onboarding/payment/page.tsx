@@ -25,7 +25,8 @@ function PaymentPage() {
                <div className="">
                   <h1 className={styles.heading}>Payment</h1>
                   <p className={styles.subheading}>
-                  Review the product and subscription plan you selected, then proceed to make payment. Note that you can still change the product and the plan.
+                     Review the product and subscription plan you selected, then proceed to make
+                     payment. Note that you can still change the product and the plan.
                   </p>
                </div>
 

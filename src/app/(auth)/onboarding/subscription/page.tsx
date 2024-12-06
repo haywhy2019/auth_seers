@@ -24,11 +24,8 @@ function SubscriptionPage() {
                      is affected by the number of product you picked.
                   </p>
                </div>
-
                <SelectedProduct />
-               
                <SubscriptionTab />
-              
             </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
@@ -46,7 +43,6 @@ function SubscriptionPage() {
                </Tile>
             </div>
          </Column>
-         
       </Grid>
    )
 }

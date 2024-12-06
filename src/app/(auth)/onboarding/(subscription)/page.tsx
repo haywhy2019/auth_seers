@@ -2,7 +2,7 @@
 
 import { Button, Column, Grid, Tile } from "@carbon/react"
 
-import React, { useContext} from "react"
+import React from "react"
 
 import SelectedProduct from "../_components/selectedProduct/selectedProducts"
 import StepperContext from "../_components/stepper/stepperContext"
@@ -12,7 +12,7 @@ import styles from "./subscription.module.scss"
 function SubscriptionPage() {
    // const [isChecked, setIsChecked] = useState(false)
 
-   const { setIndex } = useContext(StepperContext)
+   const { setIndex } = StepperContext()
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
