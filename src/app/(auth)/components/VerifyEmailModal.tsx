@@ -2,6 +2,10 @@ import { Link, Modal, TextInput } from "@carbon/react"
 
 import React, { FC } from "react"
 
+import { useRouter } from "next/navigation"
+
+import { authRoutes } from "@/helpers/routes"
+
 import styles from "../auth.module.scss"
 
 type Props = {
@@ -10,10 +14,18 @@ type Props = {
 }
 
 const VerifyEmailModal: FC<Props> = ({ ...props }) => {
+   const [otp, setOtp] = React.useState("")
+
+   const router = useRouter()
+   const handleSubmit = () => {
+      if (otp.length < 6) return
+      router.push(authRoutes.onboarding)
+   }
    return (
       <Modal
          open={props.open}
          onRequestClose={() => props.setOpen(false)}
+         onRequestSubmit={handleSubmit}
          modalHeading="Enter OTP"
          primaryButtonText="Verify"
          className={styles.auth_verify_modal}
@@ -32,8 +44,8 @@ const VerifyEmailModal: FC<Props> = ({ ...props }) => {
             labelText="OTP"
             placeholder="e.g 12345"
             // invalid={!!(props.touched && props.errors.email)}
-            // onChange={props.handleChange}
-            // value={props.values.email}
+            onChange={(e) => setOtp(e.target.value)}
+            value={otp}
             // onBlur={props.handleBlur}
             size="lg"
             data-modal-primary-focus
