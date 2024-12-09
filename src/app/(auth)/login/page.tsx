@@ -7,6 +7,7 @@ import React from "react"
 
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 import { authRoutes } from "@/helpers/routes"
 
@@ -14,9 +15,10 @@ import styles from "../auth.module.scss"
 import { loginSchema } from "../auth.validators"
 
 const Login = () => {
-   const handleSubmit = () =>
-      // values: any
-      {}
+   const router = useRouter()
+   const handleSubmit = () => {
+      router.push(authRoutes.onboarding)
+   }
 
    return (
       <>

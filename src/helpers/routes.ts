@@ -3,4 +3,5 @@ export const authRoutes = {
    signup: "/signup",
    resetPassword: "/reset-password",
    forgotPassword: "/forgot-password",
+   onboarding: "/onboarding",
 }
