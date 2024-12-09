@@ -14,10 +14,13 @@ export const onBoardSlice = createSlice({
       increment: (state) => {
          state.onBoard.counter += 1
       },
+      reset: (state) => {
+         state.onBoard.counter = 0
+      },
    },
 })
 
-export const { increment } = onBoardSlice.actions
+export const { increment, reset } = onBoardSlice.actions
 
 export const selectOnBoardStepper = (state: RootState) => state.onBoard
 

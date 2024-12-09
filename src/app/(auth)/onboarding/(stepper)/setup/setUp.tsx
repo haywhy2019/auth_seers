@@ -1,5 +1,7 @@
 "use client"
 
+import { reset } from "@/redux/features/onboard.slice"
+import { useAppDispatch } from "@/redux/hooks"
 import { Button, Column, FileUploaderDropContainer, Grid, Tile } from "@carbon/react"
 import { Add, CircleSolid, Close } from "@carbon/react/icons"
 
@@ -12,6 +14,7 @@ import styles from "./setup.module.scss"
 
 function SetupPage() {
    const [priColor, setPriColor] = useState(false)
+   const dispatch = useAppDispatch()
 
    const goToDashboard = () =>
       (window.location.href = "https://dev-admin.lafialink-dev.com/dashboard")
@@ -86,7 +89,6 @@ function SetupPage() {
 
                <div className={styles.submit_container}>
                   <p className={styles.skip_text}>Skip</p>
-
                   <Button size="xl" className={styles.button} onClick={goToDashboard}>
                      Save & Go To Dashboard
                   </Button>
