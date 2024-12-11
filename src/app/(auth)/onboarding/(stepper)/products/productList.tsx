@@ -30,16 +30,26 @@ function ProductList() {
 
          <div>
             {products.map((item) => (
-               <ProductTile product={item} key={item.title} onClick={() => setOpen(true)} />
+               <ProductTile
+                  product={item}
+                  key={item.title}
+                  onClick={() => setOpen(true)}
+                  data-testId="onboarding-product-product-component"
+               />
             ))}
          </div>
          <div className={styles.button_container}>
-            <Button isExpressive className={styles.button} onClick={() => dispatch(increment())}>
+            <Button
+               isExpressive
+               className={styles.button}
+               onClick={() => dispatch(increment())}
+               data-testId="onboarding-products-btn"
+            >
                Next
             </Button>
          </div>
 
-         <ProductModal open={open} setOpen={setOpen} />
+         <ProductModal open={open} setOpen={setOpen} data-testId="onboarding-products-modal" />
       </div>
    )
 }

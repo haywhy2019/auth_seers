@@ -11,7 +11,10 @@ function SubscriptionTab() {
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
-            <Tabs onChange={({ selectedIndex }) => setIndex(selectedIndex)}>
+            <Tabs
+               onChange={({ selectedIndex }) => setIndex(selectedIndex)}
+               data-testId="onboarding-subscription"
+            >
                <TabList aria-label="List of tabs" contained fullWidth>
                   <Tab
                      className={index == 0 ? styles.select_tab_label : styles.tab_label}

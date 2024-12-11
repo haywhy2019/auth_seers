@@ -52,6 +52,7 @@ const Signup = () => {
             isInitialValid={false}
             validationSchema={signupSchema}
             initialValues={{ name: "", type: "", email: "", password: "", confirmPassword: "" }}
+            data-testId="signup-form"
          >
             {(props) => {
                return (
@@ -89,10 +90,22 @@ const Signup = () => {
                                  onChange={props.handleChange}
                                  className={styles.auth_select}
                               >
-                                 <SelectItem value="" text="Select" />
-                                 <SelectItem value="hospital" text="Hospital" />
-                                 <SelectItem value="laboratory" text="Laboratory" />
-                                 <SelectItem value="clinic" text="Clinic" />
+                                 <SelectItem value="" text="Select" data-testId="signup-select1" />
+                                 <SelectItem
+                                    value="hospital"
+                                    text="Hospital"
+                                    data-testId="signup-select2"
+                                 />
+                                 <SelectItem
+                                    value="laboratory"
+                                    text="Laboratory"
+                                    data-testId="signup-select3"
+                                 />
+                                 <SelectItem
+                                    value="clinic"
+                                    text="Clinic"
+                                    data-testId="signup-select4"
+                                 />
                               </FluidSelect>
 
                               <TextInput
@@ -107,6 +120,7 @@ const Signup = () => {
                                  onBlur={props.handleBlur}
                                  size="lg"
                                  style={{ borderBottom: "none" }}
+                                 data-testId="signup-name-input"
                               />
                            </div>
 
@@ -124,6 +138,7 @@ const Signup = () => {
                               size="lg"
                               style={{ borderBottom: "none" }}
                               autoComplete="off"
+                              data-testId="signup-email-input"
                            />
 
                            <div className={styles.auth_2_columns_container}>
@@ -141,6 +156,7 @@ const Signup = () => {
                                  size="lg"
                                  style={{ borderBottom: "none" }}
                                  autoComplete="off"
+                                 data-testId="signup-password-input"
                               />
 
                               <PasswordInput
@@ -156,6 +172,7 @@ const Signup = () => {
                                  size="lg"
                                  style={{ borderBottom: "none" }}
                                  autoComplete="off"
+                                 data-testId="signup-confirm-password-input"
                               />
                            </div>
                         </Stack>
@@ -177,6 +194,7 @@ const Signup = () => {
                            kind="primary"
                            type="submit"
                            size="lg"
+                           data-testId="signup-btn"
                         >
                            Create Account
                         </Button>
@@ -193,11 +211,11 @@ const Signup = () => {
          </div>
 
          <div className={styles.auth_socials_container}>
-            <ClickableTile className={styles.auth_socials_tile}>
+            <ClickableTile className={styles.auth_socials_tile} data-testId="signup-goggle">
                <Image src="/svg/google.svg" alt="Google" width={24} height={24} />
                <p> Google</p>
             </ClickableTile>
-            <ClickableTile className={styles.auth_socials_tile}>
+            <ClickableTile className={styles.auth_socials_tile} data-testId="signup-microsoft">
                <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
                <p>Microsoft</p>
             </ClickableTile>
@@ -210,7 +228,7 @@ const Signup = () => {
             </Link>
          </p>
 
-         <VerifyEmailModal open={open} setOpen={setOpen} />
+         <VerifyEmailModal open={open} setOpen={setOpen} data-testId="signup-verifyemail-modal" />
       </>
    )
 }

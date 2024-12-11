@@ -31,6 +31,7 @@ const ResetPassword = () => {
             isInitialValid={false}
             validationSchema={resetPasswordSchema}
             initialValues={{ password: "", confirmPassword: "" }}
+            data-testId="reset-password-form"
          >
             {(props) => {
                return (
@@ -49,6 +50,7 @@ const ResetPassword = () => {
                               onBlur={props.handleBlur}
                               size="lg"
                               style={{ borderBottom: "none" }}
+                              data-testId="reset-password-password-input"
                            />
                            <PasswordInput
                               id="confirmPassword"
@@ -62,6 +64,7 @@ const ResetPassword = () => {
                               onBlur={props.handleBlur}
                               size="lg"
                               style={{ borderBottom: "none" }}
+                              data-testId="reset-password-confirm-password-input"
                            />
                         </Stack>
 
@@ -72,6 +75,7 @@ const ResetPassword = () => {
                            kind="primary"
                            type="submit"
                            size="lg"
+                           data-testId="reset-password-password-btn"
                         >
                            Create
                         </Button>
@@ -83,7 +87,11 @@ const ResetPassword = () => {
 
          <p className={styles.auth_description}>
             Remember your password now?{" "}
-            <Link href={authRoutes.login} className={styles.auth_link}>
+            <Link
+               href={authRoutes.login}
+               className={styles.auth_link}
+               data-testId="reset-password-back-login"
+            >
                Back to Login
             </Link>
          </p>

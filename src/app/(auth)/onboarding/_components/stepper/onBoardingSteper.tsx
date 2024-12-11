@@ -14,6 +14,7 @@ const OnBoardingSteper = () => {
          currentIndex={count}
          // onChange={changeIndex}
          className={styles.steper}
+         data-testId="onboarding-stepper"
       >
          <ProgressStep label="Products" description="Step 1: select product" />
          <ProgressStep label="Subscription" description="Step 2: Select subscription" />

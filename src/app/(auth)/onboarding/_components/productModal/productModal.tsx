@@ -25,6 +25,7 @@ function ProductModal({ open, setOpen }: Props) {
          modalHeading="OpenMRS"
          modalLabel=""
          passiveModal
+         data-testId="onboarding-product-modal"
       >
          <p
             style={{
@@ -75,6 +76,7 @@ const FeatureList = ({ item }: { item: string }) => {
             marginTop: "1rem",
             minWidth: "50%",
          }}
+         data-testId="onboarding-product-feature"
       >
          <Image src="/svg/featureList.svg" alt="" width={15} height={15} className={""} />
          <p style={{ fontSize: ".875rem", fontWeight: 400 }}>{item}</p>
