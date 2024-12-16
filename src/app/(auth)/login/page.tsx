@@ -34,6 +34,7 @@ const Login = () => {
             isInitialValid={false}
             validationSchema={loginSchema}
             initialValues={{ email: "", password: "" }}
+            data-testId="login-form"
          >
             {(props) => {
                return (
@@ -53,6 +54,7 @@ const Login = () => {
                               onBlur={props.handleBlur}
                               size="lg"
                               style={{ borderBottom: "none" }}
+                              data-testId="login-email-input"
                            />
 
                            <PasswordInput
@@ -68,10 +70,15 @@ const Login = () => {
                               onBlur={props.handleBlur}
                               size="lg"
                               style={{ borderBottom: "none" }}
+                              data-testId="login-password-input"
                            />
 
                            <div style={{ display: "flex", justifyContent: "end" }}>
-                              <Link href={authRoutes.forgotPassword} className={styles.auth_link}>
+                              <Link
+                                 href={authRoutes.forgotPassword}
+                                 className={styles.auth_link}
+                                 data-testId="login-password-forgot-password-link"
+                              >
                                  Forgot Password?
                               </Link>
                            </div>
@@ -83,6 +90,7 @@ const Login = () => {
                            kind="primary"
                            type="submit"
                            size="lg"
+                           data-testId="login-password-button"
                         >
                            Login
                         </Button>
@@ -99,11 +107,11 @@ const Login = () => {
          </div>
 
          <div className={styles.auth_socials_container}>
-            <ClickableTile className={styles.auth_socials_tile}>
+            <ClickableTile className={styles.auth_socials_tile} data-testId="login-goggle">
                <Image src="/svg/google.svg" alt="Google" width={24} height={24} />
                <p> Google</p>
             </ClickableTile>
-            <ClickableTile className={styles.auth_socials_tile}>
+            <ClickableTile className={styles.auth_socials_tile} data-testId="login-microsoft">
                <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
                <p>Microsoft</p>
             </ClickableTile>

@@ -37,6 +37,7 @@ const ForgotPassword = () => {
             validationSchema={forgotPasswordSchema}
             initialValues={{ email: "" }}
             autocomplete="off"
+            data-testId="forgot-password-form"
          >
             {(props) => {
                return (
@@ -55,6 +56,7 @@ const ForgotPassword = () => {
                            onBlur={props.handleBlur}
                            size="lg"
                            style={{ borderBottom: "none" }}
+                           data-testId="forgot-password-email-input"
                         />
 
                         <Button
@@ -63,6 +65,7 @@ const ForgotPassword = () => {
                            kind="primary"
                            type="submit"
                            size="lg"
+                           data-testId="forgot-password-button"
                         >
                            Proceed
                         </Button>
@@ -74,12 +77,16 @@ const ForgotPassword = () => {
 
          <p className={styles.auth_description}>
             Remember your password now?{" "}
-            <Link href={authRoutes.login} className={styles.auth_link}>
+            <Link
+               href={authRoutes.login}
+               className={styles.auth_link}
+               data-testId="forgot-password-back-to-login"
+            >
                Back to Login
             </Link>
          </p>
 
-         <VerifyEmailModal open={open} setOpen={setOpen} />
+         <VerifyEmailModal open={open} setOpen={setOpen} data-testId="forgot-password-modal" />
       </>
    )
 }

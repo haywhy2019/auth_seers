@@ -23,8 +23,8 @@ function SubscriptionPage() {
                      is affected by the number of product you picked.
                   </p>
                </div>
-               <SelectedProduct />
-               <SubscriptionTab />
+               <SelectedProduct data-testId="onboarding-subscription-selectproduct-component" />
+               <SubscriptionTab data-testId="onboarding-subscription-tab-component" />
             </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
@@ -35,7 +35,11 @@ function SubscriptionPage() {
                         <p className={styles.currency_text}>.00</p>
                         <p className={styles.currency_text}>/credit</p>
                      </div>
-                     <Button size="xl" onClick={() => dispatch(increment())}>
+                     <Button
+                        size="xl"
+                        onClick={() => dispatch(increment())}
+                        data-testId="onboarding-subscription-btn"
+                     >
                         Select Plan
                      </Button>
                   </div>

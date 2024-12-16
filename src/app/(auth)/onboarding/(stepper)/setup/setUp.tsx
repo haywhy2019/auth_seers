@@ -31,7 +31,7 @@ function SetupPage() {
                   </p>
                </div>
 
-               <SelectedProduct />
+               <SelectedProduct data-testId="onboarding-setup-selectproduct-component" />
                <div>
                   <Image
                      src="/svg/setup.svg"
@@ -49,6 +49,7 @@ function SetupPage() {
                      accept={["image/jpeg", "image/png"]}
                      disabled={false}
                      name=""
+                     data-testId="onboarding-setup-fileuploader"
                   />
                </div>
                <div className={styles.main_org_container}>
@@ -89,7 +90,12 @@ function SetupPage() {
 
                <div className={styles.submit_container}>
                   <p className={styles.skip_text}>Skip</p>
-                  <Button size="xl" className={styles.button} onClick={goToDashboard}>
+                  <Button
+                     size="xl"
+                     className={styles.button}
+                     onClick={goToDashboard}
+                     data-testId="onboarding-setup-btn"
+                  >
                      Save & Go To Dashboard
                   </Button>
                </div>

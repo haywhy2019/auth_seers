@@ -34,12 +34,18 @@ function PaymentPage() {
                   </p>
                </div>
 
-               <SelectedProduct />
+               <SelectedProduct data-testId="onboarding-payment" />
             </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
                   {options.map((item, i) => (
-                     <Pricing label={item.label} amount={item.amount} key={i} idx={i} />
+                     <Pricing
+                        label={item.label}
+                        amount={item.amount}
+                        key={i}
+                        idx={i}
+                        data-testId="onboarding-payment-pricing"
+                     />
                   ))}
                </Tile>
             </div>
@@ -51,7 +57,13 @@ function PaymentPage() {
 
                <div className={styles.input}>
                   <p className={styles.input_label}>Enter Quantity</p>
-                  <TextInput id="text-input-1" type="number" labelText="" size="md" />
+                  <TextInput
+                     id="text-input-1"
+                     type="number"
+                     labelText=""
+                     size="md"
+                     data-testId="onboarding-payment-input"
+                  />
                </div>
                <div className={styles.icon_container}>
                   <ChevronRight size={20} />
@@ -63,14 +75,30 @@ function PaymentPage() {
                   <div className={styles.pricing_container}>
                      <div className={styles.pricing_amount}>
                         <span className={styles.currency}>&#8358;</span>
-                        <p className={styles.payment_amount}>1,000</p>
-                        <p className={styles.currency_text}>.00</p>
-                        <p className={styles.currency_text}>/credit</p>
+                        <p
+                           className={styles.payment_amount}
+                           data-testId="onboarding-payment-amount"
+                        >
+                           1,000
+                        </p>
+                        <p
+                           className={styles.currency_text}
+                           data-testId="onboarding-payment-amount2"
+                        >
+                           .00
+                        </p>
+                        <p
+                           className={styles.currency_text}
+                           data-testId="onboarding-payment-amount3"
+                        >
+                           /credit
+                        </p>
                      </div>
                      <Button
                         size="xl"
                         className={styles.button}
                         onClick={() => dispatch(increment())}
+                        data-testId="onboarding-payment-btn"
                      >
                         Pay
                         <div className={styles.logo}>
@@ -89,7 +117,7 @@ export default PaymentPage
 
 const Pricing = ({ label, amount, idx }: { label: string; amount: string; idx: number }) => {
    return (
-      <div className={styles.pricing}>
+      <div className={styles.pricing} data-testId="onboarding-payment-pricing-component">
          <RadioButton labelText={label} value={idx.toString()} id={idx.toString()} />
          <p className={idx == 0 ? styles.amount : styles.amount_disabled}>{amount}</p>
       </div>

@@ -21,13 +21,14 @@ type ProductTileProps = {
 function ProductTile({ onClick, product }: ProductTileProps) {
    const [isChecked, setIsChecked] = useState(false)
    return (
-      <Tile className={styles.tile}>
+      <Tile className={styles.tile} data-testId="onboarding-product-tile">
          <div className={styles.tile_flex}>
             <Checkbox
                id="checkbox"
                labelText=""
                checked={isChecked}
                onChange={(_, { checked }) => setIsChecked(checked)}
+               data-testId="onboarding-product-checkbox"
             />
 
             <div className={styles.tile_flex}>
@@ -37,10 +38,15 @@ function ProductTile({ onClick, product }: ProductTileProps) {
                   width={35}
                   height={35}
                   className={styles.product_logo}
+                  data-testId="onboarding-product-logo"
                />
                <div>
-                  <p className={styles.heading}>{product?.title}</p>
-                  <p className={styles.body}>{product?.details}</p>
+                  <p className={styles.heading} data-testId="onboarding-product-title">
+                     {product?.title}
+                  </p>
+                  <p className={styles.body} data-testId="onboarding-product-body">
+                     {product?.details}
+                  </p>
                </div>
             </div>
          </div>

@@ -29,6 +29,7 @@ const VerifyEmailModal: FC<Props> = ({ ...props }) => {
          modalHeading="Enter OTP"
          primaryButtonText="Verify"
          className={styles.auth_verify_modal}
+         data-testId="verify-email-component"
       >
          <p>
             Enter the OTP sent to the email you provided during account creation to verify and
@@ -53,6 +54,7 @@ const VerifyEmailModal: FC<Props> = ({ ...props }) => {
                marginBottom: "0.5rem",
                borderBottom: "none",
             }}
+            data-testId="component-otp-input"
          />
          <p className={styles.auth_verify_timer}>05:00 minutes</p>
 

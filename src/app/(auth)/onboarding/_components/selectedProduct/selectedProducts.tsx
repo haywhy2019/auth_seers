@@ -9,14 +9,18 @@ function SelectedProduct() {
    const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
    return (
       <div className={styles.tile_margin}>
-         <Tile id="subscription-tile">
+         <Tile id="subscription-tile" data-testId="onboarding-select-product-tile">
             <p className={styles.tile_heading}>Selected Products</p>
             <p className={styles.text_body}>
                These are the products you selected in the previous page.
             </p>
             <div className={styles.tile}>
                {features.map((item) => (
-                  <Features feature={item} key={item} />
+                  <Features
+                     feature={item}
+                     key={item}
+                     data-testId="onboarding-select-product-feature"
+                  />
                ))}
             </div>
          </Tile>
@@ -39,7 +43,13 @@ const Features = ({ feature }: { feature: string }) => {
    return (
       <div className={styles.feature_container}>
          <div className={styles.feature_flex}>
-            <Checkbox id="checkbox" labelText="" checked={isChecked} onChange={handleChange} />
+            <Checkbox
+               id="checkbox"
+               labelText=""
+               checked={isChecked}
+               onChange={handleChange}
+               data-testId="onboarding-select-product-checkbox"
+            />
             <p className={styles.feature_text}>{feature}</p>
          </div>
 
