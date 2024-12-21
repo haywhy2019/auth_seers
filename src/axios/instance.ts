@@ -1,7 +1,6 @@
 /** @format */
 import axios from "axios"
 import Cookies from "js-cookie"
-import { toast } from "react-toastify"
 
 export const BASEURL = process.env.NEXT_PUBLIC_BASEURL
 
@@ -31,7 +30,7 @@ const formDataInstance = axios.create({
 
 //request interceptors
 privateInstance.interceptors.request.use((config: any) => {
-   const token = JSON.parse(Cookies.get("auth") || "").accessToken
+   const token = JSON.parse(Cookies.get("token") || "")
 
    if (token) {
       config.headers.Authorization = `Bearer ${token}`
@@ -50,11 +49,11 @@ publicInstance.interceptors.response.use(
       const message = error.response.data.message
       if (Array.isArray(message)) {
          message.forEach((item: string) => {
-            toast.error(item)
+            // toast.error(item)
          })
          return
       }
-      toast.error(error.response.data.message)
+      // toast.error(error.response.data.message)
       throw error
    },
 )
