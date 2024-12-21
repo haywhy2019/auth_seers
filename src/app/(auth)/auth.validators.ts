@@ -8,8 +8,8 @@ export const loginSchema = Yup.object({
 })
 
 export const signupSchema = Yup.object({
-   type: Yup.string().required("Facility is required"),
-   name: Yup.string().required("Organisation Name is required"),
+   organizationType: Yup.string().required("Facility Type is required"),
+   organizationName: Yup.string().required("Organisation Name is required"),
    email: Yup.string().email("Please enter a valid email address").required("Email is required"),
    password: Yup.string()
       .min(8, "Password must be 8 characters or more")

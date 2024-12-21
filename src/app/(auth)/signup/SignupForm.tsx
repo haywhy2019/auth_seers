@@ -1,5 +1,7 @@
 "use client"
 
+// import { setAuth } from "@/redux/features/auth.slice"
+import { useAppDispatch } from "@/redux/hooks"
 import {
    Button,
    Link as CarbonLink,
@@ -9,6 +11,7 @@ import {
    SelectItem,
    Stack,
    TextInput,
+   ToastNotification,
    Toggletip,
    ToggletipButton,
    ToggletipContent,
@@ -16,30 +19,74 @@ import {
 } from "@carbon/react"
 import { Help } from "@carbon/react/icons"
 import FluidSelect from "@carbon/react/lib/components/FluidSelect"
+import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
 
-import React, { useState } from "react"
+import React from "react"
 
 import Image from "next/image"
 import Link from "next/link"
 
+import authApi from "@/axios/auth.api"
+
+import { organizationTypes } from "@/helpers/constants"
 import { authRoutes } from "@/helpers/routes"
+
+import { User } from "@/types/general.types"
 
 import styles from "../auth.module.scss"
 import { signupSchema } from "../auth.validators"
 import VerifyEmailModal from "../components/VerifyEmailModal"
 
 const SignupForm = () => {
-   const [open, setOpen] = useState(false)
+   const [message, setMessage] = React.useState("")
+   const [open, setOpen] = React.useState(false)
 
-   const handleSubmit = () =>
-      // values: any
-      {
+   const dispatch = useAppDispatch()
+
+   const {
+      mutate: _signup,
+      isError,
+      isSuccess,
+   } = useMutation({
+      mutationFn: authApi.signup,
+      onSuccess: ({ data }) => {
+         // const { role, ...user } = data.data.userDto
+         // const payload = { token: data.data.token, user }
+
+         setMessage("Signup Successful")
          setOpen(true)
-      }
+         // dispatch(setAuth(payload))
+         // const redirectUrl = getRedirectUrl(data.data.user)
+         // router.push(redirect || redirectUrl!)
+      },
+      onError: (error: any) => {
+         setMessage(error.response.data.message)
+      },
+   })
+
+   const handleSubmit = (values: Record<string, string>) => {
+      _signup({
+         organizationType: values.organizationType as User["organizationType"],
+         organizationName: values.organizationName,
+         email: values.email,
+         password: values.password,
+         confirmPassword: values.confirmPassword,
+      })
+   }
 
    return (
       <>
+         {(isError || isSuccess) && (
+            <ToastNotification
+               kind={isError ? "error" : "success"}
+               role="status"
+               timeout={3000}
+               title={message}
+               style={{ position: "absolute", top: 40 }}
+            />
+         )}
+
          <div className={styles.auth_heading_container}>
             <h1 className={styles.auth_heading}>Create Account</h1>
             <p className={styles.auth_description}>
@@ -51,7 +98,13 @@ const SignupForm = () => {
             onSubmit={handleSubmit}
             isInitialValid={false}
             validationSchema={signupSchema}
-            initialValues={{ name: "", type: "", email: "", password: "", confirmPassword: "" }}
+            initialValues={{
+               organizationName: "",
+               organizationType: "",
+               email: "",
+               password: "",
+               confirmPassword: "",
+            }}
             data-testId="signup-form"
          >
             {(props) => {
@@ -60,8 +113,17 @@ const SignupForm = () => {
                      <Stack gap={7}>
                         <Stack gap={3}>
                            <div className={styles.auth_2_columns_container}>
+                              {/* <Dropdown
+                                 id="organizationType"
+                                 titleText="Facility Type"
+                                 helperText="Facility Type"
+                                 label="Select type"
+                                 items={organizationTypes.map((item) => item.display)}
+                                 itemToString={(item) => (item ? item : "")}
+                                 onChange={props.handleChange}
+                              /> */}
                               <FluidSelect
-                                 id="type"
+                                 id="organizationType"
                                  labelText={
                                     <div
                                        style={{
@@ -85,38 +147,30 @@ const SignupForm = () => {
                                        </Toggletip>
                                     </div>
                                  }
-                                 invalidText={props.errors.type}
-                                 invalid={!!(props.touched && props.errors.type)}
+                                 invalidText={props.errors.organizationType}
+                                 invalid={!!(props.touched && props.errors.organizationType)}
                                  onChange={props.handleChange}
                                  className={styles.auth_select}
                               >
                                  <SelectItem value="" text="Select" data-testId="signup-select1" />
-                                 <SelectItem
-                                    value="hospital"
-                                    text="Hospital"
-                                    data-testId="signup-select2"
-                                 />
-                                 <SelectItem
-                                    value="laboratory"
-                                    text="Laboratory"
-                                    data-testId="signup-select3"
-                                 />
-                                 <SelectItem
-                                    value="clinic"
-                                    text="Clinic"
-                                    data-testId="signup-select4"
-                                 />
+                                 {organizationTypes.map((item) => (
+                                    <SelectItem
+                                       value={item.value}
+                                       text={item.display}
+                                       data-testId={`signup-select-${item.value}`}
+                                    />
+                                 ))}
                               </FluidSelect>
 
                               <TextInput
-                                 id="name"
-                                 name="name"
-                                 invalidText={props.errors.name}
+                                 id="organizationName"
+                                 name="organizationName"
+                                 invalidText={props.errors.organizationName}
                                  labelText="Organisation Name"
                                  placeholder="e.g Acme Corp"
-                                 invalid={!!(props.touched && props.errors.name)}
+                                 invalid={!!(props.touched && props.errors.organizationName)}
                                  onChange={props.handleChange}
-                                 value={props.values.name}
+                                 value={props.values.organizationName}
                                  onBlur={props.handleBlur}
                                  size="lg"
                                  style={{ borderBottom: "none" }}
