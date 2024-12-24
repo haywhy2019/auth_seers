@@ -4,7 +4,6 @@ import { setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
 import {
    Button,
-   ClickableTile,
    FluidForm,
    PasswordInput,
    Stack,
@@ -16,7 +15,6 @@ import { Formik } from "formik"
 
 import React from "react"
 
-import Image from "next/image"
 import Link from "next/link"
 
 // import { useRouter } from "next/navigation"
@@ -40,7 +38,11 @@ const LoginForm = () => {
       mutationFn: authApi.login,
       onSuccess: ({ data }) => {
          const { role, ...user } = data.data.user
-         const payload = { token: data.data.token, user }
+         const userPayload = {
+            ...user,
+            role: { ...role, permissions: [] }, //remove permissions from payload to declutter the user object before browser storage
+         }
+         const payload = { token: data.data.token, user: userPayload }
 
          setMessage("Login Successful")
 
@@ -146,7 +148,7 @@ const LoginForm = () => {
             }}
          </Formik>
 
-         <div className={styles.auth_options}>
+         {/* <div className={styles.auth_options}>
             <Image src="/svg/divider.svg" alt="" width={122} height={1} />
             <p>Or login with</p>
             <Image src="/svg/divider.svg" alt="" width={122} height={1} />
@@ -161,7 +163,7 @@ const LoginForm = () => {
                <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
                <p>Microsoft</p>
             </ClickableTile>
-         </div>
+         </div> */}
 
          <p className={styles.auth_description}>
             You do not have an account?{" "}
