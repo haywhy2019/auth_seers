@@ -31,3 +31,7 @@ export const resetPasswordSchema = Yup.object({
       .oneOf([Yup.ref("password")], "Passwords must match")
       .required("Confirm Password is required"),
 })
+
+export const otpSchema = Yup.object({
+   otp: Yup.string().required("OTP is required"),
+})
