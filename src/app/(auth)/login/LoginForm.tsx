@@ -16,11 +16,12 @@ import { Formik } from "formik"
 import React from "react"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
-// import { useRouter } from "next/navigation"
 import authApi from "@/axios/auth.api"
 
 import { authRoutes } from "@/helpers/routes"
+import { getRedirectUrl } from "@/helpers/utils"
 
 import styles from "../auth.module.scss"
 import { loginSchema } from "../auth.validators"
@@ -28,7 +29,7 @@ import { loginSchema } from "../auth.validators"
 const LoginForm = () => {
    const [message, setMessage] = React.useState("")
    const dispatch = useAppDispatch()
-   // const router = useRouter()
+   const router = useRouter()
 
    const {
       mutate: _login,
@@ -47,11 +48,12 @@ const LoginForm = () => {
          setMessage("Login Successful")
 
          dispatch(setAuth(payload))
-         // const redirectUrl = getRedirectUrl(data.data.user)
+         const redirectUrl = getRedirectUrl(data.data.user)
          // router.push(redirect || redirectUrl!)
+         router.push(redirectUrl!)
       },
       onError: (error: any) => {
-         setMessage(error.response.data.message)
+         setMessage(error.response.data.message || "An error occurred")
       },
    })
 

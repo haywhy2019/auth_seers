@@ -1,13 +1,11 @@
 "use client"
 
-import { authSelector, setAuth } from "@/redux/features/auth.slice"
+import { authSelector } from "@/redux/features/auth.slice"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import {
    Button,
    Link as CarbonLink,
-   ClickableTile,
    FluidForm,
-   PasswordInput,
    Stack,
    TextInput,
    ToastNotification,
@@ -30,6 +28,11 @@ import { otpSchema } from "../auth.validators"
 
 const VerifyForm = () => {
    const [message, setMessage] = React.useState("")
+
+   const COUNTDOWN_TIME = 5 * 60 // 5 minutes in seconds
+   const [timeLeft, setTimeLeft] = React.useState(0)
+   const [canResend, setCanResend] = React.useState(true)
+
    const user = useAppSelector(authSelector).user
    const dispatch = useAppDispatch()
    // const router = useRouter()
@@ -60,13 +63,57 @@ const VerifyForm = () => {
       },
    })
 
+   const {
+      mutate: _resendOtp,
+      isError: resendError,
+      isSuccess: resendSuccess,
+   } = useMutation({
+      mutationFn: authApi.resendOtp,
+      onSuccess: () => {
+         setTimeLeft(COUNTDOWN_TIME)
+         setCanResend(false)
+         setMessage("OTP resent successfully")
+      },
+      onError: (error: any) => {
+         setMessage(error.response.data.message || "An error occurred")
+      },
+   })
+
    const handleSubmit = (values: Record<string, string>) => {
       _verifyOtp({ userName: user?.userName, otp: values.otp })
    }
 
+   const handleResendOTP = () => {
+      _resendOtp({ email: user?.email })
+   }
+
+   React.useEffect(() => {
+      // Start countdown only if time is not up
+      if (timeLeft > 0) {
+         const timer = setInterval(() => {
+            setTimeLeft((prevTime) => {
+               if (prevTime <= 1) {
+                  clearInterval(timer)
+                  setCanResend(true)
+                  return 0
+               }
+               return prevTime - 1
+            })
+         }, 1000)
+
+         return () => clearInterval(timer)
+      }
+   }, [timeLeft])
+
+   const formatTime = (seconds: number) => {
+      const minutes = Math.floor(seconds / 60)
+      const remainingSeconds = seconds % 60
+      return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`
+   }
+
    return (
       <>
-         {(isError || isSuccess) && (
+         {(isError || isSuccess || resendError || resendSuccess) && (
             <ToastNotification
                kind={isError ? "error" : "success"}
                role="status"
@@ -111,10 +158,23 @@ const VerifyForm = () => {
                         />
 
                         <div>
-                           <p className={styles.auth_verify_timer}>05:00 minutes</p>
+                           {timeLeft > 0 && (
+                              <p
+                                 className={styles.auth_verify_timer}
+                                 data-testId="verify-email-timer"
+                              >
+                                 {formatTime(timeLeft)} minutes
+                              </p>
+                           )}
                            <p className={styles.auth_description}>
                               Can't find the OTP in your mail? Check your spam or{" "}
-                              <CarbonLink className={styles.auth_link}>Resend OTP</CarbonLink>
+                              <CarbonLink
+                                 className={styles.auth_link}
+                                 onClick={canResend ? handleResendOTP : null}
+                                 style={{ cursor: !canResend && "not-allowed" }}
+                              >
+                                 Resend OTP
+                              </CarbonLink>
                            </p>
                         </div>
 
