@@ -50,6 +50,7 @@ const SignupForm = () => {
       mutationFn: authApi.signup,
       onSuccess: ({ data }) => {
          setMessage("Signup Successful")
+         //eslint-disable-next-line
          const { role, ...user } = data.data.userDto
          const payload = { token: null, user }
          dispatch(setAuth(payload))
@@ -149,6 +150,7 @@ const SignupForm = () => {
                                  <SelectItem value="" text="Select" data-testId="signup-select1" />
                                  {organizationTypes.map((item) => (
                                     <SelectItem
+                                       key={item.value}
                                        value={item.value}
                                        text={item.display}
                                        data-testId={`signup-select-${item.value}`}

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 export const enum userStatus {
    ACTIVE = "a",
    INACTIVE = "i",
