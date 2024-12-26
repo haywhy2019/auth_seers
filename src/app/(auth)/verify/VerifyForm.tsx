@@ -1,6 +1,6 @@
 "use client"
 
-import { authSelector } from "@/redux/features/auth.slice"
+import { authSelector, logout, setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import {
    Button,
@@ -12,16 +12,16 @@ import {
 } from "@carbon/react"
 import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
+import Cookies from "js-cookie"
 
 import React from "react"
 
-import Image from "next/image"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 
-// import { useRouter } from "next/navigation"
 import authApi from "@/axios/auth.api"
 
-import { authRoutes } from "@/helpers/routes"
+import { userStatus } from "@/helpers/enum"
+import { getRedirectUrl } from "@/helpers/utils"
 
 import styles from "../auth.module.scss"
 import { otpSchema } from "../auth.validators"
@@ -35,7 +35,9 @@ const VerifyForm = () => {
 
    const user = useAppSelector(authSelector).user
    const dispatch = useAppDispatch()
-   // const router = useRouter()
+   const router = useRouter()
+
+   const token = JSON.parse(Cookies.get("token") || "")
 
    const {
       mutate: _verifyOtp,
@@ -44,19 +46,15 @@ const VerifyForm = () => {
    } = useMutation({
       mutationFn: authApi.verifyOtp,
       onSuccess: ({ data }) => {
-         console.log(data, "data")
-         // const { role, ...user } = data.data.user
-         // const userPayload = {
-         //    ...user,
-         //    role: { ...role, permissions: [] }, //remove permissions from payload to declutter the user object before browser storage
-         // }
-         // const payload = { token: data.data.token, user: userPayload }
-
-         // setMessage("Login Successful")
-
-         // dispatch(setAuth(payload))
-         // const redirectUrl = getRedirectUrl(data.data.user)
-         // router.push(redirect || redirectUrl!)
+         setMessage("Email verified successfully")
+         if (token) {
+            const payload = { token, user: { ...user, status: userStatus.ACTIVE } }
+            dispatch(setAuth(payload))
+            const redirectUrl = getRedirectUrl(user)
+            router.push(redirectUrl!)
+         } else {
+            dispatch(logout())
+         }
       },
       onError: (error: any) => {
          setMessage(error.response.data.message)
@@ -84,7 +82,7 @@ const VerifyForm = () => {
    }
 
    const handleResendOTP = () => {
-      _resendOtp({ email: user?.email })
+      _resendOtp({ userName: user?.userName })
    }
 
    React.useEffect(() => {
@@ -115,7 +113,7 @@ const VerifyForm = () => {
       <>
          {(isError || isSuccess || resendError || resendSuccess) && (
             <ToastNotification
-               kind={isError ? "error" : "success"}
+               kind={isError || resendError ? "error" : "success"}
                role="status"
                timeout={3000}
                title={message}

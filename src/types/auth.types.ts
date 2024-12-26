@@ -9,7 +9,7 @@ export type authApiType = {
    login: (payload: LoginType) => Promise<AxiosResponse>
    signup: (payload: SignupType) => Promise<AxiosResponse>
    verifyOtp: (payload: VerifyType) => Promise<AxiosResponse>
-   resendOtp: (payload: { email: string }) => Promise<AxiosResponse>
+   resendOtp: (payload: { userName: string }) => Promise<AxiosResponse>
    forgotPassword: (payload: { email: string }) => Promise<AxiosResponse>
    resetPassword: (payload: ResetPasswordType) => Promise<AxiosResponse>
 }

@@ -1,11 +1,10 @@
 "use client"
 
-// import { setAuth } from "@/redux/features/auth.slice"
+import { setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
 import {
    Button,
    Link as CarbonLink,
-   ClickableTile,
    FluidForm,
    PasswordInput,
    SelectItem,
@@ -24,8 +23,8 @@ import { Formik } from "formik"
 
 import React from "react"
 
-import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 import authApi from "@/axios/auth.api"
 
@@ -36,13 +35,12 @@ import { User } from "@/types/general.types"
 
 import styles from "../auth.module.scss"
 import { signupSchema } from "../auth.validators"
-import VerifyEmailModal from "../components/VerifyEmailModal"
 
 const SignupForm = () => {
    const [message, setMessage] = React.useState("")
-   const [open, setOpen] = React.useState(false)
 
    const dispatch = useAppDispatch()
+   const router = useRouter()
 
    const {
       mutate: _signup,
@@ -51,17 +49,14 @@ const SignupForm = () => {
    } = useMutation({
       mutationFn: authApi.signup,
       onSuccess: ({ data }) => {
-         // const { role, ...user } = data.data.userDto
-         // const payload = { token: data.data.token, user }
-
          setMessage("Signup Successful")
-         setOpen(true)
-         // dispatch(setAuth(payload))
-         // const redirectUrl = getRedirectUrl(data.data.user)
-         // router.push(redirect || redirectUrl!)
+         const { role, ...user } = data.data.userDto
+         const payload = { token: null, user }
+         dispatch(setAuth(payload))
+         router.push(authRoutes.verify)
       },
       onError: (error: any) => {
-         setMessage(error.response.data.message)
+         setMessage(error.response.data.message || "An error occurred")
       },
    })
 
@@ -96,7 +91,6 @@ const SignupForm = () => {
 
          <Formik
             onSubmit={handleSubmit}
-            isInitialValid={false}
             validationSchema={signupSchema}
             initialValues={{
                organizationName: "",
@@ -258,7 +252,7 @@ const SignupForm = () => {
             }}
          </Formik>
 
-         <div className={styles.auth_options}>
+         {/* <div className={styles.auth_options}>
             <Image src="/svg/divider.svg" alt="" width={122} height={1} />
             <p>Or sign up with</p>
             <Image src="/svg/divider.svg" alt="" width={122} height={1} />
@@ -273,7 +267,7 @@ const SignupForm = () => {
                <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
                <p>Microsoft</p>
             </ClickableTile>
-         </div>
+         </div> */}
 
          <p className={styles.auth_description}>
             Already have an account?{" "}
@@ -281,8 +275,6 @@ const SignupForm = () => {
                Kindly Login
             </Link>
          </p>
-
-         <VerifyEmailModal open={open} setOpen={setOpen} data-testId="signup-verifyemail-modal" />
       </>
    )
 }
