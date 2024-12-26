@@ -45,7 +45,7 @@ const VerifyForm = () => {
       isSuccess,
    } = useMutation({
       mutationFn: authApi.verifyOtp,
-      onSuccess: ({ data }) => {
+      onSuccess: () => {
          setMessage("Email verified successfully")
          if (token) {
             const payload = { token, user: { ...user, status: userStatus.ACTIVE } }

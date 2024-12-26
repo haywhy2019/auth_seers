@@ -10,6 +10,7 @@ import { userStatus } from "./helpers/enum"
 const getJsonParsedCookie = (req: NextRequest, key: string) => {
    try {
       return JSON.parse(req.cookies.get(key)?.value as string)
+      //eslint-disable-next-line
    } catch (error) {
       return undefined
    }
@@ -19,7 +20,7 @@ export async function middleware(request: NextRequest) {
    const url = request.nextUrl
    const pathname = url.pathname
 
-   const token = getJsonParsedCookie(request, "token") as string
+   // const token = getJsonParsedCookie(request, "token") as string
    const user = getJsonParsedCookie(request, "user") as User
 
    // Redirect to email verifiy page if email is not verified

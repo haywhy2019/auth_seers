@@ -6,6 +6,8 @@
 		"linebreak-style": ["error", "unix"],
 		"no-unused-vars": "warn",
 		"react-hooks/exhaustive-deps": "off",
-		"react/no-unescaped-entities": "off"
+		"react/no-unescaped-entities": "off",
+		"@typescript-eslint/no-explicit-any": "off"
+		
 	}
 }
