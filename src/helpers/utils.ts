@@ -15,9 +15,9 @@ import { authRoutes } from "./routes"
  */
 export const getRedirectUrl = ({ userType, status }: User) => {
    // Check status first - redirect to verify if not active
-   if (status !== userStatus.ACTIVE) {
-      return authRoutes.verify
-   }
+   //  if (status !== userStatus.ACTIVE) {
+   //     return authRoutes.verify
+   //  }
 
    // Redirect based on user type
    switch (userType) {
