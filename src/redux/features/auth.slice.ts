@@ -8,7 +8,7 @@ import { initialState } from "../initialState"
 import { RootState } from "../store"
 
 const cookieConfig = {
-   httpOnly: process.env.NODE_ENV === "production",
+   httpOnly: false,
    domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
    secure: true,
    sameSite: "strict",
