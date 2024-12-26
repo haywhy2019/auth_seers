@@ -1,8 +1,9 @@
+import { User } from "@/types/general.types"
+
 export const initialState = {
    app: {},
    auth: {
-      user: {},
-      isAuthenticated: false,
+      user: {} as User,
    },
    onBoard: {
       counter: 0,

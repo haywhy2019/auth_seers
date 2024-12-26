@@ -2,15 +2,15 @@ import React from "react"
 
 import { Metadata } from "next"
 
-import ForgotPasswordForm from "./ForgotPasswordForm"
+import CreatePasswordForm from "./CreatePasswordForm"
 
 export const metadata: Metadata = {
-   title: "LafiaEMR - Forgot Password",
+   title: "LafiaEMR - Create Password",
    description: "",
 }
 
 const ForgotPasswordPage = () => {
-   return <ForgotPasswordForm />
+   return <CreatePasswordForm />
 }
 
 export default ForgotPasswordPage

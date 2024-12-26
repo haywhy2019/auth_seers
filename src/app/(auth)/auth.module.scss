@@ -49,6 +49,7 @@
   text-align: right; 
   text-decoration: none;
   max-width: fit-content;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
@@ -146,7 +147,8 @@
 }
 
 .auth_verify_timer {
-  @include type-style('heading-03');
+  @include type-style('body-01');
   color: #008080;
   font-weight: 600;
+  text-align: center;
 }
