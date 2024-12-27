@@ -1,4 +1,6 @@
 /** @format */
+
+/* eslint-disable */
 import axios from "axios"
 import Cookies from "js-cookie"
 
@@ -46,13 +48,13 @@ publicInstance.interceptors.response.use(
    },
    (error) => {
       // _handleError(error)
-      const message = error.response.data.message
-      if (Array.isArray(message)) {
-         message.forEach((item: string) => {
-            // toast.error(item)
-         })
-         return
-      }
+      // const message = error.response.data.message
+      // if (Array.isArray(message)) {
+      //    message.forEach((item: string) => {
+      //       // toast.error(item)
+      //    })
+      //    return
+      // }
       // toast.error(error.response.data.message)
       throw error
    },

@@ -24,10 +24,14 @@ export const forgotPasswordSchema = Yup.object({
 })
 
 export const resetPasswordSchema = Yup.object({
-   password: Yup.string()
+   newPassword: Yup.string()
       .min(8, "Password must be 8 characters or more")
       .required("Password is required"),
    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password")], "Passwords must match")
+      .oneOf([Yup.ref("newPassword")], "Passwords must match")
       .required("Confirm Password is required"),
+})
+
+export const otpSchema = Yup.object({
+   otp: Yup.string().required("OTP is required"),
 })

@@ -4,7 +4,6 @@ import { setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
 import {
    Button,
-   ClickableTile,
    FluidForm,
    PasswordInput,
    Stack,
@@ -16,13 +15,13 @@ import { Formik } from "formik"
 
 import React from "react"
 
-import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
-// import { useRouter } from "next/navigation"
 import authApi from "@/axios/auth.api"
 
 import { authRoutes } from "@/helpers/routes"
+import { getRedirectUrl } from "@/helpers/utils"
 
 import styles from "../auth.module.scss"
 import { loginSchema } from "../auth.validators"
@@ -30,7 +29,7 @@ import { loginSchema } from "../auth.validators"
 const LoginForm = () => {
    const [message, setMessage] = React.useState("")
    const dispatch = useAppDispatch()
-   // const router = useRouter()
+   const router = useRouter()
 
    const {
       mutate: _login,
@@ -40,16 +39,21 @@ const LoginForm = () => {
       mutationFn: authApi.login,
       onSuccess: ({ data }) => {
          const { role, ...user } = data.data.user
-         const payload = { token: data.data.token, user }
+         const userPayload = {
+            ...user,
+            role: { ...role, permissions: [] }, //remove permissions from payload to declutter the user object before browser storage
+         }
+         const payload = { token: data.data.token, user: userPayload }
 
          setMessage("Login Successful")
 
          dispatch(setAuth(payload))
-         // const redirectUrl = getRedirectUrl(data.data.user)
+         const redirectUrl = getRedirectUrl(data.data.user)
          // router.push(redirect || redirectUrl!)
+         router.push(redirectUrl!)
       },
       onError: (error: any) => {
-         setMessage(error.response.data.message)
+         setMessage(error.response.data.message || "An error occurred")
       },
    })
 
@@ -146,7 +150,7 @@ const LoginForm = () => {
             }}
          </Formik>
 
-         <div className={styles.auth_options}>
+         {/* <div className={styles.auth_options}>
             <Image src="/svg/divider.svg" alt="" width={122} height={1} />
             <p>Or login with</p>
             <Image src="/svg/divider.svg" alt="" width={122} height={1} />
@@ -161,7 +165,7 @@ const LoginForm = () => {
                <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
                <p>Microsoft</p>
             </ClickableTile>
-         </div>
+         </div> */}
 
          <p className={styles.auth_description}>
             You do not have an account?{" "}
