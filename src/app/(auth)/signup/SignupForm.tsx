@@ -28,7 +28,7 @@ import { useRouter } from "next/navigation"
 
 import authApi from "@/axios/auth.api"
 
-import { organizationTypes } from "@/helpers/constants"
+import { organizationTypeOptions } from "@/helpers/constants"
 import { authRoutes } from "@/helpers/routes"
 
 import { User } from "@/types/general.types"
@@ -49,10 +49,10 @@ const SignupForm = () => {
    } = useMutation({
       mutationFn: authApi.signup,
       onSuccess: ({ data }) => {
-         setMessage("Signup Successful")
+         setMessage("Signup successful")
          //eslint-disable-next-line
          const { role, ...user } = data.data.userDto
-         const payload = { token: null, user }
+         const payload = { user }
          dispatch(setAuth(payload))
          router.push(authRoutes.verify)
       },
@@ -148,7 +148,7 @@ const SignupForm = () => {
                                  className={styles.auth_select}
                               >
                                  <SelectItem value="" text="Select" data-testId="signup-select1" />
-                                 {organizationTypes.map((item) => (
+                                 {organizationTypeOptions.map((item) => (
                                     <SelectItem
                                        key={item.value}
                                        value={item.value}

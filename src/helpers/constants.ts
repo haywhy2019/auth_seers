@@ -1,5 +1,8 @@
-export const organizationTypes = [
-   { display: "Clinic", value: "CLINIC" },
-   { display: "Lab", value: "LAB" },
-   { display: "Pharmacy", value: "PHARMACY" },
+import { organizationTypes } from "./enum"
+
+export const organizationTypeOptions = [
+   { display: "Clinic", value: organizationTypes.CLINIC },
+   { display: "Lab", value: organizationTypes.LAB },
+   { display: "Pharmacy", value: organizationTypes.PHARMACY },
+   { display: "HMO", value: organizationTypes.HMO },
 ]

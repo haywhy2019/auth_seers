@@ -1,8 +1,8 @@
 /* eslint-disable */
 
 export const enum userStatus {
-   ACTIVE = "a",
-   INACTIVE = "i",
+   ACTIVE = "A",
+   INACTIVE = "I",
 }
 
 export const enum userTypes {

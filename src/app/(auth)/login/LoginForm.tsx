@@ -45,7 +45,7 @@ const LoginForm = () => {
          }
          const payload = { token: data.data.token, user: userPayload }
 
-         setMessage("Login Successful")
+         setMessage("Login successful")
 
          dispatch(setAuth(payload))
          const redirectUrl = getRedirectUrl(data.data.user)
@@ -58,7 +58,7 @@ const LoginForm = () => {
    })
 
    const handleSubmit = (values: Record<string, string>) => {
-      _login({ userName: values.email, password: values.password })
+      _login({ email: values.email, password: values.password })
    }
 
    return (
