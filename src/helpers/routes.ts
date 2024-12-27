@@ -5,3 +5,4 @@ export const authRoutes = {
    forgotPassword: "/forgot-password",
    onboarding: "/onboarding",
 }
+

@@ -7,9 +7,10 @@ import Image from "next/image"
 type Props = {
    open: boolean
    setOpen: React.Dispatch<React.SetStateAction<boolean>>
+   features: string[]
 }
 
-function ProductModal({ open, setOpen }: Props) {
+function ProductModal({ open, setOpen , features}: Props) {
    const listDemo = [
       "Feature text goes here",
       "Feature text goes here",
@@ -49,7 +50,7 @@ function ProductModal({ open, setOpen }: Props) {
                flexWrap: "wrap",
             }}
          >
-            {listDemo.map((item, i) => (
+            {features?.map((item, i) => (
                <FeatureList item={item} key={i} />
             ))}
          </div>

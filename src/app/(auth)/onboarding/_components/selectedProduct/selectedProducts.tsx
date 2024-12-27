@@ -3,10 +3,14 @@ import { Checkbox, Tile } from "@carbon/react"
 import React, { useState } from "react"
 
 import styles from "./products.module.scss"
+import { useAppSelector } from "@/redux/hooks"
 
 function SelectedProduct() {
    // const [isChecked, setIsChecked] = useState(false)
    const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
+   const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
+
+   console.log(selectedProduct, "select prod")
    return (
       <div className={styles.tile_margin}>
          <Tile id="subscription-tile" data-testId="onboarding-select-product-tile">
@@ -15,7 +19,7 @@ function SelectedProduct() {
                These are the products you selected in the previous page.
             </p>
             <div className={styles.tile}>
-               {features.map((item) => (
+               {selectedProduct.map((item) => (
                   <Features
                      feature={item}
                      key={item}
@@ -57,3 +61,4 @@ const Features = ({ feature }: { feature: string }) => {
       </div>
    )
 }
+

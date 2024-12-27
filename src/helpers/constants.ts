@@ -3,3 +3,4 @@ export const organizationTypes = [
    { display: "Lab", value: "LAB" },
    { display: "Pharmacy", value: "PHARMACY" },
 ]
+

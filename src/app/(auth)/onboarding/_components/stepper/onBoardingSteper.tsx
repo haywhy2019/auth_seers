@@ -8,7 +8,7 @@ import React from "react"
 import styles from "./stepper.module.scss"
 
 const OnBoardingSteper = () => {
-   const count = useAppSelector((state) => state.onBoard.onBoard.counter)
+   const count = useAppSelector((state) => state.onBoard.counter)
    return (
       <ProgressIndicator
          currentIndex={count}

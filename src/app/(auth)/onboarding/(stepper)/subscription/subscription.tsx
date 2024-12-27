@@ -1,7 +1,7 @@
 "use client"
 
 import { increment } from "@/redux/features/onboard.slice"
-import { useAppDispatch } from "@/redux/hooks"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { Button, Column, Grid, Tile } from "@carbon/react"
 
 import React from "react"
@@ -12,6 +12,8 @@ import styles from "./subscription.module.scss"
 
 function SubscriptionPage() {
    const dispatch = useAppDispatch()
+
+   const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>

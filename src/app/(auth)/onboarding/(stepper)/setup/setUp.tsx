@@ -11,13 +11,18 @@ import Image from "next/image"
 
 import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import styles from "./setup.module.scss"
+import { useAppDispatch } from "@/redux/hooks"
+import { reset } from "@/redux/features/onboard.slice"
 
 function SetupPage() {
    const [priColor, setPriColor] = useState(false)
-   // const dispatch = useAppDispatch()
+   const dispatch = useAppDispatch()
 
-   const goToDashboard = () =>
-      (window.location.href = "https://dev-admin.lafialink-dev.com/dashboard")
+   const goToDashboard = () => {
+      // (window.location.href = "https://dev-admin.lafialink-dev.com/dashboard")
+      dispatch(reset())
+   }
+
 
    return (
       <Grid>
