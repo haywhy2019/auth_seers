@@ -81,7 +81,6 @@ const LoginForm = () => {
 
          <Formik
             onSubmit={handleSubmit}
-            isInitialValid={false}
             validationSchema={loginSchema}
             initialValues={{ email: "", password: "" }}
             data-testId="login-form"

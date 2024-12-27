@@ -10,9 +10,9 @@ const authApi: authApiType = {
    verifyOtp: async (payload) => await publicInstance.post("/auth/verify-otp", payload),
    resendOtp: async (payload) => await publicInstance.post("/auth/resend-otp", payload),
    forgotPassword: async (payload) =>
-      await publicInstance.patch("/auth/begin_reset_password", payload),
+      await publicInstance.patch("/auth/begin-reset-password", payload),
    resetPassword: async (payload) =>
-      await publicInstance.patch(`/auth/reset_password?code=${payload.code}`, payload),
+      await publicInstance.patch(`/auth/reset-password?code=${payload.code}`, payload),
 }
 
 export default authApi

@@ -6,6 +6,7 @@ import {
    Button,
    Link as CarbonLink,
    FluidForm,
+   Link,
    Stack,
    TextInput,
    ToastNotification,
@@ -39,6 +40,8 @@ const VerifyForm = () => {
 
    const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
 
+   const handleLogout = () => dispatch(logout())
+
    const {
       mutate: _verifyOtp,
       isError,
@@ -53,7 +56,7 @@ const VerifyForm = () => {
             const redirectUrl = getRedirectUrl(user)
             router.push(redirectUrl!)
          } else {
-            dispatch(logout())
+            handleLogout()
          }
          setMessage("Email verified successfully")
       },
@@ -203,6 +206,13 @@ const VerifyForm = () => {
                )
             }}
          </Formik>
+
+         <p className={styles.auth_description}>
+            Something happened?{" "}
+            <Link className={styles.auth_link} onClick={handleLogout}>
+               Logout
+            </Link>
+         </p>
       </>
    )
 }
