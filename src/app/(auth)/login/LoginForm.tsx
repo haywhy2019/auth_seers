@@ -58,7 +58,7 @@ const LoginForm = () => {
    })
 
    const handleSubmit = (values: Record<string, string>) => {
-      _login({ userName: values.email, password: values.password })
+      _login({ email: values.email, password: values.password })
    }
 
    return (
