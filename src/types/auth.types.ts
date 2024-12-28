@@ -7,9 +7,10 @@ import { User } from "./general.types"
 
 export type authApiType = {
    login: (payload: LoginType) => Promise<AxiosResponse>
+   lafiaHMSLogin: (payload: HMSLoginType) => Promise<AxiosResponse>
    signup: (payload: SignupType) => Promise<AxiosResponse>
    verifyOtp: (payload: VerifyType) => Promise<AxiosResponse>
-   resendOtp: (payload: { userName: string }) => Promise<AxiosResponse>
+   resendOtp: (payload: { email: string }) => Promise<AxiosResponse>
    forgotPassword: (payload: { email: string }) => Promise<AxiosResponse>
    resetPassword: (payload: ResetPasswordType) => Promise<AxiosResponse>
 }
@@ -18,9 +19,12 @@ export type LoginType = {
    email: string
    password: string
 }
+export type HMSLoginType = {
+   login_hint: string
+}
 
 export type VerifyType = {
-   userName: string
+   email: string
    otp: string
 }
 

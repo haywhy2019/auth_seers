@@ -25,10 +25,10 @@ export async function middleware(request: NextRequest) {
    const user = getJsonParsedCookie(request, "user") as User
 
    // Redirect to email verifiy page if email is not verified
-   // if (user && user?.status !== userStatus.ACTIVE && pathname !== authRoutes.verify) {
-   //    const loginUrl = new URL(authRoutes.verify, request.url)
-   //    return NextResponse.redirect(loginUrl)
-   // }
+   if (user && user?.status !== userStatus.ACTIVE && pathname !== authRoutes.verify) {
+      const loginUrl = new URL(authRoutes.verify, request.url)
+      return NextResponse.redirect(loginUrl)
+   }
 
    // Allow the request to proceed for other cases
    return NextResponse.next()

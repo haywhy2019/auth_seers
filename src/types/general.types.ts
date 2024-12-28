@@ -1,3 +1,5 @@
+import { organizationTypes, userStatus, userTypes } from "@/helpers/enum"
+
 export type Permission = {
    id: number
    version: number
@@ -30,7 +32,7 @@ export type User = {
    version: number
    dateCreated: string
    organizationName: string
-   organizationType: "CLINIC" | "LAB" | "HMO" | "PHARMACY"
+   organizationType: organizationTypes
    tenantId: string
    userName: string
    fullName: string
@@ -40,9 +42,9 @@ export type User = {
    phoneNumber: string
    expiryDate: string
    lastLoginDate: string
-   status: "a" | "i" // a = active, i = inactive
+   status: userStatus
    accountStatus: null
-   userType: "ORGANIZATION" | "USER" | "STAFF"
+   userType: userTypes
    pinReset: boolean
    needSetup: boolean
    changePassword: boolean
@@ -55,6 +57,7 @@ export type User = {
    lafiaLabsPermissions: null
    lafiaERPPermissions: null
    onLien: boolean
+   uuid: string
 }
 
 export type Products = {

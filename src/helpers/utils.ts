@@ -1,6 +1,7 @@
 import { User } from "@/types/general.types"
 
-import { userTypes } from "./enum"
+import { userStatus, userTypes } from "./enum"
+import { authRoutes } from "./routes"
 
 /**
  * Given a user object, determine the correct redirect url based on the
@@ -12,11 +13,11 @@ import { userTypes } from "./enum"
  * @param  user - The user object to determine the redirect URL for
  * @return  The URL to redirect to
  */
-export const getRedirectUrl = ({ userType }: User) => {
+export const getRedirectUrl = ({ userType, status }: User) => {
    // Check status first - redirect to verify if not active
-   //  if (status !== userStatus.ACTIVE) {
-   //     return authRoutes.verify
-   //  }
+   if (status !== userStatus.ACTIVE) {
+      return authRoutes.verify
+   }
 
    // Redirect based on user type
    switch (userType) {

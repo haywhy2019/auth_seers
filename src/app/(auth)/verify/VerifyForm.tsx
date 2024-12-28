@@ -6,6 +6,7 @@ import {
    Button,
    Link as CarbonLink,
    FluidForm,
+   Link,
    Stack,
    TextInput,
    ToastNotification,
@@ -37,7 +38,9 @@ const VerifyForm = () => {
    const dispatch = useAppDispatch()
    const router = useRouter()
 
-   const token = JSON.parse(Cookies.get("token") || "")
+   const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
+
+   const handleLogout = () => dispatch(logout())
 
    const {
       mutate: _verifyOtp,
@@ -53,8 +56,9 @@ const VerifyForm = () => {
             const redirectUrl = getRedirectUrl(user)
             router.push(redirectUrl!)
          } else {
-            dispatch(logout())
+            handleLogout()
          }
+         setMessage("Email verified successfully")
       },
       onError: (error: any) => {
          setMessage(error.response.data.message)
@@ -68,9 +72,9 @@ const VerifyForm = () => {
    } = useMutation({
       mutationFn: authApi.resendOtp,
       onSuccess: () => {
+         setMessage("OTP resent successfully")
          setTimeLeft(COUNTDOWN_TIME)
          setCanResend(false)
-         setMessage("OTP resent successfully")
       },
       onError: (error: any) => {
          setMessage(error.response.data.message || "An error occurred")
@@ -78,11 +82,11 @@ const VerifyForm = () => {
    })
 
    const handleSubmit = (values: Record<string, string>) => {
-      _verifyOtp({ userName: user?.userName, otp: values.otp })
+      _verifyOtp({ email: user?.email, otp: values.otp })
    }
 
    const handleResendOTP = () => {
-      _resendOtp({ userName: user?.userName })
+      _resendOtp({ email: user?.email })
    }
 
    React.useEffect(() => {
@@ -111,15 +115,26 @@ const VerifyForm = () => {
 
    return (
       <>
-         {(isError || isSuccess || resendError || resendSuccess) && (
+         {(isError || isSuccess) && (
             <ToastNotification
-               kind={isError || resendError ? "error" : "success"}
+               kind={isError ? "error" : "success"}
                role="status"
                timeout={3000}
                title={message}
                style={{ position: "absolute", top: 40 }}
             />
          )}
+
+         {(resendError || resendSuccess) && (
+            <ToastNotification
+               kind={resendError ? "error" : "success"}
+               role="status"
+               timeout={3000}
+               title={message}
+               style={{ position: "absolute", top: 40 }}
+            />
+         )}
+
          <div className={styles.auth_heading_container}>
             <h1 className={styles.auth_heading}>Enter OTP</h1>
             <p className={styles.auth_description}>
@@ -191,6 +206,13 @@ const VerifyForm = () => {
                )
             }}
          </Formik>
+
+         <p className={styles.auth_description}>
+            Something happened?{" "}
+            <Link className={styles.auth_link} onClick={handleLogout}>
+               Logout
+            </Link>
+         </p>
       </>
    )
 }

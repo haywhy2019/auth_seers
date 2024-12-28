@@ -32,8 +32,8 @@ const formDataInstance = axios.create({
 
 //request interceptors
 privateInstance.interceptors.request.use((config: any) => {
-   const token = JSON.parse(Cookies.get("token") || "")
-console.log(token, "token")
+   const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
+
    if (token) {
       config.headers.Authorization = `Bearer ${token}`
    }

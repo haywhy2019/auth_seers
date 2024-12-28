@@ -60,9 +60,12 @@ Adjust the values to match your API URL.
 
 ## Configuration
 
-The application relies on several environment variables to connect to databases and services. Below are key configurations:
+The application relies on several environment variables to connect to various services. Below are key configurations:
 
 - `NEXT_PUBLIC_BASEURL`: URL for API requests from the frontend.
+- `NEXT_PUBLIC_TL_DOMAIN`: Top level domain (e.g .lafia.com).
+- `NEXT_PUBLIC_ADMIN_APP`: URL for admin app.
+- `NEXT_PUBLIC_STAFF_APP`: URL for staff app.
 
 ## Scripts
 
@@ -78,9 +81,9 @@ The application relies on several environment variables to connect to databases 
 ├── public              # Public assets (images, icons, etc.)
 ├── src
 │   ├── components      # Reusable UI components
-│   ├── apps           # Next.js pages
+│   ├── app             # Next.js pages
 │   ├── styles          # Tailwind CSS configuration
-│   ├── helpers           # Utility functions and helpers
+│   ├── helpers         # Utility functions and helpers
 └── README.md
 ```
 
