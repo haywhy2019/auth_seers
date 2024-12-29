@@ -1,6 +1,4 @@
-import { useAppSelector } from "@/redux/hooks"
-
-import React, { useState } from "react"
+import React from "react"
 
 import formatAmount from "@/helpers/formatAmount"
 

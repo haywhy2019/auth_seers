@@ -53,6 +53,7 @@ function SubscriptionTab() {
                         <Layer>
                            {selectedProduct.map((item: Products) => (
                               <SelectedProductWithInput
+                                 key={item.id}
                                  feature={item.productName}
                                  amount={item.prices.credit}
                                  selected={payAsGo}
@@ -70,6 +71,7 @@ function SubscriptionTab() {
                                  feature={item.productName}
                                  amount={item.prices.monthly}
                                  data-testId="onboarding-subscription-selectproduct-component"
+                                 key={item.id}
                               />
                            ))}
                         </Layer>
@@ -80,6 +82,7 @@ function SubscriptionTab() {
                               feature={item.productName}
                               amount={item.prices.quarterly}
                               data-testId="onboarding-subscription-selectproduct-component"
+                              key={item.id}
                            />
                         ))}
                      </TabPanel>
@@ -89,6 +92,7 @@ function SubscriptionTab() {
                               feature={item.productName}
                               amount={item.prices.yearly}
                               data-testId="onboarding-subscription-selectproduct-component"
+                              key={item.id}
                            />
                         ))}
                      </TabPanel>

@@ -7,10 +7,10 @@ export const productsSlice = createSlice({
    name: "products",
    initialState: initialState.products,
    reducers: {
-     products: (state, {payload}) => {
+      products: (state, { payload }) => {
          state.allProducts = payload
       },
-      selectedProduct: (state,{payload}) => {
+      selectedProduct: (state, { payload }) => {
          state.selectedProduct = payload
       },
    },

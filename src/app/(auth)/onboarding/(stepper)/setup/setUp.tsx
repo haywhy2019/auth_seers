@@ -1,6 +1,5 @@
 "use client"
 
-import { useAppDispatch } from "@/redux/hooks"
 import { Button, Column, FileUploaderDropContainer, Grid, Tile } from "@carbon/react"
 import { Add, CircleSolid, Close } from "@carbon/react/icons"
 
@@ -12,7 +11,6 @@ import styles from "./setup.module.scss"
 
 function SetupPage() {
    const [priColor, setPriColor] = useState(false)
-   const dispatch = useAppDispatch()
 
    const goToDashboard = () => {
       window.location.href = "https://dev-admin.lafialink-dev.com/dashboard"

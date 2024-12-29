@@ -9,7 +9,6 @@ import styles from "./products.module.scss"
 
 function SelectedProduct({ feature, amount }: { feature: string; amount: number }) {
    const [isChecked, setIsChecked] = useState(false)
-   const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
    const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
 
    console.log(selectedProduct, "select pro")

@@ -2,14 +2,14 @@
 
 import { Checkbox, Tile } from "@carbon/react"
 
-import React, { useState } from "react"
+import React from "react"
 
 import Image from "next/image"
 
 import { Products } from "@/types/general.types"
 
-import styles from "./productTile.module.scss"
 import ProductModal from "../productModal/productModal"
+import styles from "./productTile.module.scss"
 
 type ProductTileProps = {
    onClick: () => void
@@ -17,10 +17,17 @@ type ProductTileProps = {
    selected: number[]
    setSelected: React.Dispatch<React.SetStateAction<number[]>>
    openModal: boolean
-   setOpenModal:  React.Dispatch<React.SetStateAction<boolean>>
+   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function ProductTile({ onClick, product,  selected, setSelected ,openModal, setOpenModal}: ProductTileProps) {
+function ProductTile({
+   onClick,
+   product,
+   selected,
+   setSelected,
+   openModal,
+   setOpenModal,
+}: ProductTileProps) {
    const handleCheckboxChange = (productId: number) => {
       setSelected((prev) =>
          prev.includes(productId)
@@ -65,8 +72,12 @@ function ProductTile({ onClick, product,  selected, setSelected ,openModal, setO
             <p className={styles.features}>View Features</p>
          </div>
 
-         <ProductModal open={openModal} setOpen={setOpenModal} data-testId="onboarding-products-modal" features={product.features}/>
-
+         <ProductModal
+            open={openModal}
+            setOpen={setOpenModal}
+            data-testId="onboarding-products-modal"
+            features={product.features}
+         />
       </Tile>
    )
 }

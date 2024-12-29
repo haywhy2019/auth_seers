@@ -6,4 +6,3 @@ export const authRoutes = {
    onboarding: "/onboarding",
    verify: "/verify",
 }
-

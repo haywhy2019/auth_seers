@@ -23,9 +23,8 @@ function SelectedProductWithInput({
    setSelected,
    selected,
 }: ProductProps) {
-   const [isChecked, setIsChecked] = useState(false)
+   //    const [isChecked, setIsChecked] = useState(false)
    const [creditNum, setCreditNum] = useState(0)
-   const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
    const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
 
    console.log(selectedProduct, "select pro")
