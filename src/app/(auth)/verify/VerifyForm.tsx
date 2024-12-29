@@ -49,16 +49,17 @@ const VerifyForm = () => {
    } = useMutation({
       mutationFn: authApi.verifyOtp,
       onSuccess: () => {
-         setMessage("Email verified successfully")
          if (token) {
-            const payload = { token, user: { ...user, status: userStatus.ACTIVE } }
+            setMessage("Email verified successfully")
+            const updatedUser = { ...user, status: userStatus.ACTIVE }
+            const payload = { token, user: updatedUser }
             dispatch(setAuth(payload))
-            const redirectUrl = getRedirectUrl(user)
+            const redirectUrl = getRedirectUrl(updatedUser)
             router.push(redirectUrl!)
          } else {
+            setMessage("Email verified successfully. Please Login")
             handleLogout()
          }
-         setMessage("Email verified successfully")
       },
       onError: (error: any) => {
          setMessage(error.response.data.message)
