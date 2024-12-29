@@ -3,8 +3,6 @@ import { Column, Grid, Layer, Tab, TabList, TabPanel, TabPanels, Tabs } from "@c
 
 import React, { useState } from "react"
 
-import Image from "next/image"
-
 import { Products } from "@/types/general.types"
 
 import SelectedProduct from "../selectedProduct/selectedProducts"
@@ -15,12 +13,6 @@ function SubscriptionTab() {
    const [index, setIndex] = useState(0)
    const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
    const [payAsGo, setPayAsGo] = useState<number[]>([])
-
-
-   const handleSubmit = () => {
-     
-      
-   }
 
    return (
       <Grid>

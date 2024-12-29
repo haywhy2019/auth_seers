@@ -1,21 +1,28 @@
-import { Checkbox, Tile } from "@carbon/react"
+import { useAppSelector } from "@/redux/hooks"
+import { Checkbox } from "@carbon/react"
 
 import React, { useState } from "react"
 
-import styles from "./products.module.scss"
-import { useAppSelector } from "@/redux/hooks"
 import { Products } from "@/types/general.types"
+
 import AmountInputWithArrows from "../InputWithArrows/amountInputWithArrows"
+import styles from "./products.module.scss"
 
 type ProductProps = {
-    product: Products
-    selected: number[]
-    setSelected: React.Dispatch<React.SetStateAction<number[]>>
-    feature: string
-    amount: number
- }
- 
-function SelectedProductWithInput({ feature,amount, product, setSelected, selected}: ProductProps) {
+   product: Products
+   selected: number[]
+   setSelected: React.Dispatch<React.SetStateAction<number[]>>
+   feature: string
+   amount: number
+}
+
+function SelectedProductWithInput({
+   feature,
+   amount,
+   product,
+   setSelected,
+   selected,
+}: ProductProps) {
    const [isChecked, setIsChecked] = useState(false)
    const [creditNum, setCreditNum] = useState(0)
    const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
@@ -23,43 +30,39 @@ function SelectedProductWithInput({ feature,amount, product, setSelected, select
 
    console.log(selectedProduct, "select pro")
    const handleCheckboxChange = (productId: number) => {
-    setSelected((prev) =>
-       prev.includes(productId)
-          ? prev.filter((checkboxId) => checkboxId !== productId)
-          : [...prev, productId],
-    )
- }
-
+      setSelected((prev) =>
+         prev.includes(productId)
+            ? prev.filter((checkboxId) => checkboxId !== productId)
+            : [...prev, productId],
+      )
+   }
 
    return (
-<div className={styles.feature_bg}>
-  <div className={styles.feature_container_withInput} >
-      <div className={styles.feature_flex}>
-         <Checkbox
-            id={product?.id.toString()}
-            labelText=""
-            value={product.id}
-            checked={selected.includes(product?.id)}
-            onChange={() => handleCheckboxChange}
-            data-testId="onboarding-select-product-checkbox"
-         />
-         <p className={styles.feature_text}>{feature}</p>
-      </div>
+      <div className={styles.feature_bg}>
+         <div className={styles.feature_container_withInput}>
+            <div className={styles.feature_flex}>
+               <Checkbox
+                  id={product?.id.toString()}
+                  labelText=""
+                  value={product.id}
+                  checked={selected.includes(product?.id)}
+                  onChange={() => handleCheckboxChange}
+                  data-testId="onboarding-select-product-checkbox"
+               />
+               <p className={styles.feature_text}>{feature}</p>
+            </div>
 
-      <p className={styles.features}>{amount}/credit</p>
-   </div>
-   <AmountInputWithArrows 
-   amount={amount}
-   value={creditNum}
-   setValue={setCreditNum}
-   onChange={(e:any) => setCreditNum(e.target.value)}
-  invalid={false}
-   />
-    </div>
-    
+            <p className={styles.features}>{amount}/credit</p>
+         </div>
+         <AmountInputWithArrows
+            amount={amount}
+            value={creditNum}
+            setValue={setCreditNum}
+            onChange={(e: any) => setCreditNum(e.target.value)}
+            invalid={false}
+         />
+      </div>
    )
 }
 
 export default SelectedProductWithInput
-
-

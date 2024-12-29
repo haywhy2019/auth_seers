@@ -1,4 +1,4 @@
-import {privateInstance} from "./instance"
+import { privateInstance } from "./instance"
 
 const productsApi = {
    products: async () => await privateInstance.get("/product/all"),

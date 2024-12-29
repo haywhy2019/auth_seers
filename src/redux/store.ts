@@ -13,15 +13,14 @@ const rootReducer = combineReducers({
    app,
    auth,
    onBoard,
-   productInfo
-  
+   productInfo,
 })
 
 // Persist configuration
 const persistConfig = {
    key: "root", // Key for localStorage
    storage, // Storage engine
-   whitelist: ["app", "auth", "onBoard","productInfo"], // Reducers you want to persist
+   whitelist: ["app", "auth", "onBoard", "productInfo"], // Reducers you want to persist
 }
 
 // Persisted reducer

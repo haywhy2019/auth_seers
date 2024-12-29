@@ -1,13 +1,12 @@
 "use client"
 
-import { increment, reset } from "@/redux/features/onboard.slice"
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
+import { increment } from "@/redux/features/onboard.slice"
+import { useAppDispatch } from "@/redux/hooks"
 import { WarningHex } from "@carbon/icons-react"
 import { Button, Column, Grid, Tile } from "@carbon/react"
 
 import React from "react"
 
-import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import SubscriptionTab from "../../_components/subscriptionTab/subscriptionTab"
 import styles from "./subscription.module.scss"
 
@@ -25,7 +24,7 @@ function SubscriptionPage() {
                      is affected by the number of product you picked.
                   </p>
                   <div className={styles.notice_container}>
-                     <WarningHex  size={80} color="black"/>
+                     <WarningHex size={80} color="black" />
                      <div>
                         <p>
                            Credits are required to access all the features of the selected products.
@@ -37,7 +36,7 @@ function SubscriptionPage() {
                   </div>
                </div>
 
-               <SubscriptionTab data-testId="onboarding-subscription-tab-component"  />
+               <SubscriptionTab data-testId="onboarding-subscription-tab-component" />
             </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
@@ -50,10 +49,9 @@ function SubscriptionPage() {
                      </div>
                      <Button
                         size="xl"
-                        onClick={() => 
-                           
-                           // dispatch(increment())
-                        dispatch(reset())
+                        onClick={
+                           () => dispatch(increment())
+                           // dispatch(reset())
                         }
                         data-testId="onboarding-subscription-btn"
                      >

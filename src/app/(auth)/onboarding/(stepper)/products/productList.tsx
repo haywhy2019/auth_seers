@@ -1,9 +1,7 @@
-import ErrorComponent from "@/app/components/error/error"
 import Loader from "@/app/components/loader/loader"
 import { formData, increment } from "@/redux/features/onboard.slice"
 import { products, selectedProduct } from "@/redux/features/products.slice"
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { Renew } from "@carbon/icons-react"
+import { useAppDispatch } from "@/redux/hooks"
 import { ActionableNotification, Button, ToastNotification } from "@carbon/react"
 import { useQuery } from "@tanstack/react-query"
 
@@ -15,11 +13,9 @@ import getProductsByIds from "@/helpers/products"
 
 import { Products } from "@/types/general.types"
 
-import ProductModal from "../../_components/productModal/productModal"
 import ProductTile from "../../_components/productTile/productTile"
 import styles from "./productList.module.scss"
 import SelectProductHook from "./selectProductHook"
-import { productsData } from "@/helpers/constants"
 
 function ProductList() {
    const [open, setOpen] = useState(false)
@@ -48,9 +44,8 @@ function ProductList() {
    useEffect(() => {
       if (data?.status == 200) {
          dispatch(products(data.data.data))
-      } 
+      }
    }, [data])
-
 
    if (isPending) {
       return <Loader />
@@ -68,7 +63,6 @@ function ProductList() {
             />
          )}
 
-        
          <div>
             <h1 className={styles.onboard_heading}>Select your products</h1>
             <p className={styles.onboard_subheading}>
@@ -78,18 +72,17 @@ function ProductList() {
          </div>
 
          <div>
-         {error && (
-            <ActionableNotification
-               title="Products Error"
-               subtitle="Please try again"
-               closeOnEscape
-               inline={false}
-               actionButtonLabel="Retry"
-               onActionButtonClick={refetch}
-               className={styles.errorToast}
-        
-            />
-         )}
+            {error && (
+               <ActionableNotification
+                  title="Products Error"
+                  subtitle="Please try again"
+                  closeOnEscape
+                  inline={false}
+                  actionButtonLabel="Retry"
+                  onActionButtonClick={refetch}
+                  className={styles.errorToast}
+               />
+            )}
             {data?.data?.data?.map((item: Products, index: number) => (
                <ProductTile
                   product={item}

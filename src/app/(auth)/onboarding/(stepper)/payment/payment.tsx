@@ -2,8 +2,7 @@
 
 import { decrement, increment } from "@/redux/features/onboard.slice"
 import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import { Button, Column, Grid, RadioButton, TextInput, Tile } from "@carbon/react"
-import { ChevronLeft, ChevronRight } from "@carbon/react/icons"
+import { Button, Column, Grid, Tile } from "@carbon/react"
 
 import React from "react"
 
@@ -12,7 +11,6 @@ import formatAmount from "@/helpers/formatAmount"
 import { Products } from "@/types/general.types"
 
 import PaystackLogo from "../../../../../../public/svg/paystack"
-import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import styles from "./payment.module.scss"
 import SelectedProductAmount from "./selectedProductsAmount"
 
@@ -20,12 +18,6 @@ function PaymentPage() {
    const dispatch = useAppDispatch()
 
    const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
-   const options = [
-      { label: "Pay As You Go", amount: "N1,000/credit" },
-      { label: "Monthly", amount: "N10,000/monthly" },
-      { label: "3 Months", amount: "N25,000/3 months" },
-      { label: "Yearly", amount: "N85,000/yearly" },
-   ]
 
    return (
       <Grid>
@@ -40,27 +32,27 @@ function PaymentPage() {
                </div>
 
                {selectedProduct.map((item: Products) => (
-                  <SelectedProductAmount feature={item.productName} amount={item.prices.monthly} />
+                  <SelectedProductAmount
+                     feature={item.productName}
+                     amount={item.prices.monthly}
+                     key={item.id}
+                  />
                ))}
             </div>
-          
-               <Tile id="pricing-tile" className={styles.tile_padding}>
+
+            <Tile id="pricing-tile" className={styles.tile_padding}>
                <div className={styles.total_container}>
                   <div className={styles.total_border}>
-                  <div className={styles.feature_flex}>
-                     <p className={styles.feature_total}>Total</p>
-                     <p className={styles.feature_total_text}>&#8358;{formatAmount(10000)}</p>
+                     <div className={styles.feature_flex}>
+                        <p className={styles.feature_total}>Total</p>
+                        <p className={styles.feature_total_text}>&#8358;{formatAmount(10000)}</p>
+                     </div>
                   </div>
-                  </div>
-                 
-                  </div>
-
-                
-               </Tile>
-               <div className={styles.back} onClick={() => dispatch(decrement())}>
-                  <p className={styles.back_text}>Go Back To Change</p>
                </div>
-
+            </Tile>
+            <div className={styles.back} onClick={() => dispatch(decrement())}>
+               <p className={styles.back_text}>Go Back To Change</p>
+            </div>
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
                   <div className={styles.pricing_container}>
@@ -106,11 +98,11 @@ function PaymentPage() {
 
 export default PaymentPage
 
-const Pricing = ({ label, amount, idx }: { label: string; amount: string; idx: number }) => {
-   return (
-      <div className={styles.pricing} data-testId="onboarding-payment-pricing-component">
-         <RadioButton labelText={label} value={idx.toString()} id={idx.toString()} />
-         <p className={idx == 0 ? styles.amount : styles.amount_disabled}>{amount}</p>
-      </div>
-   )
-}
+// const Pricing = ({ label, amount, idx }: { label: string; amount: string; idx: number }) => {
+//    return (
+//       <div className={styles.pricing} data-testId="onboarding-payment-pricing-component">
+//          <RadioButton labelText={label} value={idx.toString()} id={idx.toString()} />
+//          <p className={idx == 0 ? styles.amount : styles.amount_disabled}>{amount}</p>
+//       </div>
+//    )
+// }

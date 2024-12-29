@@ -10,15 +10,7 @@ type Props = {
    features: string[]
 }
 
-function ProductModal({ open, setOpen , features}: Props) {
-   const listDemo = [
-      "Feature text goes here",
-      "Feature text goes here",
-      "Feature text goes here",
-      "Feature text goes here",
-      "Feature text goes here",
-      "Feature text goes here",
-   ]
+function ProductModal({ open, setOpen, features }: Props) {
    return (
       <Modal
          open={open}
@@ -50,9 +42,7 @@ function ProductModal({ open, setOpen , features}: Props) {
                flexWrap: "wrap",
             }}
          >
-            {features?.map((item, i) => (
-               <FeatureList item={item} key={i} />
-            ))}
+            {features?.map((item, i) => <FeatureList item={item} key={i} />)}
          </div>
 
          <p

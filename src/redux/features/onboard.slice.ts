@@ -3,8 +3,6 @@ import { createSlice } from "@reduxjs/toolkit"
 import { initialState } from "../initialState"
 import { RootState } from "../store"
 
-
-
 export const onBoardSlice = createSlice({
    name: "counter",
    initialState: initialState.onBoard,
@@ -18,10 +16,10 @@ export const onBoardSlice = createSlice({
       reset: (state) => {
          state.counter = 0
       },
-      formData: (state, {payload}) => {
+      formData: (state, { payload }) => {
          console.log(payload, "payload drom onboard slice")
          state.formData = payload
-      }
+      },
    },
 })
 
