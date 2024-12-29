@@ -41,7 +41,6 @@ const Login = async ({ searchParams }: { searchParams: LoginSearchParams }) => {
 
          // Make the API call
          const response = await loginEndpoint({ login_hint })
-
          // If successful, redirect to continue URL
          if (response.data) {
             redirect(continueUrl!)
