@@ -18,6 +18,21 @@
   margin: $spacing-03 0px;
 }
 
+.notice_container {
+  display: flex;
+  align-items: center;
+  gap: $spacing-04;
+  background-color: #E0FFFF;
+  padding: $spacing-02 $spacing-03;
+  margin: $spacing-07 0;
+
+  p {
+    @include type-style('helper-text-02');
+    font-size: 0.75rem;
+    text-align: left
+  }
+
+}
 .text_body {
   @include type-style('body-02');
   margin: $spacing-03 0px;

@@ -19,8 +19,8 @@ function SetupPage() {
    const dispatch = useAppDispatch()
 
    const goToDashboard = () => {
-      // (window.location.href = "https://dev-admin.lafialink-dev.com/dashboard")
-      dispatch(reset())
+      (window.location.href = "https://dev-admin.lafialink-dev.com/dashboard")
+      // dispatch(reset())
    }
 
 
@@ -36,7 +36,7 @@ function SetupPage() {
                   </p>
                </div>
 
-               <SelectedProduct data-testId="onboarding-setup-selectproduct-component" />
+               {/* <SelectedProduct data-testId="onboarding-setup-selectproduct-component" /> */}
                <div>
                   <Image
                      src="/svg/setup.svg"

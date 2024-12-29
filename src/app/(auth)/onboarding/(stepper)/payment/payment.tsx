@@ -1,19 +1,25 @@
 "use client"
 
-import { increment } from "@/redux/features/onboard.slice"
-import { useAppDispatch } from "@/redux/hooks"
+import { decrement, increment } from "@/redux/features/onboard.slice"
+import { useAppDispatch, useAppSelector } from "@/redux/hooks"
 import { Button, Column, Grid, RadioButton, TextInput, Tile } from "@carbon/react"
 import { ChevronLeft, ChevronRight } from "@carbon/react/icons"
 
 import React from "react"
 
+import formatAmount from "@/helpers/formatAmount"
+
+import { Products } from "@/types/general.types"
+
 import PaystackLogo from "../../../../../../public/svg/paystack"
 import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import styles from "./payment.module.scss"
+import SelectedProductAmount from "./selectedProductsAmount"
 
 function PaymentPage() {
    const dispatch = useAppDispatch()
 
+   const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
    const options = [
       { label: "Pay As You Go", amount: "N1,000/credit" },
       { label: "Monthly", amount: "N10,000/monthly" },
@@ -21,7 +27,6 @@ function PaymentPage() {
       { label: "Yearly", amount: "N85,000/yearly" },
    ]
 
-   // data-testId="unique-name"
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
@@ -34,41 +39,27 @@ function PaymentPage() {
                   </p>
                </div>
 
-               <SelectedProduct data-testId="onboarding-payment" />
+               {selectedProduct.map((item: Products) => (
+                  <SelectedProductAmount feature={item.productName} amount={item.prices.monthly} />
+               ))}
             </div>
-            <div>
+          
                <Tile id="pricing-tile" className={styles.tile_padding}>
-                  {options.map((item, i) => (
-                     <Pricing
-                        label={item.label}
-                        amount={item.amount}
-                        key={i}
-                        idx={i}
-                        data-testId="onboarding-payment-pricing"
-                     />
-                  ))}
+               <div className={styles.total_container}>
+                  <div className={styles.total_border}>
+                  <div className={styles.feature_flex}>
+                     <p className={styles.feature_total}>Total</p>
+                     <p className={styles.feature_total_text}>&#8358;{formatAmount(10000)}</p>
+                  </div>
+                  </div>
+                 
+                  </div>
+
+                
                </Tile>
-            </div>
-
-            <div className={styles.input_container}>
-               <div className={styles.icon_container}>
-                  <ChevronLeft size={20} />
+               <div className={styles.back} onClick={() => dispatch(decrement())}>
+                  <p className={styles.back_text}>Go Back To Change</p>
                </div>
-
-               <div className={styles.input}>
-                  <p className={styles.input_label}>Enter Quantity</p>
-                  <TextInput
-                     id="text-input-1"
-                     type="number"
-                     labelText=""
-                     size="md"
-                     data-testId="onboarding-payment-input"
-                  />
-               </div>
-               <div className={styles.icon_container}>
-                  <ChevronRight size={20} />
-               </div>
-            </div>
 
             <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>

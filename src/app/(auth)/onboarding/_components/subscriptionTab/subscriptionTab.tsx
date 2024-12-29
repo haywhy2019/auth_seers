@@ -1,13 +1,27 @@
+import { useAppSelector } from "@/redux/hooks"
 import { Column, Grid, Layer, Tab, TabList, TabPanel, TabPanels, Tabs } from "@carbon/react"
 
 import React, { useState } from "react"
 
 import Image from "next/image"
 
+import { Products } from "@/types/general.types"
+
+import SelectedProduct from "../selectedProduct/selectedProducts"
+import SelectedProductWithInput from "../selectedProduct/selectedProductwithInput"
 import styles from "./subscription.module.scss"
 
 function SubscriptionTab() {
    const [index, setIndex] = useState(0)
+   const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
+   const [payAsGo, setPayAsGo] = useState<number[]>([])
+
+
+   const handleSubmit = () => {
+     
+      
+   }
+
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
@@ -43,27 +57,49 @@ function SubscriptionTab() {
                </TabList>
                <div className={styles.panel}>
                   <TabPanels>
-                     <TabPanel>
+                     <TabPanel style={{ padding: "0" }}>
                         <Layer>
-                           <Image
-                              src="/svg/currencyCircled.svg"
-                              alt=""
-                              width={28}
-                              height={28}
-                              className={styles.auth_logo}
-                           />
-                           <p className={styles.tab_header}>Pay As You Go</p>
-                           <p className={styles.tab_body}>
-                              You buy credits which can be used to access all features of the
-                              products you selected. This credits will be used in app for features
-                              such as registration etc. You also get 100 credits for free on your
-                              first buy.
-                           </p>
+                           {selectedProduct.map((item: Products) => (
+                              <SelectedProductWithInput
+                                 feature={item.productName}
+                                 amount={item.prices.credit}
+                                 selected={payAsGo}
+                                 setSelected={setPayAsGo}
+                                 product={item}
+                                 data-testId="onboarding-subscription-selectproduct-component"
+                              />
+                           ))}
                         </Layer>
                      </TabPanel>
-                     <TabPanel>Tab Panel 2</TabPanel>
-                     <TabPanel>Tab Panel 3</TabPanel>
-                     <TabPanel>Tab Panel 4</TabPanel>
+                     <TabPanel style={{ padding: "0" }}>
+                        <Layer>
+                           {selectedProduct.map((item: Products) => (
+                              <SelectedProduct
+                                 feature={item.productName}
+                                 amount={item.prices.monthly}
+                                 data-testId="onboarding-subscription-selectproduct-component"
+                              />
+                           ))}
+                        </Layer>
+                     </TabPanel>
+                     <TabPanel style={{ padding: "0" }}>
+                        {selectedProduct.map((item: Products) => (
+                           <SelectedProduct
+                              feature={item.productName}
+                              amount={item.prices.quarterly}
+                              data-testId="onboarding-subscription-selectproduct-component"
+                           />
+                        ))}
+                     </TabPanel>
+                     <TabPanel style={{ padding: "0" }}>
+                        {selectedProduct.map((item: Products) => (
+                           <SelectedProduct
+                              feature={item.productName}
+                              amount={item.prices.yearly}
+                              data-testId="onboarding-subscription-selectproduct-component"
+                           />
+                        ))}
+                     </TabPanel>
                   </TabPanels>
                </div>
             </Tabs>

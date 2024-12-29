@@ -1,0 +1,51 @@
+@use '@carbon/colors' as *;
+@use '@carbon/react/scss/spacing' as *;
+@use '@carbon/react/scss/type' as *;
+@use '@carbon/layout' as *;
+@use '@carbon/themes' as *;
+
+.input_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // align-items: baseline;
+  height: $spacing-11;
+  margin-top: $spacing-06;
+  background-color: #F4F4F4;
+  gap: $spacing-01
+
+}
+
+.icon_container ,
+.icon_container:hover
+{
+  background-color: #F4F4F4;
+  padding: $spacing-06;
+ cursor: pointer;
+
+}
+
+.input{
+  flex-grow: 1;
+}
+
+.input_label{
+  @include type-style('helper-text-02');
+  background-color: #F4F4F4;
+}
+
+.amount_container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: $spacing-04;
+}
+
+.amount_text{
+  @include type-style('body-02');
+}
+
+.amount_text_bold{
+  @include type-style('body-02');
+  font-weight: 600;
+}

@@ -2,12 +2,12 @@ import { Checkbox, Tile } from "@carbon/react"
 
 import React, { useState } from "react"
 
-import styles from "./products.module.scss"
+import styles from "./payment.module.scss"
 import { useAppSelector } from "@/redux/hooks"
 import { Products } from "@/types/general.types"
 import formatAmount from "@/helpers/formatAmount"
 
-function SelectedProduct({ feature,amount }: { feature: string;amount: number }) {
+function SelectedProductAmount({ feature,amount }: { feature: string;amount: number }) {
    const [isChecked, setIsChecked] = useState(false)
    const features = ["LafiaHMS", "LafiaLabs", "LafiaERP"]
    const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
@@ -23,21 +23,18 @@ function SelectedProduct({ feature,amount }: { feature: string;amount: number })
    return (
       <div className={styles.feature_container} >
       <div className={styles.feature_flex}>
-         <Checkbox
-            id="checkbox"
-            labelText=""
-            checked={isChecked}
-            onChange={handleChange}
-            data-testId="onboarding-select-product-checkbox"
-         />
-         <p className={styles.feature_text}>{feature}</p>
+         <p className={styles.feature}>{feature}</p>
+         <p className={styles.features}>&#8358;{formatAmount(amount) }</p>
       </div>
 
-      <p className={styles.features}>&#8358;{formatAmount(amount) }</p>
+<div className={styles.feature_flex}>
+<p className={styles.feature_text}>{feature}</p>
+<p className={styles.features_text}>&#8358;{formatAmount(amount) }</p>
+</div>
    </div>
    )
 }
 
-export default SelectedProduct
+export default SelectedProductAmount
 
 

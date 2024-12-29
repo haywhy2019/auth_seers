@@ -19,6 +19,7 @@ import ProductModal from "../../_components/productModal/productModal"
 import ProductTile from "../../_components/productTile/productTile"
 import styles from "./productList.module.scss"
 import SelectProductHook from "./selectProductHook"
+import { productsData } from "@/helpers/constants"
 
 function ProductList() {
    const [open, setOpen] = useState(false)
@@ -26,10 +27,10 @@ function ProductList() {
    const [err, setErr] = useState("")
    const dispatch = useAppDispatch()
 
-   const { isPending, error, data } = useQuery({
+   const { isPending, error, data, refetch } = useQuery({
       queryKey: ["productData"],
       queryFn: productsApi.products,
-      retry: 6,
+      // retry: 6,
    })
 
    const handleSubmit = () => {
@@ -47,21 +48,9 @@ function ProductList() {
    useEffect(() => {
       if (data?.status == 200) {
          dispatch(products(data.data.data))
-      } else {
-         if (error) {
-            setErr("Unable to display products, please reload page")
-            setTimeout(() => setErr(""), 4000)
-         }
-      }
+      } 
+   }, [data])
 
-      console.log("called")
-   }, [data, error])
-
-   // const products = [
-   //    { title: "LafiaHMS", details: "Manage your clinical services. Powered by OpenMRS" },
-   //    { title: "LafiaLabs", details: "Manage your lab services. Powered by OpenELIS" },
-   //    { title: "LafiaERP", details: "Manage your core processes. Powered by Odoo" },
-   // ]
 
    if (isPending) {
       return <Loader />
@@ -79,6 +68,7 @@ function ProductList() {
             />
          )}
 
+        
          <div>
             <h1 className={styles.onboard_heading}>Select your products</h1>
             <p className={styles.onboard_subheading}>
@@ -88,31 +78,30 @@ function ProductList() {
          </div>
 
          <div>
-            {error ? (
-               <div>
-                  <ActionableNotification
-                     title="Products Error"
-                     subtitle="Please try again"
-                     closeOnEscape
-                     inline={false}
-                     actionButtonLabel="Action"
-                     onActionButtonClick={() => console.log("test")}
-                  />
-               </div>
-            ) : (
-               data?.data?.data?.map((item: Products, index: number) => (
-                  <ProductTile
-                     product={item}
-                     key={index}
-                     onClick={() => setOpen(true)}
-                     selected={selected}
-                     setSelected={setSelected}
-                     data-testId="onboarding-product-product-component"
-                     openModal={open}
-                     setOpenModal={setOpen}
-                  />
-               ))
-            )}
+         {error && (
+            <ActionableNotification
+               title="Products Error"
+               subtitle="Please try again"
+               closeOnEscape
+               inline={false}
+               actionButtonLabel="Retry"
+               onActionButtonClick={refetch}
+               className={styles.errorToast}
+        
+            />
+         )}
+            {data?.data?.data?.map((item: Products, index: number) => (
+               <ProductTile
+                  product={item}
+                  key={index}
+                  onClick={() => setOpen(true)}
+                  selected={selected}
+                  setSelected={setSelected}
+                  data-testId="onboarding-product-product-component"
+                  openModal={open}
+                  setOpenModal={setOpen}
+               />
+            ))}
          </div>
          <div className={styles.button_container}>
             <Button

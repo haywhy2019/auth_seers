@@ -4,10 +4,12 @@
 @use '@carbon/colors' as *;
 
 .panel {
-    margin: $spacing-04 0 $spacing-08 0;
-    background-color: #FAFFFF;
+    margin: $spacing-04 0 ;
 }
 
+.no_padding{
+    padding: 0
+}
 
 .select_tab_label {
     background-color: #FAFFFF !important
