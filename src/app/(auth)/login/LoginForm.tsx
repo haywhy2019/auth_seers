@@ -10,13 +10,13 @@ import {
    TextInput,
    ToastNotification,
 } from "@carbon/react"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import { Formik } from "formik"
 
 import React from "react"
 
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter, useSearchParams } from "next/navigation"
 
 import authApi from "@/axios/auth.api"
 
@@ -30,6 +30,11 @@ const LoginForm = () => {
    const [message, setMessage] = React.useState("")
    const dispatch = useAppDispatch()
    const router = useRouter()
+
+   const searchParams = useSearchParams()
+   const login_hint = searchParams.get("login_hint") as string
+   const prompt = searchParams.get("prompt") as string
+   const continueUrl = searchParams.get("continue") as string
 
    const {
       mutate: _login,
@@ -59,6 +64,21 @@ const LoginForm = () => {
 
    const handleSubmit = (values: Record<string, string>) => {
       _login({ email: values.email, password: values.password })
+   }
+
+   if (prompt && login_hint) {
+      const { isSuccess, isError } = useQuery({
+         queryKey: ["login"],
+         queryFn: () => authApi.lafiaHMSLogin({ login_hint }),
+         enabled: !!(prompt && login_hint && continueUrl),
+      })
+
+      React.useEffect(() => {
+         if (isSuccess) redirect(continueUrl!)
+         if (isError) redirect(authRoutes.login)
+      }, [isSuccess, isError])
+
+      return
    }
 
    return (
