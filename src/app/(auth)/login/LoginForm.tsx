@@ -66,20 +66,18 @@ const LoginForm = () => {
       _login({ email: values.email, password: values.password })
    }
 
-   if (prompt && login_hint) {
-      const { isSuccess, isError } = useQuery({
-         queryKey: ["login"],
-         queryFn: () => authApi.lafiaHMSLogin({ login_hint }),
-         enabled: !!(prompt && login_hint && continueUrl),
-      })
+   const { isSuccess: succ, isError: err } = useQuery({
+      queryKey: ["login"],
+      queryFn: () => authApi.lafiaHMSLogin({ login_hint }),
+      enabled: !!(prompt && login_hint && continueUrl),
+   })
 
-      React.useEffect(() => {
-         if (isSuccess) redirect(continueUrl!)
-         if (isError) redirect(authRoutes.login)
-      }, [isSuccess, isError])
+   React.useEffect(() => {
+      if (succ) redirect(continueUrl!)
+      if (err) redirect(authRoutes.login)
+   }, [succ, err])
 
-      return
-   }
+   if (prompt && login_hint) return
 
    return (
       <>
