@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
       authRoutes.resetPassword,
       authRoutes.signup,
       authRoutes.createPassword,
-      authRoutes.verify,
+      // authRoutes.verify,
    ]
 
    const isAuthPage = authPages.some((page) => pathname.startsWith(page))
