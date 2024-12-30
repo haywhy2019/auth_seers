@@ -5,7 +5,7 @@ import { privateInstance, publicInstance } from "./instance"
 
 const authApi: authApiType = {
    login: async (payload) => await publicInstance.post("/auth/login", payload),
-   lafiaHMSLogin: async (payload) => await privateInstance.get("/services/auth/openmrs"),
+   lafiaHMSLogin: async () => await privateInstance.get("/services/auth/openmrs"),
    signup: async (payload) => await publicInstance.post("/auth/signup", payload),
    verifyOtp: async (payload) => await publicInstance.post("/auth/verify-otp", payload),
    resendOtp: async (payload) => await publicInstance.post("/auth/resend-otp", payload),
