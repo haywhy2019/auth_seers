@@ -143,7 +143,12 @@ const SignupForm = () => {
                                     </div>
                                  }
                                  invalidText={props.errors.organizationType}
-                                 invalid={!!(props.touched && props.errors.organizationType)}
+                                 invalid={
+                                    !!(
+                                       props.touched.organizationType &&
+                                       props.errors.organizationType
+                                    )
+                                 }
                                  onChange={props.handleChange}
                                  className={styles.auth_select}
                               >
@@ -164,7 +169,12 @@ const SignupForm = () => {
                                  invalidText={props.errors.organizationName}
                                  labelText="Organisation Name"
                                  placeholder="e.g Acme Corp"
-                                 invalid={!!(props.touched && props.errors.organizationName)}
+                                 invalid={
+                                    !!(
+                                       props.touched.organizationName &&
+                                       props.errors.organizationName
+                                    )
+                                 }
                                  onChange={props.handleChange}
                                  value={props.values.organizationName}
                                  onBlur={props.handleBlur}
@@ -181,7 +191,7 @@ const SignupForm = () => {
                               invalidText={props.errors.email}
                               labelText="Admin Email Address"
                               placeholder="e.g joe@acmecorp.com"
-                              invalid={!!(props.touched && props.errors.email)}
+                              invalid={!!(props.touched.email && props.errors.email)}
                               onChange={props.handleChange}
                               value={props.values.email}
                               onBlur={props.handleBlur}
@@ -199,7 +209,7 @@ const SignupForm = () => {
                                  invalidText={props.errors.password}
                                  labelText="Password"
                                  placeholder="Type here..."
-                                 invalid={!!(props.touched && props.errors.password)}
+                                 invalid={!!(props.touched.password && props.errors.password)}
                                  onChange={props.handleChange}
                                  value={props.values.password}
                                  onBlur={props.handleBlur}
@@ -215,7 +225,11 @@ const SignupForm = () => {
                                  invalidText={props.errors.confirmPassword}
                                  labelText="Confirm Password"
                                  placeholder="Type here..."
-                                 invalid={!!(props.touched && props.errors.confirmPassword)}
+                                 invalid={
+                                    !!(
+                                       props.touched.confirmPassword && props.errors.confirmPassword
+                                    )
+                                 }
                                  onChange={props.handleChange}
                                  value={props.values.confirmPassword}
                                  onBlur={props.handleBlur}
