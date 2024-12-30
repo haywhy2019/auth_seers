@@ -1,4 +1,3 @@
-import { useAppSelector } from "@/redux/hooks"
 import { Checkbox } from "@carbon/react"
 
 import React, { useState } from "react"
@@ -11,30 +10,12 @@ import styles from "./products.module.scss"
 type ProductProps = {
    product: Products
    selected: number[]
-   setSelected: React.Dispatch<React.SetStateAction<number[]>>
-   feature: string
-   amount: number
+
+   onChange: () => void
 }
 
-function SelectedProductWithInput({
-   feature,
-   amount,
-   product,
-   setSelected,
-   selected,
-}: ProductProps) {
-   //    const [isChecked, setIsChecked] = useState(false)
+function SelectedProductWithInput({ product, selected, onChange }: ProductProps) {
    const [creditNum, setCreditNum] = useState(0)
-   const selectedProduct = useAppSelector((state) => state.productInfo.selectedProduct)
-
-   console.log(selectedProduct, "select pro")
-   const handleCheckboxChange = (productId: number) => {
-      setSelected((prev) =>
-         prev.includes(productId)
-            ? prev.filter((checkboxId) => checkboxId !== productId)
-            : [...prev, productId],
-      )
-   }
 
    return (
       <div className={styles.feature_bg}>
@@ -45,16 +26,15 @@ function SelectedProductWithInput({
                   labelText=""
                   value={product.id}
                   checked={selected.includes(product?.id)}
-                  onChange={() => handleCheckboxChange}
+                  onChange={onChange}
                   data-testId="onboarding-select-product-checkbox"
                />
-               <p className={styles.feature_text}>{feature}</p>
+               <p className={styles.feature_text}>{product.productName}</p>
             </div>
-
-            <p className={styles.features}>{amount}/credit</p>
+            <p className={styles.features}>{product.prices.credit}/credit</p>
          </div>
          <AmountInputWithArrows
-            amount={amount}
+            amount={product.prices.credit}
             value={creditNum}
             setValue={setCreditNum}
             onChange={(e: any) => setCreditNum(e.target.value)}

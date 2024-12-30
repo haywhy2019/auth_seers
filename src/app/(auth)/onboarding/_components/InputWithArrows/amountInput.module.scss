@@ -49,3 +49,24 @@
   @include type-style('body-02');
   font-weight: 600;
 }
+
+/* Hide spinners for Webkit browsers (Chrome, Safari, Edge) */
+.no_spinner::-webkit-inner-spin-button, 
+.no_spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+.no_spinner {
+  -moz-appearance: textfield;
+  appearance: textfield; /* General */
+}
+
+/* Prevent spinners on hover/focus in Webkit browsers */
+.no_spinner:focus::-webkit-inner-spin-button, 
+.no_spinner:focus::-webkit-outer-spin-button, 
+.no_spinner:hover::-webkit-inner-spin-button, 
+.no_spinner:hover::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

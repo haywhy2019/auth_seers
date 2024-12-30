@@ -20,11 +20,27 @@ function AmountInputWithArrows({
    amount: number
    setValue: any
 }) {
+   const incrementCredit = () => {
+      if (typeof value != "number") {
+         setValue(0)
+         setValue((prev: number) => (prev += 1))
+      } else {
+         setValue((value += 1))
+      }
+   }
+
+   const decrementCredit = () => {
+      if (value == 0) {
+         setValue(0)
+      } else {
+         setValue((value -= 1))
+      }
+   }
    return (
       <div>
          {" "}
          <div className={styles.input_container}>
-            <div className={styles.icon_container} onClick={() => setValue((value -= 1))}>
+            <div className={styles.icon_container} onClick={() => decrementCredit()}>
                <ChevronLeft size={20} />
             </div>
 
@@ -40,9 +56,10 @@ function AmountInputWithArrows({
                   onChange={onChange}
                   //   onBlur={onBlur}
                   invalid={invalid}
+                  className={styles.no_spinner}
                />
             </div>
-            <div className={styles.icon_container} onClick={() => setValue((value += 1))}>
+            <div className={styles.icon_container} onClick={() => incrementCredit()}>
                <ChevronRight size={20} />
             </div>
          </div>

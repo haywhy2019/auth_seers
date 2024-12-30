@@ -1,9 +1,7 @@
 "use client"
 
-import { increment } from "@/redux/features/onboard.slice"
-import { useAppDispatch } from "@/redux/hooks"
 import { WarningHex } from "@carbon/icons-react"
-import { Button, Column, Grid, Tile } from "@carbon/react"
+import { Column, Grid } from "@carbon/react"
 
 import React from "react"
 
@@ -11,8 +9,6 @@ import SubscriptionTab from "../../_components/subscriptionTab/subscriptionTab"
 import styles from "./subscription.module.scss"
 
 function SubscriptionPage() {
-   const dispatch = useAppDispatch()
-
    return (
       <Grid>
          <Column lg={16} md={8} sm={4}>
@@ -38,7 +34,7 @@ function SubscriptionPage() {
 
                <SubscriptionTab data-testId="onboarding-subscription-tab-component" />
             </div>
-            <div>
+            {/* <div>
                <Tile id="pricing-tile" className={styles.tile_padding}>
                   <div className={styles.pricing_container}>
                      <div className={styles.pricing}>
@@ -59,7 +55,7 @@ function SubscriptionPage() {
                      </Button>
                   </div>
                </Tile>
-            </div>
+            </div> */}
          </Column>
       </Grid>
    )

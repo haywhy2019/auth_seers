@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react"
 
 import productsApi from "@/axios/products.api"
 
-import getProductsByIds from "@/helpers/products"
+import { getProductsByIds } from "@/helpers/products"
 
 import { Products } from "@/types/general.types"
 
