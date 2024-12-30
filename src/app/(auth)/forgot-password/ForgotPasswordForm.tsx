@@ -76,7 +76,7 @@ const ForgotPasswordForm = () => {
                            invalidText={props.errors.email}
                            labelText="Email Address"
                            placeholder="e.g joe@acmecorp.com"
-                           invalid={!!(props.touched && props.errors.email)}
+                           invalid={!!(props.touched.email && props.errors.email)}
                            onChange={props.handleChange}
                            value={props.values.email}
                            onBlur={props.handleBlur}

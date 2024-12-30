@@ -115,7 +115,7 @@ const LoginForm = () => {
                               invalidText={props.errors.email}
                               labelText="Email Address"
                               placeholder="e.g joe@acmecorp.com"
-                              invalid={!!(props.touched && props.errors.email)}
+                              invalid={!!(props.touched.email && props.errors.email)}
                               onChange={props.handleChange}
                               value={props.values.email}
                               onBlur={props.handleBlur}
@@ -131,7 +131,7 @@ const LoginForm = () => {
                               invalidText={props.errors.password}
                               labelText="Password"
                               placeholder="Type here..."
-                              invalid={!!(props.touched && props.errors.password)}
+                              invalid={!!(props.touched.password && props.errors.password)}
                               onChange={props.handleChange}
                               value={props.values.password}
                               onBlur={props.handleBlur}

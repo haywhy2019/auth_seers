@@ -161,7 +161,7 @@ const VerifyForm = () => {
                            invalidText={props.errors.otp}
                            labelText="OTP"
                            placeholder="e.g 123456"
-                           invalid={!!(props.touched && props.errors.otp)}
+                           invalid={!!(props.touched.otp && props.errors.otp)}
                            onChange={props.handleChange}
                            value={props.values.otp}
                            onBlur={props.handleBlur}

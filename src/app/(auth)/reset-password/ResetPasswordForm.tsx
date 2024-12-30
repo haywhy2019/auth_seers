@@ -82,7 +82,7 @@ const ResetPasswordForm = () => {
                               invalidText={props.errors.newPassword}
                               labelText="Password"
                               placeholder="Type here..."
-                              invalid={!!(props.touched && props.errors.newPassword)}
+                              invalid={!!(props.touched.newPassword && props.errors.newPassword)}
                               onChange={props.handleChange}
                               value={props.values.newPassword}
                               onBlur={props.handleBlur}
@@ -96,7 +96,9 @@ const ResetPasswordForm = () => {
                               invalidText={props.errors.confirmPassword}
                               labelText="Confirm Password"
                               placeholder="Type here..."
-                              invalid={!!(props.touched && props.errors.confirmPassword)}
+                              invalid={
+                                 !!(props.touched.confirmPassword && props.errors.confirmPassword)
+                              }
                               onChange={props.handleChange}
                               value={props.values.confirmPassword}
                               onBlur={props.handleBlur}
