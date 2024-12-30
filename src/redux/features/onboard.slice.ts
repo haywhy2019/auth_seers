@@ -3,24 +3,27 @@ import { createSlice } from "@reduxjs/toolkit"
 import { initialState } from "../initialState"
 import { RootState } from "../store"
 
-export interface CounterState {
-   value: number
-}
-
 export const onBoardSlice = createSlice({
    name: "counter",
-   initialState,
+   initialState: initialState.onBoard,
    reducers: {
       increment: (state) => {
-         state.onBoard.counter += 1
+         state.counter += 1
+      },
+      decrement: (state) => {
+         state.counter -= 1
       },
       reset: (state) => {
-         state.onBoard.counter = 0
+         state.counter = 0
+      },
+      formData: (state, { payload }) => {
+         console.log(payload, "payload drom onboard slice")
+         state.formData = payload
       },
    },
 })
 
-export const { increment, reset } = onBoardSlice.actions
+export const { increment, decrement, reset, formData } = onBoardSlice.actions
 
 export const selectOnBoardStepper = (state: RootState) => state.onBoard
 

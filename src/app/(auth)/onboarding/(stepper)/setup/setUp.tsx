@@ -1,7 +1,5 @@
 "use client"
 
-// import { reset } from "@/redux/features/onboard.slice"
-// import { useAppDispatch } from "@/redux/hooks"
 import { Button, Column, FileUploaderDropContainer, Grid, Tile } from "@carbon/react"
 import { Add, CircleSolid, Close } from "@carbon/react/icons"
 
@@ -9,15 +7,14 @@ import React, { useState } from "react"
 
 import Image from "next/image"
 
-import SelectedProduct from "../../_components/selectedProduct/selectedProducts"
 import styles from "./setup.module.scss"
 
 function SetupPage() {
    const [priColor, setPriColor] = useState(false)
-   // const dispatch = useAppDispatch()
 
-   const goToDashboard = () =>
-      (window.location.href = "https://dev-admin.lafialink-dev.com/dashboard")
+   const goToDashboard = () => {
+      window.location.href = "https://dev-admin.lafialink-dev.com/dashboard"
+   }
 
    return (
       <Grid>
@@ -31,7 +28,7 @@ function SetupPage() {
                   </p>
                </div>
 
-               <SelectedProduct data-testId="onboarding-setup-selectproduct-component" />
+               {/* <SelectedProduct data-testId="onboarding-setup-selectproduct-component" /> */}
                <div>
                   <Image
                      src="/svg/setup.svg"

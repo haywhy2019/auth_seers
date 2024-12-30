@@ -2,33 +2,50 @@
 
 import { Checkbox, Tile } from "@carbon/react"
 
-import React, { useState } from "react"
+import React from "react"
 
 import Image from "next/image"
 
-import styles from "./productTile.module.scss"
+import { Products } from "@/types/general.types"
 
-type Product = {
-   title: string
-   details: string
-}
+import ProductModal from "../productModal/productModal"
+import styles from "./productTile.module.scss"
 
 type ProductTileProps = {
    onClick: () => void
-   product: Product
+   product: Products
+   selected: number[]
+   setSelected: React.Dispatch<React.SetStateAction<number[]>>
+   openModal: boolean
+   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function ProductTile({ onClick, product }: ProductTileProps) {
-   const [isChecked, setIsChecked] = useState(false)
+function ProductTile({
+   onClick,
+   product,
+   selected,
+   setSelected,
+   openModal,
+   setOpenModal,
+}: ProductTileProps) {
+   const handleCheckboxChange = (productId: number) => {
+      setSelected((prev) =>
+         prev.includes(productId)
+            ? prev.filter((checkboxId) => checkboxId !== productId)
+            : [...prev, productId],
+      )
+   }
+
    return (
       <Tile className={styles.tile} data-testId="onboarding-product-tile">
          <div className={styles.tile_flex}>
             <Checkbox
-               id="checkbox"
+               id={product?.id.toString()}
                labelText=""
-               checked={isChecked}
-               onChange={(_, { checked }) => setIsChecked(checked)}
+               checked={selected.includes(product?.id)}
+               onChange={() => handleCheckboxChange(product?.id)}
                data-testId="onboarding-product-checkbox"
+               value={product.id}
             />
 
             <div className={styles.tile_flex}>
@@ -42,10 +59,10 @@ function ProductTile({ onClick, product }: ProductTileProps) {
                />
                <div>
                   <p className={styles.heading} data-testId="onboarding-product-title">
-                     {product?.title}
+                     {product?.productName}
                   </p>
                   <p className={styles.body} data-testId="onboarding-product-body">
-                     {product?.details}
+                     {product?.description}
                   </p>
                </div>
             </div>
@@ -54,6 +71,13 @@ function ProductTile({ onClick, product }: ProductTileProps) {
          <div onClick={onClick}>
             <p className={styles.features}>View Features</p>
          </div>
+
+         <ProductModal
+            open={openModal}
+            setOpen={setOpenModal}
+            data-testId="onboarding-products-modal"
+            features={product.features}
+         />
       </Tile>
    )
 }

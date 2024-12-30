@@ -59,3 +59,20 @@ export type User = {
    onLien: boolean
    uuid: string
 }
+
+export type Products = {
+   id: number
+   version: number
+   delFlag: "N" | "Y"
+   deletedOn: string | null
+   dateCreated: string
+   productName: string
+   prices: {
+      credit: number
+      monthly: number
+      quarterly: number
+      yearly: number
+   }
+   description: string
+   features: string[]
+}
