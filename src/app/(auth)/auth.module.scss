@@ -56,26 +56,6 @@
   }
 }
 
-.auth_options {
-  display: flex;
-  align-items: center;
-  gap: $spacing-05;
-
-  & p {
-    @include type-style('body-01');
-    flex: 0 1 auto; 
-    text-align: center;
-    min-width: fit-content;
-  }
-
-  & img {
-    @media screen and (max-width: 768px) {
-      width: 80px;
-      gap: $spacing-05;
-    }
-  }
-}
-
 .auth_socials_container {
   width: 100%;
   display: flex;
