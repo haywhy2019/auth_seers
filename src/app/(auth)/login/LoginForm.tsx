@@ -72,10 +72,10 @@ const LoginForm = () => {
       enabled: !!(prompt && login_hint && continueUrl),
    })
 
-   React.useEffect(() => {
-      if (succ) redirect(continueUrl!)
-      if (err) redirect(authRoutes.login)
-   }, [succ, err])
+   // React.useEffect(() => {
+   //    if (succ) redirect(continueUrl!)
+   //    if (err) redirect(authRoutes.login)
+   // }, [succ, err])
 
    if (prompt && login_hint) return
 

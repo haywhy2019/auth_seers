@@ -1,19 +1,22 @@
-# Base image
-FROM node:18-alpine AS base
+FROM node:18-alpine
+
 WORKDIR /app
 
-# Install dependencies
+# Copy only package files first
 COPY package.json yarn.lock ./
-RUN yarn install
+
+# Clean yarn cache after install
+RUN yarn install && yarn cache clean
 
 # Copy the rest of the application
 COPY . .
 
-# Build the app
+# Build the application
 RUN yarn build
 
-# Expose port 3000
+# Remove development dependencies
+RUN yarn install --production
+
 EXPOSE 3000
 
-# Start the app in development mode
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]
