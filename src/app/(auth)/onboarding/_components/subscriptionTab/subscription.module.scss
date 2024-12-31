@@ -2,12 +2,14 @@
 @use '@carbon/react/scss/type' as *;
 @use '@carbon/layout' as *;
 @use '@carbon/colors' as *;
-
+@use '@carbon/themes' as *;
 .panel {
-    margin: $spacing-04 0 $spacing-08 0;
-    background-color: #FAFFFF;
+    margin: $spacing-04 0 ;
 }
 
+.no_padding{
+    padding: 0
+}
 
 .select_tab_label {
     background-color: #FAFFFF !important
@@ -23,3 +25,43 @@
     @include type-style('body-02');
     margin: $spacing-03 0px;
 }
+
+.subscription_button{
+    padding-top: $spacing-10 ;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: end;
+    background-color: #FAFAFA;
+}
+
+.sub_btn {
+    @media screen and (max-width: 768px) {
+      width: 100%; 
+      max-width: 100%; 
+      display: block; 
+      margin: 0 auto; 
+      text-align: center;
+     
+    }
+   }
+
+.logout_container{
+    padding: $spacing-07 0;
+    display: flex;
+    justify-content: center;
+    background-color: #FAFAFA;
+    }
+    
+    .logout_text1{
+      @include type-style('helper-text-02');
+    }
+    
+    .logout_text2,
+    .logout_text2:hover{
+      @include type-style('helper-text-02');
+      color: $link-primary;
+      margin-left: $spacing-02;
+      cursor: pointer;
+    }
+
+  

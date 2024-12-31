@@ -8,12 +8,13 @@ import React from "react"
 import styles from "./stepper.module.scss"
 
 const OnBoardingSteper = () => {
-   const count = useAppSelector((state) => state.onBoard.onBoard.counter)
+   const count = useAppSelector((state) => state.onBoard.counter)
    return (
       <ProgressIndicator
          currentIndex={count}
          // onChange={changeIndex}
          className={styles.steper}
+         data-testId="onboarding-stepper"
       >
          <ProgressStep label="Products" description="Step 1: select product" />
          <ProgressStep label="Subscription" description="Step 2: Select subscription" />
