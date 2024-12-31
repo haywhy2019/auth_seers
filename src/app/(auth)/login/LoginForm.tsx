@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 "use client"
 
 import { setAuth } from "@/redux/features/auth.slice"
@@ -34,7 +32,6 @@ const LoginForm = () => {
    const router = useRouter()
 
    const searchParams = useSearchParams()
-   const login_hint = searchParams.get("login_hint") as string
    const prompt = searchParams.get("prompt") as string
    const continueUrl = searchParams.get("continue") as string
 
@@ -68,18 +65,18 @@ const LoginForm = () => {
       _login({ email: values.email, password: values.password })
    }
 
-   const { isSuccess: succ, isError: err } = useQuery({
+   const { isSuccess: lafiaHMSSuccess, isError: lafiaHMSError } = useQuery({
       queryKey: ["login"],
-      queryFn: () => authApi.lafiaHMSLogin({ login_hint }),
-      enabled: !!(prompt && login_hint && continueUrl),
+      queryFn: () => authApi.lafiaHMSLogin(),
+      enabled: !!(prompt && continueUrl),
    })
 
-   // React.useEffect(() => {
-   //    if (succ) redirect(continueUrl!)
-   //    if (err) redirect(authRoutes.login)
-   // }, [succ, err])
+   React.useEffect(() => {
+      if (lafiaHMSSuccess) redirect(continueUrl!)
+      if (lafiaHMSError) redirect(authRoutes.login)
+   }, [lafiaHMSSuccess, lafiaHMSError])
 
-   if (prompt && login_hint) return
+   if (prompt && continueUrl) return
 
    return (
       <>
@@ -168,23 +165,6 @@ const LoginForm = () => {
                )
             }}
          </Formik>
-
-         {/* <div className={styles.auth_options}>
-            <Image src="/svg/divider.svg" alt="" width={122} height={1} />
-            <p>Or login with</p>
-            <Image src="/svg/divider.svg" alt="" width={122} height={1} />
-         </div>
-
-         <div className={styles.auth_socials_container}>
-            <ClickableTile className={styles.auth_socials_tile} data-testId="login-goggle">
-               <Image src="/svg/google.svg" alt="Google" width={24} height={24} />
-               <p> Google</p>
-            </ClickableTile>
-            <ClickableTile className={styles.auth_socials_tile} data-testId="login-microsoft">
-               <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
-               <p>Microsoft</p>
-            </ClickableTile>
-         </div> */}
 
          <p className={styles.auth_description}>
             You do not have an account?{" "}

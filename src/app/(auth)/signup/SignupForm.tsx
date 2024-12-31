@@ -268,23 +268,6 @@ const SignupForm = () => {
             }}
          </Formik>
 
-         {/* <div className={styles.auth_options}>
-            <Image src="/svg/divider.svg" alt="" width={122} height={1} />
-            <p>Or sign up with</p>
-            <Image src="/svg/divider.svg" alt="" width={122} height={1} />
-         </div>
-
-         <div className={styles.auth_socials_container}>
-            <ClickableTile className={styles.auth_socials_tile} data-testId="signup-goggle">
-               <Image src="/svg/google.svg" alt="Google" width={24} height={24} />
-               <p> Google</p>
-            </ClickableTile>
-            <ClickableTile className={styles.auth_socials_tile} data-testId="signup-microsoft">
-               <Image src="/svg/microsoft.svg" alt="Microsoft" width={24} height={24} />
-               <p>Microsoft</p>
-            </ClickableTile>
-         </div> */}
-
          <p className={styles.auth_description}>
             Already have an account?{" "}
             <Link href={authRoutes.login} className={styles.auth_link}>
