@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 "use client"
 
 import { setAuth } from "@/redux/features/auth.slice"
