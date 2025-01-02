@@ -12,6 +12,7 @@ import {
 } from "@carbon/react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { Formik } from "formik"
+import Cookies from "js-cookie"
 
 import React from "react"
 
@@ -65,14 +66,26 @@ const LoginForm = () => {
       _login({ email: values.email, password: values.password })
    }
 
-   const { isSuccess: lafiaHMSSuccess, isError: lafiaHMSError } = useQuery({
+   const {
+      data: sessionData,
+      isSuccess: lafiaHMSSuccess,
+      isError: lafiaHMSError,
+   } = useQuery({
       queryKey: ["login"],
       queryFn: () => authApi.lafiaHMSLogin(),
       enabled: !!(prompt && continueUrl),
    })
 
+   const sessionId = sessionData?.data?.data as string
+
    React.useEffect(() => {
-      if (lafiaHMSSuccess) redirect(continueUrl!)
+      if (lafiaHMSSuccess) {
+         Cookies.set("JSESSIONID", sessionId, {
+            domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
+            path: "/openmrs",
+         })
+         redirect(continueUrl!)
+      }
       if (lafiaHMSError) redirect(authRoutes.login)
    }, [lafiaHMSSuccess, lafiaHMSError])
 
