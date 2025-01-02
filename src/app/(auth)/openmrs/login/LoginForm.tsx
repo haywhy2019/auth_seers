@@ -12,6 +12,7 @@ import {
 } from "@carbon/react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { Formik } from "formik"
+import Cookies from "js-cookie"
 
 import React from "react"
 
@@ -23,8 +24,8 @@ import authApi from "@/axios/auth.api"
 import { authRoutes } from "@/helpers/routes"
 import { getRedirectUrl } from "@/helpers/utils"
 
-import styles from "../auth.module.scss"
-import { loginSchema } from "../auth.validators"
+import styles from "../../auth.module.scss"
+import { loginSchema } from "../../auth.validators"
 
 const LoginForm = () => {
    const [message, setMessage] = React.useState("")
@@ -65,16 +66,28 @@ const LoginForm = () => {
       _login({ email: values.email, password: values.password })
    }
 
-   const { isSuccess: lafiaHMSSuccess, isError: lafiaHMSError } = useQuery({
+   const {
+      data: sessionData,
+      isSuccess: lafiaHMSSuccess,
+      isError: lafiaHMSError,
+   } = useQuery({
       queryKey: ["login"],
       queryFn: () => authApi.lafiaHMSLogin(),
       enabled: !!(prompt && continueUrl),
    })
 
+   const sessionId = sessionData?.data?.data as string
+
    React.useEffect(() => {
-      if (lafiaHMSSuccess) redirect(continueUrl!)
+      if (lafiaHMSSuccess && sessionId) {
+         Cookies.set("JSESSIONID", sessionId, {
+            domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
+            path: "/openmrs",
+         })
+         // redirect(continueUrl!)
+      }
       if (lafiaHMSError) redirect(authRoutes.login)
-   }, [lafiaHMSSuccess, lafiaHMSError])
+   }, [lafiaHMSSuccess, lafiaHMSError, sessionId])
 
    if (prompt && continueUrl) return
 
