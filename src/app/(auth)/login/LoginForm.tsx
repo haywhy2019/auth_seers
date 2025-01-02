@@ -79,15 +79,15 @@ const LoginForm = () => {
    const sessionId = sessionData?.data?.data as string
 
    React.useEffect(() => {
-      if (lafiaHMSSuccess) {
+      if (lafiaHMSSuccess && sessionId) {
          Cookies.set("JSESSIONID", sessionId, {
             domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
-            path: "/openmrs",
+            path: "/",
          })
          redirect(continueUrl!)
       }
       if (lafiaHMSError) redirect(authRoutes.login)
-   }, [lafiaHMSSuccess, lafiaHMSError])
+   }, [lafiaHMSSuccess, lafiaHMSError, sessionId])
 
    if (prompt && continueUrl) return
 
