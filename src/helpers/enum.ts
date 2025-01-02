@@ -13,6 +13,7 @@ export const enum userTypes {
 
 export const enum organizationTypes {
    CLINIC = "CLINIC",
+   HOSPITAL = "HOSPITAL",
    LAB = "LAB",
    HMO = "HMO",
    PHARMACY = "PHARMACY",
