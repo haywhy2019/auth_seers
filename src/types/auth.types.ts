@@ -27,6 +27,7 @@ export type VerifyType = {
 
 export type ResetPasswordType = {
    code: string
+   email: string
    newPassword: string
    confirmPassword: string
 }
