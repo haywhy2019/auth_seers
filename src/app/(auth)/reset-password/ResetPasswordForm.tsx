@@ -16,10 +16,15 @@ import { authRoutes } from "@/helpers/routes"
 import styles from "../auth.module.scss"
 import { resetPasswordSchema } from "../auth.validators"
 
-const ResetPasswordForm = () => {
+type Props = {
+   createPassword?: boolean
+}
+
+const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
    const [message, setMessage] = React.useState("")
    const searchParams = useSearchParams()
    const code = searchParams.get("code") as string
+   const email = searchParams.get("email") as string
 
    const router = useRouter()
 
@@ -30,7 +35,9 @@ const ResetPasswordForm = () => {
    } = useMutation({
       mutationFn: authApi.resetPassword,
       onSuccess: () => {
-         setMessage("Password reset successful")
+         setMessage(
+            createPassword ? "Password created successfully" : "Password reset successfully",
+         )
          router.replace(authRoutes.login)
       },
       onError: (error: any) => {
@@ -41,6 +48,7 @@ const ResetPasswordForm = () => {
    const handleSubmit = (values: Record<string, string>) => {
       _resetPassword({
          code,
+         email,
          confirmPassword: values.confirmPassword,
          newPassword: values.newPassword,
       })
@@ -59,9 +67,13 @@ const ResetPasswordForm = () => {
          )}
 
          <div className={styles.auth_heading_container}>
-            <h1 className={styles.auth_heading}>Create New Password</h1>
+            <h1 className={styles.auth_heading}>
+               {createPassword ? "Welcome" : "Create New Password"}
+            </h1>
             <p className={styles.auth_description}>
-               Create your new password and proceed to login with it.
+               {createPassword
+                  ? "You are required to create a new password before you can proceed."
+                  : "Create your new password and proceed to login with it."}
             </p>
          </div>
 
@@ -69,7 +81,7 @@ const ResetPasswordForm = () => {
             onSubmit={handleSubmit}
             validationSchema={resetPasswordSchema}
             initialValues={{ newPassword: "", confirmPassword: "" }}
-            data-testId="reset-password-form"
+            data-testId={"reset-password-form"}
          >
             {(props) => {
                return (
@@ -124,16 +136,18 @@ const ResetPasswordForm = () => {
             }}
          </Formik>
 
-         <p className={styles.auth_description}>
-            Remember your password now?{" "}
-            <Link
-               href={authRoutes.login}
-               className={styles.auth_link}
-               data-testId="reset-password-back-login"
-            >
-               Back to Login
-            </Link>
-         </p>
+         {!createPassword && (
+            <p className={styles.auth_description}>
+               Remember your password now?{" "}
+               <Link
+                  href={authRoutes.login}
+                  className={styles.auth_link}
+                  data-testId="reset-password-back-login"
+               >
+                  Back to Login
+               </Link>
+            </p>
+         )}
       </>
    )
 }

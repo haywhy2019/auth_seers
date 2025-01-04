@@ -2,7 +2,7 @@ import React from "react"
 
 import { Metadata } from "next"
 
-import CreatePasswordForm from "./CreatePasswordForm"
+import ResetPasswordForm from "../reset-password/ResetPasswordForm"
 
 export const metadata: Metadata = {
    title: "LafiaEMR - Create Password",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 const ForgotPasswordPage = () => {
-   return <CreatePasswordForm />
+   return <ResetPasswordForm createPassword />
 }
 
 export default ForgotPasswordPage
