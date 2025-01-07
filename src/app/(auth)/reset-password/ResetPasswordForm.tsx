@@ -1,6 +1,13 @@
 "use client"
 
-import { Button, FluidForm, PasswordInput, Stack, ToastNotification } from "@carbon/react"
+import {
+   Button,
+   FluidForm,
+   InlineLoading,
+   PasswordInput,
+   Stack,
+   ToastNotification,
+} from "@carbon/react"
 import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
 
@@ -32,6 +39,7 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
       mutate: _resetPassword,
       isError,
       isSuccess,
+      isPending,
    } = useMutation({
       mutationFn: authApi.resetPassword,
       onSuccess: () => {
@@ -121,14 +129,18 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
                         </Stack>
 
                         <Button
-                           disabled={!props.isValid || !code}
+                           disabled={!props.isValid || !code || isPending}
                            style={{ maxWidth: "none", width: "100%" }}
                            kind="primary"
                            type="submit"
                            size="lg"
                            data-testId="reset-password-password-btn"
                         >
-                           Create
+                           {isPending ? (
+                              <InlineLoading description="Creating Password..." />
+                           ) : (
+                              "Create"
+                           )}
                         </Button>
                      </Stack>
                   </FluidForm>

@@ -5,6 +5,7 @@ import { useAppDispatch } from "@/redux/hooks"
 import {
    Button,
    FluidForm,
+   InlineLoading,
    PasswordInput,
    Stack,
    TextInput,
@@ -39,6 +40,7 @@ const LoginForm = () => {
       mutate: _login,
       isError,
       isSuccess,
+      isPending,
    } = useMutation({
       mutationFn: authApi.login,
       onSuccess: ({ data }) => {
@@ -151,14 +153,14 @@ const LoginForm = () => {
                         </Stack>
 
                         <Button
-                           disabled={!props.isValid}
+                           disabled={!props.isValid || isPending}
                            style={{ maxWidth: "none", width: "100%" }}
                            kind="primary"
                            type="submit"
                            size="lg"
                            data-testId="login-password-button"
                         >
-                           Login
+                           {isPending ? <InlineLoading description="Logging in..." /> : "Login"}
                         </Button>
                      </Stack>
                   </FluidForm>

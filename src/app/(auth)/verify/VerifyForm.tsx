@@ -6,6 +6,7 @@ import {
    Button,
    Link as CarbonLink,
    FluidForm,
+   InlineLoading,
    Link,
    Stack,
    TextInput,
@@ -46,6 +47,7 @@ const VerifyForm = () => {
       mutate: _verifyOtp,
       isError,
       isSuccess,
+      isPending,
    } = useMutation({
       mutationFn: authApi.verifyOtp,
       onSuccess: () => {
@@ -193,14 +195,14 @@ const VerifyForm = () => {
                         </div>
 
                         <Button
-                           disabled={!props.isValid}
+                           disabled={!props.isValid || isPending}
                            style={{ maxWidth: "none", width: "100%" }}
                            kind="primary"
                            type="submit"
                            size="lg"
                            data-testId="verify-email-button"
                         >
-                           Verify
+                           {isPending ? <InlineLoading description="Verifying..." /> : "Verify"}
                         </Button>
                      </Stack>
                   </FluidForm>

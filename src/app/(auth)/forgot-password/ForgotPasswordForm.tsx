@@ -1,6 +1,13 @@
 "use client"
 
-import { Button, FluidForm, Stack, TextInput, ToastNotification } from "@carbon/react"
+import {
+   Button,
+   FluidForm,
+   InlineLoading,
+   Stack,
+   TextInput,
+   ToastNotification,
+} from "@carbon/react"
 import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
 
@@ -24,6 +31,7 @@ const ForgotPasswordForm = () => {
       mutate: _forgotPassword,
       isError,
       isSuccess,
+      isPending,
    } = useMutation({
       mutationFn: authApi.forgotPassword,
       onSuccess: () => {
@@ -86,14 +94,14 @@ const ForgotPasswordForm = () => {
                         />
 
                         <Button
-                           disabled={!props.isValid}
+                           disabled={!props.isValid || isPending}
                            style={{ maxWidth: "none", width: "100%" }}
                            kind="primary"
                            type="submit"
                            size="lg"
                            data-testId="forgot-password-button"
                         >
-                           Proceed
+                           {isPending ? <InlineLoading description="Proceeding..." /> : "Proceed"}
                         </Button>
                      </Stack>
                   </FluidForm>
