@@ -53,7 +53,7 @@ const ForgotPasswordForm = () => {
          <div className={styles.auth_heading_container}>
             <h1 className={styles.auth_heading}>Forgot Password</h1>
             <p className={styles.auth_description}>
-               Login to manage your patients and their medical records seamlessly.
+               Seems you have forgotten your password, do not worry it happens.
             </p>
          </div>
 
