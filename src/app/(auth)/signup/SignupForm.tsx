@@ -6,6 +6,7 @@ import {
    Button,
    Link as CarbonLink,
    FluidForm,
+   InlineLoading,
    PasswordInput,
    SelectItem,
    Stack,
@@ -46,6 +47,7 @@ const SignupForm = () => {
       mutate: _signup,
       isError,
       isSuccess,
+      isPending,
    } = useMutation({
       mutationFn: authApi.signup,
       onSuccess: ({ data }) => {
@@ -253,14 +255,18 @@ const SignupForm = () => {
                         </p>
 
                         <Button
-                           disabled={!props.isValid}
+                           disabled={!props.isValid || isPending}
                            style={{ maxWidth: "none", width: "100%" }}
                            kind="primary"
                            type="submit"
                            size="lg"
                            data-testId="signup-btn"
                         >
-                           Create Account
+                           {isPending ? (
+                              <InlineLoading description="Creating Account..." />
+                           ) : (
+                              "Create Account"
+                           )}
                         </Button>
                      </Stack>
                   </FluidForm>
