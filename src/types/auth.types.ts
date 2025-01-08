@@ -38,4 +38,6 @@ export type SignupType = {
    email: string
    confirmPassword: string
    password: string
+   firstName: string
+   lastName: string
 }

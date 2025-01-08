@@ -22,6 +22,7 @@ import { authRoutes } from "@/helpers/routes"
 
 import styles from "../auth.module.scss"
 import { resetPasswordSchema } from "../auth.validators"
+import PasswordCriteria from "../signup/PasswordCriteria"
 
 type Props = {
    createPassword?: boolean
@@ -126,6 +127,8 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
                               style={{ borderBottom: "none" }}
                               data-testId="reset-password-confirm-password-input"
                            />
+
+                           <PasswordCriteria password={props.values.newPassword} />
                         </Stack>
 
                         <Button
