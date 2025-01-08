@@ -36,6 +36,7 @@ import { User } from "@/types/general.types"
 
 import styles from "../auth.module.scss"
 import { signupSchema } from "../auth.validators"
+import PasswordCriteria from "./PasswordCriteria"
 
 const SignupForm = () => {
    const [message, setMessage] = React.useState("")
@@ -70,6 +71,8 @@ const SignupForm = () => {
          email: values.email,
          password: values.password,
          confirmPassword: values.confirmPassword,
+         firstName: values.firstName,
+         lastName: values.lastName,
       })
    }
 
@@ -101,6 +104,8 @@ const SignupForm = () => {
                email: "",
                password: "",
                confirmPassword: "",
+               firstName: "",
+               lastName: "",
             }}
             data-testId="signup-form"
          >
@@ -109,6 +114,39 @@ const SignupForm = () => {
                   <FluidForm onSubmit={props.handleSubmit} className={styles.auth_form_container}>
                      <Stack gap={7}>
                         <Stack gap={3}>
+                           <div className={styles.auth_2_columns_container}>
+                              <TextInput
+                                 id="firstName"
+                                 name="firstName"
+                                 invalidText={props.errors.firstName}
+                                 labelText="First Name"
+                                 placeholder="Type here.."
+                                 invalid={!!(props.touched.firstName && props.errors.firstName)}
+                                 onChange={props.handleChange}
+                                 value={props.values.firstName}
+                                 onBlur={props.handleBlur}
+                                 size="lg"
+                                 style={{ borderBottom: "none" }}
+                                 autoComplete="off"
+                                 data-testId="signup-firstName-input"
+                              />
+                              <TextInput
+                                 id="lastName"
+                                 name="lastName"
+                                 invalidText={props.errors.lastName}
+                                 labelText="Last Name"
+                                 placeholder="Type here.."
+                                 invalid={!!(props.touched.lastName && props.errors.lastName)}
+                                 onChange={props.handleChange}
+                                 value={props.values.lastName}
+                                 onBlur={props.handleBlur}
+                                 size="lg"
+                                 style={{ borderBottom: "none" }}
+                                 autoComplete="off"
+                                 data-testId="signup-lastName-input"
+                              />
+                           </div>
+
                            <div className={styles.auth_2_columns_container}>
                               {/* <Dropdown
                                  id="organizationType"
@@ -241,6 +279,8 @@ const SignupForm = () => {
                                  data-testId="signup-confirm-password-input"
                               />
                            </div>
+
+                           <PasswordCriteria password={props.values.password} />
                         </Stack>
 
                         <p className={styles.auth_description}>

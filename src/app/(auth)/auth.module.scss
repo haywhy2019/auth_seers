@@ -132,3 +132,21 @@
   font-weight: 600;
   text-align: center;
 }
+
+.password_criteria {
+  background: #f4f4f4;
+  padding: $spacing-04;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-03;
+}
+
+.password_criteria_item {
+  display: flex;
+  align-items: center;
+  gap: $spacing-04;
+
+  & p{
+    font-size: 12px;
+  }
+}
