@@ -81,6 +81,9 @@
 
 .auth_select {
   border-bottom: none !important;
+  @media screen and (max-width: 768px) {
+   margin-bottom: $spacing-03;
+  }
 }
 
 .auth_2_columns_container {
@@ -100,6 +103,22 @@
     & * {
       width: 100%;
     }
+  }
+}
+
+.auth_2_columns_container_select {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-03;
+
+  & * {
+    flex: 1;
+    // width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+   display: block;
   }
 }
 

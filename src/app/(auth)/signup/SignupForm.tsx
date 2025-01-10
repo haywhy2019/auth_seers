@@ -147,7 +147,7 @@ const SignupForm = () => {
                               />
                            </div>
 
-                           <div className={styles.auth_2_columns_container}>
+                           <div className={styles.auth_2_columns_container_select}>
                               {/* <Dropdown
                                  id="organizationType"
                                  titleText="Facility Type"
@@ -164,7 +164,7 @@ const SignupForm = () => {
                                        style={{
                                           display: "flex",
                                           alignItems: "center",
-                                          maxWidth: "fit-content",
+                                          // maxWidth: "fit-content",
                                        }}
                                     >
                                        <ToggletipLabel>Facility Type</ToggletipLabel>
