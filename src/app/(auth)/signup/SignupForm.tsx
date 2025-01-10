@@ -12,12 +12,7 @@ import {
    Stack,
    TextInput,
    ToastNotification,
-   Toggletip,
-   ToggletipButton,
-   ToggletipContent,
-   ToggletipLabel,
 } from "@carbon/react"
-import { Help } from "@carbon/react/icons"
 import FluidSelect from "@carbon/react/lib/components/FluidSelect"
 import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
@@ -148,40 +143,9 @@ const SignupForm = () => {
                            </div>
 
                            <div className={styles.auth_2_columns_container_select}>
-                              {/* <Dropdown
-                                 id="organizationType"
-                                 titleText="Facility Type"
-                                 helperText="Facility Type"
-                                 label="Select type"
-                                 items={organizationTypes.map((item) => item.display)}
-                                 itemToString={(item) => (item ? item : "")}
-                                 onChange={props.handleChange}
-                              /> */}
                               <FluidSelect
                                  id="organizationType"
-                                 labelText={
-                                    <div
-                                       style={{
-                                          display: "flex",
-                                          alignItems: "center",
-                                          // maxWidth: "fit-content",
-                                       }}
-                                    >
-                                       <ToggletipLabel>Facility Type</ToggletipLabel>
-                                       <Toggletip>
-                                          <ToggletipButton label="Show information">
-                                             <Help />
-                                          </ToggletipButton>
-                                          <ToggletipContent>
-                                             <p>
-                                                Lorem ipsum dolor sit amet, di os consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut
-                                                fsil labore et dolore magna aliqua.
-                                             </p>
-                                          </ToggletipContent>
-                                       </Toggletip>
-                                    </div>
-                                 }
+                                 labelText="Facility Type"
                                  invalidText={props.errors.organizationType}
                                  invalid={
                                     !!(
