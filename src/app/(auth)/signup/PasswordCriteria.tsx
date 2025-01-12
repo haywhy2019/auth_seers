@@ -11,6 +11,7 @@ type Props = {
 const PasswordCriteria: React.FC<Props> = ({ password }) => {
    const [validation, setValidation] = React.useState({
       minLength: false,
+      maxLength: false,
       uppercase: false,
       lowercase: false,
       number: false,
@@ -18,7 +19,8 @@ const PasswordCriteria: React.FC<Props> = ({ password }) => {
    })
 
    const constraints = [
-      { label: "At least 8 Characters", valid: validation.minLength },
+      { label: "At least 12 Characters", valid: validation.minLength },
+      { label: "At most 64 Characters", valid: validation.maxLength },
       { label: "At least 1 Uppercase Letter", valid: validation.uppercase },
       { label: "At least 1 Lowercase Letter", valid: validation.lowercase },
       { label: "At least 1 Number", valid: validation.number },
@@ -27,7 +29,8 @@ const PasswordCriteria: React.FC<Props> = ({ password }) => {
 
    React.useEffect(() => {
       setValidation({
-         minLength: password.length >= 8,
+         minLength: password.length >= 12,
+         maxLength: password.length <= 64,
          uppercase: /[A-Z]/.test(password),
          lowercase: /[a-z]/.test(password),
          number: /[0-9]/.test(password),
