@@ -13,7 +13,7 @@ export const signupSchema = Yup.object({
    email: Yup.string().email("Please enter a valid email address").required("Email is required"),
    password: Yup.string()
       .required("Password is required")
-      .min(12, "Password must be 8 characters or more")
+      .min(12, "Password must be 12 characters or more")
       .max(64, "Password must be 64 characters or less")
       .test("lowercase", "Password must include at least one lowercase letter", (value) =>
          /[a-z]/.test(value || ""),
@@ -39,7 +39,7 @@ export const forgotPasswordSchema = Yup.object({
 export const resetPasswordSchema = Yup.object({
    newPassword: Yup.string()
       .required("Password is required")
-      .min(12, "Password must be 8 characters or more")
+      .min(12, "Password must be 12 characters or more")
       .max(64, "Password must be 64 characters or less")
       .test("lowercase", "Password must include at least one lowercase letter", (value) =>
          /[a-z]/.test(value || ""),
