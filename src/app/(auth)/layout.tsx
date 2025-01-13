@@ -26,8 +26,8 @@ const AuthLayout = ({
                   <Image
                      src="/svg/logo.svg"
                      alt=""
-                     width={109}
-                     height={24}
+                     width={220}
+                     height={48}
                      className={styles.auth_logo}
                   />
                   {children}

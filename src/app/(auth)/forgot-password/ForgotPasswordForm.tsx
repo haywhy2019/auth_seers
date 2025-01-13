@@ -35,7 +35,7 @@ const ForgotPasswordForm = () => {
    } = useMutation({
       mutationFn: authApi.forgotPassword,
       onSuccess: () => {
-         setMessage("A reset password link was sent to your email address")
+         setMessage("We've sent a password reset link to your email")
       },
       onError: (error: any) => {
          setMessage(error.response.data.message || "An error occurred")
