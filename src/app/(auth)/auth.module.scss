@@ -16,6 +16,11 @@
 
 .auth_logo{
   margin-bottom: $spacing-05;
+
+  @media (max-width: 768px) {
+    width: 120px; /* Adjusted size for mobile view */
+    height: auto; /* Maintain aspect ratio */
+  }
 }
 
 .auth_heading_container{
