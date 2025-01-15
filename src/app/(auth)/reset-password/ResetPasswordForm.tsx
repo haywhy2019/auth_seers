@@ -59,7 +59,7 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
          code,
          email,
          confirmPassword: values.confirmPassword,
-         newPassword: values.newPassword,
+         password: values.newPassword,
       })
    }
 
