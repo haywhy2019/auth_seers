@@ -24,6 +24,7 @@ type Props = {
 
 const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
    const [message, setMessage] = React.useState("")
+
    const searchParams = useSearchParams()
    const code = searchParams.get("code") as string
    const email = searchParams.get("email") as string
@@ -56,6 +57,13 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
          password: values.newPassword,
       })
    }
+
+   // redirect to login if code or email is missing
+   React.useEffect(() => {
+      if (!code || !email) {
+         router.replace(authRoutes.login)
+      }
+   }, [])
 
    return (
       <>
