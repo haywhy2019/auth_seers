@@ -1,13 +1,7 @@
 "use client"
 
-import {
-   Button,
-   FluidForm,
-   InlineLoading,
-   PasswordInput,
-   Stack,
-   ToastNotification,
-} from "@carbon/react"
+import Toast from "@/app/components/Toast"
+import { Button, FluidForm, InlineLoading, PasswordInput, Stack } from "@carbon/react"
 import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
 
@@ -66,12 +60,9 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
    return (
       <>
          {(isError || isSuccess) && (
-            <ToastNotification
+            <Toast
                kind={isError ? "error" : "success"}
-               role="status"
-               timeout={3000}
-               title={message}
-               style={{ position: "absolute", top: 40 }}
+               title={message || (isError ? "An error occurred" : "Success")}
             />
          )}
 
