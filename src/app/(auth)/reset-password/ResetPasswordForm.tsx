@@ -1,13 +1,7 @@
 "use client"
 
-import {
-   Button,
-   FluidForm,
-   InlineLoading,
-   PasswordInput,
-   Stack,
-   ToastNotification,
-} from "@carbon/react"
+import Toast from "@/app/components/Toast"
+import { Button, FluidForm, InlineLoading, PasswordInput, Stack } from "@carbon/react"
 import { useMutation } from "@tanstack/react-query"
 import { Formik } from "formik"
 
@@ -30,6 +24,7 @@ type Props = {
 
 const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
    const [message, setMessage] = React.useState("")
+
    const searchParams = useSearchParams()
    const code = searchParams.get("code") as string
    const email = searchParams.get("email") as string
@@ -63,15 +58,19 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
       })
    }
 
+   // redirect to login if code or email is missing
+   React.useEffect(() => {
+      if (!code || !email) {
+         router.replace(authRoutes.login)
+      }
+   }, [])
+
    return (
       <>
          {(isError || isSuccess) && (
-            <ToastNotification
+            <Toast
                kind={isError ? "error" : "success"}
-               role="status"
-               timeout={3000}
-               title={message}
-               style={{ position: "absolute", top: 40 }}
+               title={message || (isError ? "An error occurred" : "Success")}
             />
          )}
 

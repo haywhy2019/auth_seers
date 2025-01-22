@@ -30,7 +30,7 @@ const PasswordCriteria: React.FC<Props> = ({ password }) => {
    React.useEffect(() => {
       setValidation({
          minLength: password.length >= 12,
-         maxLength: password.length <= 64,
+         maxLength: password.length > 0 && password.length <= 64,
          uppercase: /[A-Z]/.test(password),
          lowercase: /[a-z]/.test(password),
          number: /[0-9]/.test(password),
@@ -39,19 +39,21 @@ const PasswordCriteria: React.FC<Props> = ({ password }) => {
    }, [password])
 
    return (
-      <div className={styles.password_criteria}>
-         {constraints.map((constraint) => (
-            <div key={constraint.label} className={styles.password_criteria_item}>
-               <Image
-                  src={constraint.valid ? "/svg/green-check.svg" : "/svg/empty-check.svg"}
-                  alt=""
-                  width={20}
-                  height={20}
-               />
-               <p>{constraint.label}</p>
-            </div>
-         ))}
-      </div>
+      password?.length > 0 && (
+         <div className={styles.password_criteria}>
+            {constraints.map((constraint) => (
+               <div key={constraint.label} className={styles.password_criteria_item}>
+                  <Image
+                     src={constraint.valid ? "/svg/green-check.svg" : "/svg/empty-check.svg"}
+                     alt=""
+                     width={20}
+                     height={20}
+                  />
+                  <p>{constraint.label}</p>
+               </div>
+            ))}
+         </div>
+      )
    )
 }
 

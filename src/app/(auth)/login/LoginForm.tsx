@@ -1,16 +1,9 @@
 "use client"
 
+import Toast from "@/app/components/Toast"
 import { setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
-import {
-   Button,
-   FluidForm,
-   InlineLoading,
-   PasswordInput,
-   Stack,
-   TextInput,
-   ToastNotification,
-} from "@carbon/react"
+import { Button, FluidForm, InlineLoading, PasswordInput, Stack, TextInput } from "@carbon/react"
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { Formik } from "formik"
 
@@ -83,12 +76,9 @@ const LoginForm = () => {
    return (
       <>
          {(isError || isSuccess) && (
-            <ToastNotification
+            <Toast
                kind={isError ? "error" : "success"}
-               role="status"
-               timeout={3000}
-               title={message}
-               style={{ position: "absolute", top: 40 }}
+               title={message || (isError ? "An error occurred" : "Success")}
             />
          )}
          <div className={styles.auth_heading_container}>

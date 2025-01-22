@@ -1,5 +1,6 @@
 "use client"
 
+import Toast from "@/app/components/Toast"
 import { setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
 import {
@@ -11,7 +12,6 @@ import {
    SelectItem,
    Stack,
    TextInput,
-   ToastNotification,
 } from "@carbon/react"
 import FluidSelect from "@carbon/react/lib/components/FluidSelect"
 import { useMutation } from "@tanstack/react-query"
@@ -74,12 +74,9 @@ const SignupForm = () => {
    return (
       <>
          {(isError || isSuccess) && (
-            <ToastNotification
+            <Toast
                kind={isError ? "error" : "success"}
-               role="status"
-               timeout={3000}
-               title={message}
-               style={{ position: "absolute", top: 40 }}
+               title={message || (isError ? "An error occurred" : "Success")}
             />
          )}
 
