@@ -38,22 +38,26 @@ const PasswordCriteria: React.FC<Props> = ({ password }) => {
       })
    }, [password])
 
+   // Check if all constraints are met
+   const allChecksPassed = Object.values(validation).every(Boolean)
+
+   // Render only if password length > 1 and not all checks are true
+   if (password.length <= 1 || allChecksPassed) return null
+
    return (
-      password?.length > 0 && (
-         <div className={styles.password_criteria}>
-            {constraints.map((constraint) => (
-               <div key={constraint.label} className={styles.password_criteria_item}>
-                  <Image
-                     src={constraint.valid ? "/svg/green-check.svg" : "/svg/empty-check.svg"}
-                     alt=""
-                     width={20}
-                     height={20}
-                  />
-                  <p>{constraint.label}</p>
-               </div>
-            ))}
-         </div>
-      )
+      <div className={styles.password_criteria}>
+         {constraints.map((constraint) => (
+            <div key={constraint.label} className={styles.password_criteria_item}>
+               <Image
+                  src={constraint.valid ? "/svg/green-check.svg" : "/svg/empty-check.svg"}
+                  alt=""
+                  width={20}
+                  height={20}
+               />
+               <p>{constraint.label}</p>
+            </div>
+         ))}
+      </div>
    )
 }
 
