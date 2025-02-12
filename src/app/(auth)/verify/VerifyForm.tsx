@@ -180,7 +180,7 @@ const VerifyForm = () => {
                               Can't find the OTP in your mail? Check your spam or{" "}
                               <CarbonLink
                                  className={styles.auth_link}
-                                 onClick={canResend ? handleResendOTP : null}
+                                 onClick={canResend ? handleResendOTP : undefined}
                                  style={{ cursor: !canResend && "not-allowed" }}
                               >
                                  Resend OTP
