@@ -26,11 +26,13 @@ export const authSlice = createSlice({
          state.user = payload.user
          if (payload.token) Cookies.set("token", JSON.stringify(payload.token), cookieConfig)
          Cookies.set("user", JSON.stringify(payload.user), cookieConfig)
+         Cookies.set("X-TenantID", payload.user.tenantId, cookieConfig)
       },
       logout: (state) => {
          state.user = null as any
          Cookies.remove("token", cookieConfig)
          Cookies.remove("user", cookieConfig)
+         Cookies.remove("X-TenantID", cookieConfig)
          window.location.href = authRoutes.login
       },
    },
