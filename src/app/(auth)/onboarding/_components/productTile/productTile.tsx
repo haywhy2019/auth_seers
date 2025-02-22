@@ -6,7 +6,7 @@ import React from "react"
 
 import Image from "next/image"
 
-import { Products } from "@/types/general.types"
+import { Products } from "@/types/product.types"
 
 import ProductModal from "../productModal/productModal"
 import styles from "./productTile.module.scss"
@@ -14,8 +14,8 @@ import styles from "./productTile.module.scss"
 type ProductTileProps = {
    onClick: () => void
    product: Products
-   selected: number[]
-   setSelected: React.Dispatch<React.SetStateAction<number[]>>
+   selected: Products[]
+   setSelected: React.Dispatch<React.SetStateAction<Products[]>>
    openModal: boolean
    setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -28,11 +28,11 @@ function ProductTile({
    openModal,
    setOpenModal,
 }: ProductTileProps) {
-   const handleCheckboxChange = (productId: number) => {
+   const handleCheckboxChange = (product: Products) => {
       setSelected((prev) =>
-         prev.includes(productId)
-            ? prev.filter((checkboxId) => checkboxId !== productId)
-            : [...prev, productId],
+         prev.map((item) => item.id).includes(product.id)
+            ? prev.filter((item) => item.id !== product.id)
+            : [...prev, product],
       )
    }
 
@@ -42,8 +42,8 @@ function ProductTile({
             <Checkbox
                id={product?.id.toString()}
                labelText=""
-               checked={selected.includes(product?.id)}
-               onChange={() => handleCheckboxChange(product?.id)}
+               checked={selected.map((item) => item.id).includes(product?.id)}
+               onChange={() => handleCheckboxChange(product)}
                data-testId="onboarding-product-checkbox"
                value={product.id}
             />

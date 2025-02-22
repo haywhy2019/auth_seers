@@ -4,6 +4,7 @@ export const authRoutes = {
    resetPassword: "/reset-password",
    createPassword: "/create-password",
    forgotPassword: "/forgot-password",
+   logout: "/logout",
    onboarding: "/onboarding",
    verify: "/verify",
 }

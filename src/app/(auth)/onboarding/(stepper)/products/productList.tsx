@@ -2,31 +2,27 @@ import Loader from "@/app/components/loader/loader"
 import { formData, increment } from "@/redux/features/onboard.slice"
 import { products, selectedProduct } from "@/redux/features/products.slice"
 import { useAppDispatch } from "@/redux/hooks"
-import { ActionableNotification, Button, ToastNotification } from "@carbon/react"
+import { Button, ToastNotification } from "@carbon/react"
 import { useQuery } from "@tanstack/react-query"
 
 import React, { useEffect, useState } from "react"
 
 import productsApi from "@/axios/products.api"
 
-import { getProductsByIds } from "@/helpers/products"
-
-import { Products } from "@/types/general.types"
+import { Products } from "@/types/product.types"
 
 import ProductTile from "../../_components/productTile/productTile"
 import styles from "./productList.module.scss"
-import SelectProductHook from "./selectProductHook"
 
 function ProductList() {
    const [open, setOpen] = useState(false)
-   const { selected, setSelected } = SelectProductHook()
+   const [selected, setSelected] = useState<Products[]>([])
    const [err, setErr] = useState("")
    const dispatch = useAppDispatch()
 
-   const { isPending, error, data, refetch } = useQuery({
+   const { isPending, error, data } = useQuery({
       queryKey: ["productData"],
       queryFn: productsApi.products,
-      // retry: 6,
    })
 
    const handleSubmit = () => {
@@ -36,9 +32,7 @@ function ProductList() {
       } else {
          dispatch(formData({ products: selected }))
          dispatch(increment())
-         dispatch(selectedProduct(getProductsByIds(data?.data.data, selected)))
-         const selectedProduct1 = getProductsByIds(data?.data.data, selected)
-         console.log(selectedProduct1, "test")
+         dispatch(selectedProduct(selected))
       }
    }
    useEffect(() => {
@@ -58,11 +52,18 @@ function ProductList() {
                kind={"error"}
                role="status"
                timeout={3000}
-               title={err}
+               title={err || "An error occured"}
                style={{ position: "absolute", top: 40 }}
             />
          )}
 
+         {error && (
+            <ToastNotification
+               title="Products Error"
+               subtitle="Please try again"
+               className={styles.errorToast}
+            />
+         )}
          <div>
             <h1 className={styles.onboard_heading}>Select your products</h1>
             <p className={styles.onboard_subheading}>
@@ -72,17 +73,7 @@ function ProductList() {
          </div>
 
          <div>
-            {error && (
-               <ActionableNotification
-                  title="Products Error"
-                  subtitle="Please try again"
-                  closeOnEscape
-                  inline={false}
-                  actionButtonLabel="Retry"
-                  onActionButtonClick={refetch}
-                  className={styles.errorToast}
-               />
-            )}
+            {/* {productsData?.map((item: Products, index: number) => ( */}
             {data?.data?.data?.map((item: Products, index: number) => (
                <ProductTile
                   product={item}

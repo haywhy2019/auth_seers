@@ -1,4 +1,5 @@
 import { User } from "@/types/general.types"
+import { Products } from "@/types/product.types"
 
 export const initialState = {
    app: {},
@@ -10,7 +11,7 @@ export const initialState = {
       formData: {},
    },
    products: {
-      allProducts: [],
-      selectedProduct: [],
+      allProducts: [] as Products[],
+      selectedProduct: [] as Products[],
    },
 }

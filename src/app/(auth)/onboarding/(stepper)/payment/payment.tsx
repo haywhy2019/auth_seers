@@ -8,7 +8,7 @@ import React from "react"
 
 import formatAmount from "@/helpers/formatAmount"
 
-import { Products } from "@/types/general.types"
+import { Products } from "@/types/product.types"
 
 import PaystackLogo from "../../../../../../public/svg/paystack"
 import styles from "./payment.module.scss"
@@ -34,7 +34,7 @@ function PaymentPage() {
                {selectedProduct.map((item: Products) => (
                   <SelectedProductAmount
                      feature={item.productName}
-                     amount={item.prices.monthly}
+                     amount={item.prices[0].amount}
                      key={item.id}
                   />
                ))}
@@ -97,12 +97,3 @@ function PaymentPage() {
 }
 
 export default PaymentPage
-
-// const Pricing = ({ label, amount, idx }: { label: string; amount: string; idx: number }) => {
-//    return (
-//       <div className={styles.pricing} data-testId="onboarding-payment-pricing-component">
-//          <RadioButton labelText={label} value={idx.toString()} id={idx.toString()} />
-//          <p className={idx == 0 ? styles.amount : styles.amount_disabled}>{amount}</p>
-//       </div>
-//    )
-// }

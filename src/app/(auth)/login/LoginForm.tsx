@@ -29,6 +29,8 @@ const LoginForm = () => {
    const prompt = searchParams.get("prompt") as string
    const continueUrl = searchParams.get("continue") as string
 
+   console.log(continueUrl, prompt, searchParams, "testst")
+
    const {
       mutate: _login,
       isError,

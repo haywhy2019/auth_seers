@@ -2,7 +2,7 @@ import { Checkbox } from "@carbon/react"
 
 import React, { useState } from "react"
 
-import { Products } from "@/types/general.types"
+import { Products } from "@/types/product.types"
 
 import AmountInputWithArrows from "../InputWithArrows/amountInputWithArrows"
 import styles from "./products.module.scss"
@@ -31,10 +31,10 @@ function SelectedProductWithInput({ product, selected, onChange }: ProductProps)
                />
                <p className={styles.feature_text}>{product.productName}</p>
             </div>
-            <p className={styles.features}>{product.prices.credit}/credit</p>
+            <p className={styles.features}>{product.prices[0].credit}/credit</p>
          </div>
          <AmountInputWithArrows
-            amount={product.prices.credit}
+            amount={product.prices[0].amount}
             value={creditNum}
             setValue={setCreditNum}
             onChange={(e: any) => setCreditNum(e.target.value)}

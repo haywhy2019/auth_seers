@@ -2,19 +2,18 @@ import { Checkbox } from "@carbon/react"
 
 import React from "react"
 
-import { Products } from "@/types/general.types"
+import { Products } from "@/types/product.types"
 
 import styles from "./products.module.scss"
 
 type ProductProps = {
    product: Products
-   selected: number[]
+   selected: Products[]
    onChange: () => void
    amount: string
 }
 
 function SelectedProduct({ product, selected, onChange, amount }: ProductProps) {
-   console.log(selected, "selected")
    return (
       <div className={styles.feature_container}>
          <div className={styles.feature_flex}>
@@ -22,7 +21,7 @@ function SelectedProduct({ product, selected, onChange, amount }: ProductProps) 
                id={product?.id.toString()}
                labelText=""
                value={product.id}
-               checked={selected.includes(product?.id)}
+               checked={selected.map((item) => item.id).includes(product?.id)}
                onChange={onChange}
                data-testId="onboarding-select-product-checkbox"
             />

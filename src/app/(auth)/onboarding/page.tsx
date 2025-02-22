@@ -11,7 +11,6 @@ import SubscriptionPage from "./(stepper)/subscription/subscription"
 
 const Onboarding = () => {
    const count = useAppSelector((state) => state.onBoard.counter)
-   console.log(count, "form count")
    return (
       <div className={""}>
          {count == 0 && <ProductList />}
