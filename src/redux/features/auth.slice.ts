@@ -13,6 +13,7 @@ const cookieConfig = {
    secure: true,
    sameSite: "strict",
    path: "/",
+   expires: 0.4167, //10 hours
 } as const
 
 export const authSlice = createSlice({
