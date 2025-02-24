@@ -10,7 +10,7 @@ import { RootState } from "../store"
 const cookieConfig = {
    httpOnly: false,
    domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
-   secure: true,
+   secure: false,
    sameSite: "strict",
    path: "/",
    expires: 0.4167, //10 hours
@@ -29,11 +29,15 @@ export const authSlice = createSlice({
          Cookies.set("user", JSON.stringify(payload.user), cookieConfig)
          Cookies.set("X-TenantID", payload.user.tenantId, cookieConfig)
       },
+      saveEncodedCredentials: (_, { payload }) => {
+         Cookies.set("cred", payload, cookieConfig)
+      },
       logout: (state) => {
          state.user = null as any
          Cookies.remove("token", cookieConfig)
          Cookies.remove("user", cookieConfig)
          Cookies.remove("X-TenantID", cookieConfig)
+         Cookies.remove("cred", cookieConfig)
          window.location.href = authRoutes.login
       },
    },
@@ -41,6 +45,6 @@ export const authSlice = createSlice({
 
 export const authSelector = (state: RootState) => state.auth
 
-export const { setUser, setAuth, logout } = authSlice.actions
+export const { setUser, setAuth, saveEncodedCredentials, logout } = authSlice.actions
 
 export default authSlice.reducer
