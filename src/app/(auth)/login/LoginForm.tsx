@@ -1,7 +1,7 @@
 "use client"
 
 import Toast from "@/app/components/Toast"
-import { setAuth } from "@/redux/features/auth.slice"
+import { saveEncodedCredentials, setAuth } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
 import { Button, FluidForm, InlineLoading, PasswordInput, Stack, TextInput } from "@carbon/react"
 import { useMutation, useQuery } from "@tanstack/react-query"
@@ -62,14 +62,26 @@ const LoginForm = () => {
       _login({ email: values.email, password: values.password })
    }
 
-   const { isSuccess: lafiaHMSSuccess, isError: lafiaHMSError } = useQuery({
+   const {
+      data: encodedData,
+      isSuccess: lafiaHMSSuccess,
+      isError: lafiaHMSError,
+   } = useQuery({
       queryKey: ["login"],
       queryFn: () => authApi.lafiaHMSLogin(),
       enabled: !!(prompt && continueUrl),
    })
 
    React.useEffect(() => {
-      if (lafiaHMSSuccess) redirect(continueUrl!)
+      if (lafiaHMSSuccess) {
+         const base64Data = encodedData?.data?.data
+         if (base64Data) {
+            dispatch(saveEncodedCredentials(base64Data))
+            redirect(`${continueUrl!}?accessToken=${base64Data}`)
+         } else {
+            redirect(authRoutes.login)
+         }
+      }
       if (lafiaHMSError) redirect(authRoutes.login)
    }, [lafiaHMSSuccess, lafiaHMSError])
 
