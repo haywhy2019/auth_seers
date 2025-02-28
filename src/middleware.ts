@@ -42,7 +42,7 @@ export async function middleware(request: NextRequest) {
    }
 
    //Redirect user if logged in & not trying to authenticate a sub-application
-   if (pathname === authRoutes.login && user) {
+   if (pathname === authRoutes.login && user && token) {
       const hasPrompt = url.searchParams.has("prompt")
       const hasLoginHint = url.searchParams.has("login_hint")
       const hasContinue = url.searchParams.has("continue")
