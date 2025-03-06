@@ -1,11 +1,6 @@
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout';
-@use '@carbon/colors';
-
 .container {
   background-color: #ffffff; 
-  margin: $spacing-10 0px;
+  margin: 4rem 0px;
 }
 
 .children {
@@ -15,7 +10,7 @@
 }
 
 .auth_logo{
-  margin-bottom: $spacing-05;
+  margin-bottom: 1rem;
 
   @media (max-width: 768px) {
     width: 250px; /* Adjusted size for mobile view */
@@ -24,25 +19,27 @@
 }
 
 .auth_heading_container{
-  margin-bottom: $spacing-05;
+  margin-bottom: 1rem;
 }
 
 .auth_heading {
-  @include type-style('heading-03');
+  font-size: 1.25rem;
+  line-height: 1.4;
   font-weight: 600;
   text-align: center;
-  padding-bottom: $spacing-01;
+  padding-bottom: 0.125rem;
 }
 
 .auth_description {
-  @include type-style('body-01');
+  font-size: 0.875rem;
+  line-height: 1.42857;
   text-align: center
 }
 
 .auth_form_container {
   width: 100%;
-  margin: layout.$spacing-05 layout.$spacing-05;
-  gap: $spacing-05;
+  margin: 1rem 1rem;
+  gap: 1rem;
 }
 
 .auth_input_field {
@@ -50,7 +47,9 @@
 }
 
 .auth_link {
-  @include type-style('heading-compact-01');
+  font-size: 0.875rem;
+  line-height: 1.285;
+  font-weight: 600;
   text-align: right; 
   text-decoration: none;
   max-width: fit-content;
@@ -61,33 +60,11 @@
   }
 }
 
-.auth_socials_container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: $spacing-05;
-  margin: layout.$spacing-05 0px;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
-}
-
-.auth_socials_tile {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: $spacing-04;
-
-  & p {
-    @include type-style('heading-compact-01');
-  }
-}
 
 .auth_select {
   border-bottom: none !important;
   @media screen and (max-width: 768px) {
-   margin-bottom: $spacing-03;
+   margin-bottom: 0.5rem;
   }
 }
 
@@ -95,7 +72,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: $spacing-03;
+  gap: 0.5rem;
 
   & * {
     flex: 1;
@@ -115,7 +92,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  gap: $spacing-03;
+  gap: 0.5rem;
 
   & * {
     flex: 1;
@@ -127,31 +104,9 @@
   }
 }
 
-.auth_verify_modal {
-
-  & p{
-    & button {
-      appearance: none;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      @include type-style('heading-02');
-      cursor: pointer;
-      color: colors.$blue-50;
-  
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &:focus {
-        border: outset;
-      }
-    }
-  }
-}
-
 .auth_verify_timer {
-  @include type-style('body-01');
+  font-size: 0.875rem;
+  line-height: 1.42857;
   color: #008080;
   font-weight: 600;
   text-align: center;
@@ -159,16 +114,16 @@
 
 .password_criteria {
   background: #f4f4f4;
-  padding: $spacing-04;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: $spacing-03;
+  gap: 0.5rem;
 }
 
 .password_criteria_item {
   display: flex;
   align-items: center;
-  gap: $spacing-04;
+  gap: 0.75rem;
 
   & p{
     font-size: 12px;

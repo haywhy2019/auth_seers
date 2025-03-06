@@ -1,41 +1,37 @@
-@use '@carbon/colors' as *;
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/themes' as *;
-
 .heading {
-  @include type-style('heading-03');
+  font-size: 1.25rem;
+  line-height: 1.4;
   font-weight: 600;
   text-align: center;
-  padding-bottom: $spacing-01;
-  margin: $spacing-03 0px;
+  padding-bottom: 0.125rem;
+  margin: 0.5rem 0px;
 }
 
 .subheading{
-  @include type-style('body-compact-02');
+  font-size: 1rem;
+  font-size: 1rem;
   text-align: center;
-  margin: $spacing-03 0px;
+  margin: 0.5rem 0px;
 }
 
 .notice_container {
   display: flex;
   align-items: center;
-  gap: $spacing-04;
+  gap: 0.75rem;
   background-color: #E0FFFF;
-  padding: $spacing-02 $spacing-03;
-  margin: $spacing-07 0;
+  padding: 0.25rem 0.5rem;
+  margin: 2rem 0;
 
   p {
-    @include type-style('helper-text-02');
     font-size: 0.75rem;
     text-align: left
   }
 
 }
 .text_body {
-  @include type-style('body-02');
-  margin: $spacing-03 0px;
+  font-size: 1rem;
+  line-height: 1.428;
+  margin: 0.5rem 0px;
 }
 
 // .pricing_container {
