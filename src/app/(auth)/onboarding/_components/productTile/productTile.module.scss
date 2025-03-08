@@ -1,15 +1,9 @@
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/colors' as *;
-@use '@carbon/themes' as *;
-
-
 .tile {
    display: flex;
    justify-content: space-between;
    align-items: flex-end;
-    background-color: $layer-02;
-    border: 1px solid $border-subtle-00; 
+    // background-color: $layer-02;
+    // border: 1px solid $border-subtle-00; 
     margin:  1rem 0px;
       
 }
@@ -28,17 +22,18 @@
 }
 
 .heading{
-    @include type-style('heading-02');
+    font-size: 1.5rem;
+    line-height: 1.4
 }
 
 .body {
-    @include type-style('helper-text-01');
+    font-size: 0.75rem;
 }
 
 .features{
-    @include type-style('helper-text-01');
+    font-size: 0.75rem;
     width: max-content;
-    color: $link-primary; 
+    color: #4589ff; 
     margin-left: 0.25rem;
     cursor: pointer;
     @media screen and (max-width: 768px) {
