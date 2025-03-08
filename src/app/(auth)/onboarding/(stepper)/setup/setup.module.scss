@@ -1,9 +1,3 @@
-@use '@carbon/colors' as *;
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/themes' as *;
-
 .heading {
     font-size: 1.25rem;
   line-height: 1.4;
@@ -47,7 +41,7 @@
 .org_color_code{
           font-size: 0.875rem;
       line-height: 1.28572; 
-    color: $text-secondary; 
+    // color: $text-secondary; 
 }
 
 .addcolor_container{
