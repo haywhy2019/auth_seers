@@ -54,7 +54,6 @@ const VerifyForm = () => {
    const {
       mutate: _verifyOtp,
       isError,
-      isSuccess,
       isPending,
    } = useMutation({
       mutationFn: authApi.verifyOtp,
