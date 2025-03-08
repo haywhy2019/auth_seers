@@ -10,7 +10,7 @@
    align-items: flex-end;
     background-color: $layer-02;
     border: 1px solid $border-subtle-00; 
-    margin:  $spacing-05 0px;
+    margin:  1rem 0px;
       
 }
 
@@ -24,7 +24,7 @@
 .product_logo{
     max-width: 100%;
     display: block;
-    margin-right: $spacing-03;
+    margin-right: 0.5rem;
 }
 
 .heading{
@@ -39,7 +39,7 @@
     @include type-style('helper-text-01');
     width: max-content;
     color: $link-primary; 
-    margin-left: $spacing-02;
+    margin-left: 0.25rem;
     cursor: pointer;
     @media screen and (max-width: 768px) {
         width: min-content

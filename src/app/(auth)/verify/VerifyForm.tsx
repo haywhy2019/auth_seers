@@ -27,9 +27,11 @@ import { getRedirectUrl } from "@/helpers/utils"
 
 import styles from "../auth.module.scss"
 import { otpSchema } from "../auth.validators"
+import VerifyOtpSuccessModal from "../components/VerifyOtpSuccessModal"
 
 const VerifyForm = () => {
    const [message, setMessage] = React.useState("")
+   const [open, setOpen] = React.useState(false)
 
    const COUNTDOWN_TIME = 5 * 60 // 5 minutes in seconds
    const [timeLeft, setTimeLeft] = React.useState(0)
@@ -42,6 +44,12 @@ const VerifyForm = () => {
    const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
 
    const handleLogout = () => dispatch(logout())
+
+   const openModal = () => setOpen(true)
+   const closeModal = () => {
+      setOpen(false)
+      handleLogout()
+   }
 
    const {
       mutate: _verifyOtp,
@@ -59,8 +67,7 @@ const VerifyForm = () => {
             const redirectUrl = getRedirectUrl(updatedUser)
             router.push(redirectUrl!)
          } else {
-            setMessage("Email verified successfully. Please Login")
-            handleLogout()
+            openModal()
          }
       },
       onError: (error: any) => {
@@ -118,12 +125,7 @@ const VerifyForm = () => {
 
    return (
       <>
-         {(isError || isSuccess) && (
-            <Toast
-               kind={isError ? "error" : "success"}
-               title={message || (isError ? "An error occurred" : "Success")}
-            />
-         )}
+         {isError && <Toast kind="error" title={message || "An error occurred"} />}
 
          {(resendError || resendSuccess) && (
             <Toast
@@ -210,6 +212,8 @@ const VerifyForm = () => {
                Logout
             </Link>
          </p>
+
+         <VerifyOtpSuccessModal open={open} close={closeModal} />
       </>
    )
 }
