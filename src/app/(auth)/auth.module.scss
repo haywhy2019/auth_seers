@@ -1,7 +1,6 @@
-
 .container {
-   background-color: #ffffff;
-   margin: 4rem 0px;
+  background-color: #ffffff; 
+  margin: 4rem 0px;
 }
 
 .children {
@@ -10,8 +9,8 @@
    align-items: center;
 }
 
-.auth_logo {
-   margin-bottom: 1rem;
+.auth_logo{
+  margin-bottom: 1rem;
 
    @media (max-width: 768px) {
       width: 250px; /* Adjusted size for mobile view */
@@ -19,26 +18,28 @@
    }
 }
 
-.auth_heading_container {
-   margin-bottom: 1rem;
+.auth_heading_container{
+  margin-bottom: 1rem;
 }
 
 .auth_heading {
-   font-size: 1.25rem;
-   font-weight: 600;
-   text-align: center;
-   padding-bottom: 0.125rem;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 0.125rem;
 }
 
 .auth_description {
-   font-size: 0.875rem;
-   text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  text-align: center
 }
 
 .auth_form_container {
-   width: 100%;
-   margin: 1rem;
-   gap: 1rem;
+  width: 100%;
+  margin: 1rem 1rem;
+  gap: 1rem;
 }
 
 .auth_input_field {
@@ -46,52 +47,32 @@
 }
 
 .auth_link {
-     font-size: 0.875rem;
-   text-align: right;
-   text-decoration: none;
-   max-width: fit-content;
-   cursor: pointer;
+  font-size: 0.875rem;
+  line-height: 1.285rem;
+  font-weight: 600;
+  text-align: right; 
+  text-decoration: none;
+  max-width: fit-content;
+  cursor: pointer;
 
    &:hover {
       text-decoration: underline;
    }
 }
 
-.auth_socials_container {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   gap: 1rem;
-   margin: 1rem 0px;
-
-   @media screen and (max-width: 768px) {
-      flex-direction: column;
-   }
-}
-
-.auth_socials_tile {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
-
-   & p {
-        font-size: 0.875rem;
-   }
-}
 
 .auth_select {
-   border-bottom: none !important;
-   @media screen and (max-width: 768px) {
-      margin-bottom: 0.5rem;
-   }
+  border-bottom: none !important;
+  @media screen and (max-width: 768px) {
+   margin-bottom: 0.5rem;
+  }
 }
 
 .auth_2_columns_container {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
    & * {
       flex: 1;
@@ -108,10 +89,10 @@
 }
 
 .auth_2_columns_container_select {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 
    & * {
       flex: 1;
@@ -123,47 +104,26 @@
    }
 }
 
-.auth_verify_modal {
-   & p {
-      & button {
-         appearance: none;
-         border: none;
-         outline: none;
-         background-color: transparent;
-          font-size: 1rem;
-         cursor: pointer;
-         color:#0f62fe ;
-
-         &:hover {
-            text-decoration: underline;
-         }
-
-         &:focus {
-            border: outset;
-         }
-      }
-   }
-}
-
 .auth_verify_timer {
- font-size: 0.875rem;
-   color: #008080;
-   font-weight: 600;
-   text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.42857;
+  color: #008080;
+  font-weight: 600;
+  text-align: center;
 }
 
 .password_criteria {
-   background: #f4f4f4;
-   padding: 0.75rem;
-   display: flex;
-   flex-direction: column;
-   gap: 0.75rem;
+  background: #f4f4f4;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .password_criteria_item {
-   display: flex;
-   align-items: center;
-   gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 
    & p {
       font-size: 12px;
