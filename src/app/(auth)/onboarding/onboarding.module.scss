@@ -1,35 +1,147 @@
-@use '@carbon/colors';
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout';
-
-
-
-.onboard_heading {
-  @include type-style('heading-03');
-  font-weight: 600;
-  text-align: center;
-  padding-bottom: $spacing-01;
-  margin: $spacing-03 0px;
+.heading {
+   font-size: 1.2rem;
+   font-weight: 600;
+   text-align: center;
+   padding: 1rem 0;
+   font-size: 1.2rem;
 }
 
-
-.onboard_subheading{
-  @include type-style('body-compact-02');
-  text-align: center;
+.subheading {
+   font-size: 1rem;
+   text-align: center;
+   padding: 0.5rem 0;
 }
 
-.button_container{
-  display: flex;
-  justify-content: flex-end;
- }
- .button {
-  @media screen and (max-width: 768px) {
-    width: 100%; 
-    max-width: 100%; 
-    display: block; 
-    margin: 0 auto; 
-    text-align: center;
-   
-  }
- }
+.radioContainer {
+   padding-top: 1rem;
+}
+
+.radio_btn {
+   padding-top: 0.5rem;
+}
+
+.setup_image {
+   width: 100%;
+   height: auto;
+   padding: 0.5rem 0;
+}
+
+.fileupload {
+   max-inline-size: 100%;
+   margin-bottom: 0.5rem;
+}
+
+.org_container {
+   display: flex;
+   justify-content: space-between;
+}
+.org_name {
+   font-size: 0.75rem;
+}
+
+.org_color_code {
+   font-size: 0.75rem;
+   color: #0f62fe;
+}
+
+.addcolor_container {
+   display: flex;
+   align-items: center;
+   padding: 1rem 0;
+}
+
+.addcolor {
+   font-size: 0.75rem;
+   font-weight: 600;
+   text-align: center;
+   color: #0f62fe;
+   cursor: pointer;
+}
+
+.removecolor {
+   font-size: 0.75rem;
+   font-weight: 600;
+   text-align: center;
+   color: #da1e28;
+   cursor: pointer;
+}
+
+.submit_container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-top: 0.75rem;
+   @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 0.5rem;
+   }
+}
+
+.skip_text {
+   font-size: 0.75rem;
+   color: #0f62fe;
+}
+
+.button {
+   @media screen and (max-width: 768px) {
+      width: 100%;
+   }
+}
+
+.main_org_container {
+   display: flex;
+   gap: 0.5rem;
+}
+
+.flex_div {
+   display: flex;
+   align-items: center;
+}
+
+.hide_div {
+   display: none;
+}
+
+.stepper_container {
+   padding: 0.5rem 0px;
+   background-color: pink;
+}
+
+.subscription_button {
+   padding-top: 1rem;
+   padding-bottom: 0;
+   display: flex;
+   justify-content: end;
+}
+
+.sub_btn {
+   width: 50%;
+   @media screen and (max-width: 768px) {
+      width: 100%;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+   }
+}
+
+.logout_container {
+   padding: 2rem 0;
+   display: flex;
+   justify-content: center;
+}
+
+.logout_text1 {
+   font-size: 0.875rem;
+   line-height: 1.28572;
+}
+
+.logout_text2,
+.logout_text2:hover {
+   font-size: 0.875rem;
+   line-height: 1.28572;
+   color: #0f62fe;
+   margin-left: 0.25rem;
+   cursor: pointer;
+}

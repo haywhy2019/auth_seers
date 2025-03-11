@@ -8,10 +8,7 @@ export const initialState = {
    },
    onBoard: {
       counter: 0,
-      formData: {},
+      
    },
-   products: {
-      allProducts: [] as Products[],
-      selectedProduct: [] as Products[],
-   },
+  
 }

@@ -16,14 +16,11 @@ export const onBoardSlice = createSlice({
       reset: (state) => {
          state.counter = 0
       },
-      formData: (state, { payload }) => {
-         console.log(payload, "payload drom onboard slice")
-         state.formData = payload
-      },
+    
    },
 })
 
-export const { increment, decrement, reset, formData } = onBoardSlice.actions
+export const { increment, decrement, reset } = onBoardSlice.actions
 
 export const selectOnBoardStepper = (state: RootState) => state.onBoard
 

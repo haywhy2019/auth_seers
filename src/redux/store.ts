@@ -6,21 +6,19 @@ import storage from "redux-persist/lib/storage"
 import app from "./features/app.slice"
 import auth from "./features/auth.slice"
 import onBoard from "./features/onboard.slice"
-import productInfo from "./features/products.slice"
 
 // Combine reducers
 const rootReducer = combineReducers({
    app,
    auth,
    onBoard,
-   productInfo,
 })
 
 // Persist configuration
 const persistConfig = {
    key: "root", // Key for localStorage
    storage, // Storage engine
-   whitelist: ["app", "auth", "onBoard", "productInfo"], // Reducers you want to persist
+   whitelist: ["app", "auth", "onBoard"], // Reducers you want to persist
 }
 
 // Persisted reducer

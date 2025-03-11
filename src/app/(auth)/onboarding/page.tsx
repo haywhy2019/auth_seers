@@ -1,21 +1,26 @@
-"use client"
+import React from 'react';
 
-import { useAppSelector } from "@/redux/hooks"
 
-import React from "react"
 
-import ConfigurationPage from "./(stepper)/configuration/Configuration"
-import ClassificationPage from "./(stepper)/classification/Classification"
-import { Button } from "@carbon/react"
+import { Metadata } from "next";
 
-const Onboarding = () => {
-   const count = useAppSelector((state) => state.onBoard.counter)
-   return (
-      <div className={""}>
-         {count == 0 && <ClassificationPage />}
-         {count == 1 && <ConfigurationPage />}
-      </div>
-   )
+
+
+import OnboardingPage from "./OnboardingPage"
+
+
+export const metadata: Metadata = {
+   title: "LafiaEMR - Onboarding",
+   description: "",
 }
 
-export default Onboarding
+function page() {
+   return (
+     <div>
+           <OnboardingPage />
+     </div>
+  
+  )
+}
+
+export default page

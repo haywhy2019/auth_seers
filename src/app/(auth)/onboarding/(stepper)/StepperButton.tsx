@@ -6,8 +6,7 @@ import Link from "next/link"
 
 import { authRoutes } from "@/helpers/routes"
 
-import styles from "./stepperButton.module.scss"
-
+import styles from "../onBoarding.module.scss"
 function StepperButton({
    onClick,
    loading,

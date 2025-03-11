@@ -1,6 +1,6 @@
 "use client"
 
-import StepperIndicator from "@/app/(auth)/onboarding/(stepper)/stepperIndicator/stepperIndicator"
+import StepperIndicator from "@/app/(auth)/onboarding/(stepper)/stepperIndicator"
 
 import React from "react"
 
@@ -10,7 +10,7 @@ export default function OnboardingLayout({
    children: React.ReactNode
 }) {
    return (
-      <div>
+      <div style={{width: "100%", minWidth: "100%"}}>
          <StepperIndicator />
          {children}
       </div>
