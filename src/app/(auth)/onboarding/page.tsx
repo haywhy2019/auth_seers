@@ -4,19 +4,16 @@ import { useAppSelector } from "@/redux/hooks"
 
 import React from "react"
 
-import PaymentPage from "./(stepper)/payment/payment"
-import ProductList from "./(stepper)/products/productList"
-import SetupPage from "./(stepper)/setup/setUp"
-import SubscriptionPage from "./(stepper)/subscription/subscription"
+import ConfigurationPage from "./(stepper)/configuration/Configuration"
+import ClassificationPage from "./(stepper)/classification/Classification"
+import { Button } from "@carbon/react"
 
 const Onboarding = () => {
    const count = useAppSelector((state) => state.onBoard.counter)
    return (
       <div className={""}>
-         {count == 0 && <ProductList />}
-         {count == 1 && <SubscriptionPage />}
-         {count == 2 && <PaymentPage />}
-         {count == 3 && <SetupPage />}
+         {count == 0 && <ClassificationPage />}
+         {count == 1 && <ConfigurationPage />}
       </div>
    )
 }

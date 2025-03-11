@@ -7,13 +7,17 @@ import React, { useState } from "react"
 
 import Image from "next/image"
 
-import styles from "./setup.module.scss"
+import styles from "./configuration.module.scss"
+import { useAppDispatch } from "@/redux/hooks"
+import { reset } from "@/redux/features/onboard.slice"
 
 function SetupPage() {
+   const dispatch = useAppDispatch()
    const [priColor, setPriColor] = useState(false)
 
    const goToDashboard = () => {
-      window.location.href = "https://dev-admin.lafialink-dev.com/dashboard"
+      // window.location.href = "https://dev-admin.lafialink-dev.com/dashboard"
+dispatch(reset())
    }
 
    return (
@@ -33,7 +37,7 @@ function SetupPage() {
                   <Image
                      src="/svg/setup.svg"
                      alt=""
-                     width={500}
+                     width={200}
                      height={180}
                      className={styles.setup_image}
                   />
@@ -88,7 +92,7 @@ function SetupPage() {
                <div className={styles.submit_container}>
                   <p className={styles.skip_text}>Skip</p>
                   <Button
-                     size="xl"
+                     size="lg"
                      className={styles.button}
                      onClick={goToDashboard}
                      data-testId="onboarding-setup-btn"

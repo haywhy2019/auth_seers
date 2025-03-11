@@ -1,6 +1,6 @@
 "use client"
 
-import OnBoardingSteper from "@/app/(auth)/onboarding/_components/stepper/onBoardingSteper"
+import StepperIndicator from "@/app/(auth)/onboarding/(stepper)/stepperIndicator/stepperIndicator"
 
 import React from "react"
 
@@ -11,7 +11,7 @@ export default function OnboardingLayout({
 }) {
    return (
       <div>
-         <OnBoardingSteper />
+         <StepperIndicator />
          {children}
       </div>
    )
