@@ -4,6 +4,8 @@
 import axios from "axios"
 import Cookies from "js-cookie"
 
+import { cookieOptions } from "@/helpers/enum"
+
 export const BASEURL = process.env.NEXT_PUBLIC_BASEURL
 
 const publicInstance = axios.create({
@@ -32,7 +34,9 @@ const formDataInstance = axios.create({
 
 //request interceptors
 privateInstance.interceptors.request.use((config: any) => {
-   const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
+   const token =
+      Cookies.get(cookieOptions.ACCESS_TOKEN_COOKIE) &&
+      JSON.parse(Cookies.get(cookieOptions.ACCESS_TOKEN_COOKIE) || "")
 
    if (token) {
       config.headers.Authorization = `Bearer ${token}`

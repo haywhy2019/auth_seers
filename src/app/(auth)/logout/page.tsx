@@ -8,7 +8,7 @@ import React from "react"
 
 import authApi from "@/axios/auth.api"
 
-const Logout = () => {
+const LogoutPage = () => {
    const dispatch = useAppDispatch()
 
    const { mutate: _logout } = useMutation({
@@ -22,4 +22,4 @@ const Logout = () => {
    }, [])
 }
 
-export default Logout
+export default LogoutPage
