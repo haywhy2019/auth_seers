@@ -1,10 +1,5 @@
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/colors' as *;
-@use '@carbon/themes' as *;
 .panel {
-    margin: $spacing-04 0 ;
+    margin: 0.75rem 0 ;
 }
 
 .no_padding{
@@ -15,19 +10,21 @@
     background-color: #FAFFFF !important
 }
 .tab_header{
-    @include type-style('heading-03');
+      font-size: 1.25rem;
+  line-height: 1.4;
     font-weight: 600;
-    padding-bottom: $spacing-01;
-    margin: $spacing-03 0px;
+    padding-bottom: 0.125rem;
+    margin: 0.5rem 0px;
 }
 
 .tab_body{
-    @include type-style('body-02');
-    margin: $spacing-03 0px;
+        font-size: 1rem;
+    line-height: 1.5;
+    margin: 0.5rem 0px;
 }
 
 .subscription_button{
-    padding-top: $spacing-10 ;
+    padding-top: 4rem ;
     padding-bottom: 0;
     display: flex;
     justify-content: end;
@@ -46,21 +43,23 @@
    }
 
 .logout_container{
-    padding: $spacing-07 0;
+    padding: 2rem 0;
     display: flex;
     justify-content: center;
     background-color: #FAFAFA;
     }
     
     .logout_text1{
-      @include type-style('helper-text-02');
+      font-size: 0.875rem;
+      line-height: 1.28572
     }
     
     .logout_text2,
     .logout_text2:hover{
-      @include type-style('helper-text-02');
-      color: $link-primary;
-      margin-left: $spacing-02;
+      font-size: 0.875rem;
+      line-height: 1.28572;
+      color: #0f62fe;
+      margin-left: 0.25rem;
       cursor: pointer;
     }
 

@@ -1,22 +1,17 @@
-@use '@carbon/colors' as *;
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/themes' as *;
-
 .heading {
-  @include type-style('heading-03');
+    font-size: 1.25rem;
+  line-height: 1.4;
   font-weight: 600;
   text-align: center;
-  padding-bottom: $spacing-01;
-  margin: $spacing-03 0px;
+  padding-bottom: 0.125rem;
+  margin: 0.5rem 0px;
 }
 
 
 .subheading{
-  @include type-style('body-compact-02');
+  font-size: 1rem;
   text-align: center;
-  margin: $spacing-03 0px;
+  margin: 0.5rem 0px;
 }
 
 .pricing {
@@ -26,18 +21,20 @@
 }
 
 .amount {
-  @include type-style('helper-text-02');
+        font-size: 0.875rem;
+      line-height: 1.28572;
   font-weight: 600;
 }
 
 .amount_disabled {
-  @include type-style('helper-text-02');
-  color: $text-placeholder;
+        font-size: 0.875rem;
+      line-height: 1.28572;
+  // color: $text-placeholder;
   font-weight: 600;
 }
 
 .pricing {
-  padding: $spacing-03;
+  padding: 0.5rem;
  
 }
 
@@ -46,10 +43,10 @@
   justify-content: space-between;
   align-items: center;
   // align-items: baseline;
-  height: $spacing-11;
-  margin-top: $spacing-06;
-  background-color: $background-hover;
-  gap: $spacing-01
+  height: 5rem;
+  margin-top: 1.5rem;
+  // background-color: $background-hover;
+  gap: 0.125rem
 
 }
 
@@ -57,7 +54,7 @@
 .icon_container:hover
 {
   background-color: #F4F4F4;
-  padding: $spacing-06;
+  padding: 1.5rem;
  cursor: pointer;
 
 }
@@ -67,14 +64,15 @@
 }
 
 .input_label{
-  @include type-style('helper-text-02');
+        font-size: 0.875rem;
+      line-height: 1.28572;
   background-color: #F4F4F4;
 }
 
 .logo{
-  height: $spacing-04;
-  margin-top: $spacing-05;
-  padding: 0 $spacing-04;
+  height: 0.75rem;
+  margin-top: 1rem;
+  padding: 0 0.75rem;
 }
 
 
@@ -84,7 +82,7 @@
   align-items: center;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    gap: $spacing-04;
+    gap: 0.75rem;
   }
 }
 
@@ -95,27 +93,29 @@
 }
 
 .currency{
-  @include type-style('helper-text-02');
-  color: $text-placeholder;
-  padding-left: $spacing-06;
+        font-size: 0.875rem;
+      line-height: 1.28572;
+  // color: $text-placeholder;
+  padding-left: 1.5rem;
   @media screen and (max-width: 768px) {
-    padding-left: $spacing-02;
+    padding-left: 0.25rem;
    
   }
 }
 
 
 .payment_amount {
-  @include type-style('heading-04');
+font-size: 1.5rem;
   font-weight: 600;
   @media screen and (max-width: 768px) {
-    @include type-style('heading-02');
+   font-size: 1rem;
   }
 }
 
 .currency_text{
-  @include type-style('helper-text-02');
-  color: $text-placeholder;
+        font-size: 0.875rem;
+      line-height: 1.28572;
+  // color: $text-placeholder;
   
 }
 
@@ -135,7 +135,7 @@
 .feature_container {
   background-color: #FAFAFA;
   border-bottom: 1px dashed #CCCCCC;
-  padding:$spacing-07 $spacing-04;
+  padding:2rem 0.75rem;
   @media screen and (max-width: 768px) {
    justify-content: space-between;
 
@@ -147,7 +147,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 $spacing-01;
+  margin: 0 0.125rem;
   @media screen and (max-width: 768px) {
     justify-content: space-around;
    
@@ -156,40 +156,44 @@
 }
 
 .feature_text {
-  @include type-style('body-02');
+      font-size: 1rem;
+    line-height: 1.5;
  
 }
 .features{
-  @include type-style('body-02');
+      font-size: 1rem;
+    line-height: 1.5;
   font-weight: 600;
   width: max-content;
 
   cursor: pointer;
   @media screen and (max-width: 768px) {
       width: min-content;
-      margin: $spacing-03 0;
+      margin: 0.5rem 0;
     }
 }
 
 .total_container{
-  padding: $spacing-10  $spacing-02 $spacing-04 $spacing-02;
+  padding: 4rem  0.25rem 0.75rem 0.25rem;
 
 }
 
 .total_border {
   border-top: 1px  solid #CCCCCC;
   border-bottom: 1px  solid #CCCCCC;
-  padding: $spacing-01
+  padding: 0.125rem
 }
 .feature_total {
-  @include type-style('body-02');
+      font-size: 1rem;
+    line-height: 1.5;
   font-size: 1.2rem
   
  
 }
 
 .feature_total_text {
-  @include type-style('body-02');
+      font-size: 1rem;
+    line-height: 1.5;
   font-weight: 600;
   font-size: 1.2rem
  
@@ -197,13 +201,14 @@
 
 .back {
   background-color: #F4F4F4;
-  padding: $spacing-02 0;
-  margin-bottom: $spacing-11;
+  padding: 0.25rem 0;
+  margin-bottom: 5rem;
 }
 
 .back_text{
-  @include type-style('helper-text-02');
-  color: $link-primary;
-  padding: $spacing-02 ;
+        font-size: 0.875rem;
+      line-height: 1.28572;
+  // color: $link-primary;
+  padding: 0.25rem ;
 }
 

@@ -1,17 +1,12 @@
-@use '@carbon/colors' as *;
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/themes' as *;
-
 .tile_margin {
-    margin: $spacing-06 0px;
+    margin: 1.5rem 0px;
   }
   
   .tile_heading{
-    @include type-style('body-02');
+    font-size: 1rem;
+    line-height: 1.5;
     font-weight: 600;
-    margin: $spacing-03 0px;
+    margin: 0.5rem 0px;
   
   }
   
@@ -19,10 +14,10 @@
   .tile{
     display: flex;
     align-items: center;
-    margin: $spacing-03 0px;
+    margin: 0.5rem 0px;
     @media screen and (max-width: 768px) {
     flex-direction: column;
-   gap: $spacing-02;
+   gap: 0.25rem;
    align-items: flex-start;
    justify-content: space-between;
     }
@@ -32,7 +27,7 @@
   .feature_bg{
     background-color: #FAFAFA;
     border-bottom: 1px dashed #CCCCCC;
-    padding:$spacing-04;
+    padding:0.75rem;
   }
   
   .feature_container_withInput {
@@ -52,7 +47,7 @@
     justify-content: space-between;
     background-color: #FAFAFA;
     border-bottom: 1px dashed #CCCCCC;
-    padding:$spacing-07 $spacing-04;
+    padding:2rem 0.75rem;
     @media screen and (max-width: 768px) {
      justify-content: space-between;
   
@@ -63,7 +58,7 @@
   .feature_flex {
     display: flex;
     align-items: center;
-    margin: 0 $spacing-01;
+    margin: 0 0.125rem;
     @media screen and (max-width: 768px) {
       justify-content: space-around;
      
@@ -72,19 +67,21 @@
   }
   
   .feature_text {
-    @include type-style('body-02');
+        font-size: 1rem;
+    line-height: 1.5;
    
    
   }
   .features{
-    @include type-style('body-02');
+        font-size: 1rem;
+    line-height: 1.5;
     font-weight: 600;
     width: max-content;
   
     cursor: pointer;
     @media screen and (max-width: 768px) {
         width: min-content;
-        margin: $spacing-03 0;
+        margin: 0.5rem 0;
       }
   }
 

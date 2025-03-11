@@ -1,34 +1,29 @@
-@use '@carbon/colors' as *;
-@use '@carbon/react/scss/spacing' as *;
-@use '@carbon/react/scss/type' as *;
-@use '@carbon/layout' as *;
-@use '@carbon/themes' as *;
-
 .heading {
-  @include type-style('heading-03');
+    font-size: 1.25rem;
+  line-height: 1.4;
   font-weight: 600;
   text-align: center;
-  padding-bottom: $spacing-01;
-  margin: $spacing-03 0px;
+  padding-bottom: 0.125rem;
+  margin: 0.5rem 0px;
 }
 
 
 .subheading{
-  @include type-style('body-compact-02');
+  font-size: 1rem;
   text-align: center;
-  margin: $spacing-03 0px;
+  margin: 0.5rem 0px;
 }
 
 
 .setup_image {
     width: 100%;
     height: fit-content;
-    padding-bottom: $spacing-06;
+    padding-bottom: 1.5rem;
 }
 
 .fileupload {
     max-inline-size: 100%;   
-    margin-bottom: $spacing-04;
+    margin-bottom: 0.75rem;
 }
 
 
@@ -38,23 +33,25 @@
   
 }
 .org_name{
-    @include type-style('helper-text-02');
+          font-size: 0.875rem;
+      line-height: 1.28572;
    
 }
 
 .org_color_code{
-    @include type-style('helper-text-02'); 
-    color: $text-secondary; 
+          font-size: 0.875rem;
+      line-height: 1.28572; 
+    // color: $text-secondary; 
 }
 
 .addcolor_container{
     display: flex;
     align-items: center;
-    padding: $spacing-03 0;
+    padding: 0.5rem 0;
 }
 
 .addcolor{
-    @include type-style('body-compact-02');
+    font-size: 1rem;
     font-weight: 600;
     text-align: center;   
     color:#0F62FE;
@@ -62,7 +59,7 @@
 }
 
 .removecolor{
-    @include type-style('body-compact-02');
+    font-size: 1rem;
     font-weight: 600;
     text-align: center;   
     color: #DA1E28;
@@ -73,17 +70,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: $spacing-07;
+    padding-top: 2rem;
     @media screen and (max-width: 768px) {
       flex-direction: column;
-      gap: $spacing-04;
-      padding-top: $spacing-04;
+      gap: 0.75rem;
+      padding-top: 0.75rem;
     }
   }
   
  
   .skip_text{
-    @include type-style('helper-text-02');
+          font-size: 0.875rem;
+      line-height: 1.28572;
     color: #0F62FE;
     
   }
@@ -97,7 +95,7 @@
 
    .main_org_container{
     display: flex;
-    gap: $spacing-03
+    gap: 0.5rem
    }
 
    .flex_div{
