@@ -152,6 +152,7 @@ const SignupForm = () => {
                                  }
                                  onChange={props.handleChange}
                                  className={styles.auth_select}
+                                 data-testid="facility-type-select"
                               >
                                  <SelectItem value="" text="Select" data-testId="signup-select1" />
                                  {organizationTypeOptions.map((item) => (
@@ -246,11 +247,21 @@ const SignupForm = () => {
 
                         <p className={styles.auth_description}>
                            By Creating an account, you agree to Lafialink's{" "}
-                           <CarbonLink href="#" target="_blank" rel="noreferrer">
+                           <CarbonLink
+                              href="#"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-testId="signup-terms"
+                           >
                               Terms of Service
                            </CarbonLink>{" "}
                            and{" "}
-                           <CarbonLink href="#" target="_blank" rel="noreferrer">
+                           <CarbonLink
+                              href="#"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-testId="signup-privacy"
+                           >
                               Privacy Policy
                            </CarbonLink>
                         </p>
