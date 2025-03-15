@@ -32,6 +32,11 @@ export const authSlice = createSlice({
                JSON.stringify(payload.token),
                cookieConfig,
             )
+         Cookies.set(
+            cookieOptions.REFRESH_TOKEN_COOKIE,
+            JSON.stringify(payload.refreshToken),
+            cookieConfig,
+         )
          Cookies.set(cookieOptions.USER_DETAILS_COOKIE, JSON.stringify(payload.user), cookieConfig)
          Cookies.set(cookieOptions.TENANT_ID_COOKIE, payload.user.tenantId, cookieConfig)
       },
