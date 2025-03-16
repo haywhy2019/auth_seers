@@ -77,6 +77,7 @@ const SignupForm = () => {
             <Toast
                kind={isError ? "error" : "success"}
                title={message || (isError ? "An error occurred" : "Success")}
+               data-testId="signup-toast"
             />
          )}
 
@@ -288,7 +289,11 @@ const SignupForm = () => {
 
          <p className={styles.auth_description}>
             Already have an account?{" "}
-            <Link href={authRoutes.login} className={styles.auth_link}>
+            <Link
+               href={authRoutes.login}
+               className={styles.auth_link}
+               data-testId="signup-login-link"
+            >
                Kindly Login
             </Link>
          </p>

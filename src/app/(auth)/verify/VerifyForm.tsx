@@ -124,12 +124,15 @@ const VerifyForm = () => {
 
    return (
       <>
-         {isError && <Toast kind="error" title={message || "An error occurred"} />}
+         {isError && (
+            <Toast kind="error" title={message || "An error occurred"} data-testId="verify-toast" />
+         )}
 
          {(resendError || resendSuccess) && (
             <Toast
                kind={resendError ? "error" : "success"}
                title={message || (resendError ? "An error occurred" : "Success")}
+               data-testId="resend-toast"
             />
          )}
 
@@ -207,7 +210,11 @@ const VerifyForm = () => {
 
          <p className={styles.auth_description}>
             Something happened?{" "}
-            <Link className={styles.auth_link} onClick={handleLogout}>
+            <Link
+               className={styles.auth_link}
+               onClick={handleLogout}
+               data-testId="verify-logout-btn"
+            >
                Logout
             </Link>
          </p>
