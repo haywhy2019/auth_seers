@@ -87,12 +87,13 @@ const LoginForm = () => {
 
    return (
       <>
-         {(isError || isSuccess) && (
-            <Toast
-               kind={isError ? "error" : "success"}
-               title={message || (isError ? "An error occurred" : "Success")}
-            />
-         )}
+         {/* {(isError || isSuccess) && ( */}
+         <Toast
+            kind={isError ? "error" : "success"}
+            title={message || (isError ? "An error occurred" : "Success")}
+            data-testId="login-toast"
+         />
+         {/* )} */}
          <div className={styles.auth_heading_container}>
             <h1 className={styles.auth_heading}>Login</h1>
             <p className={styles.auth_description}>
@@ -172,7 +173,11 @@ const LoginForm = () => {
 
          <p className={styles.auth_description}>
             You do not have an account?{" "}
-            <Link href={authRoutes.signup} className={styles.auth_link}>
+            <Link
+               href={authRoutes.signup}
+               className={styles.auth_link}
+               data-testId="login-signup-link"
+            >
                Kindly Create Account
             </Link>
          </p>
