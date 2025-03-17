@@ -87,13 +87,13 @@ const LoginForm = () => {
 
    return (
       <>
-         {/* {(isError || isSuccess) && ( */}
-         <Toast
-            kind={isError ? "error" : "success"}
-            title={message || (isError ? "An error occurred" : "Success")}
-            data-testId="login-toast"
-         />
-         {/* )} */}
+         {(isError || isSuccess) && (
+            <Toast
+               kind={isError ? "error" : "success"}
+               title={message || (isError ? "An error occurred" : "Success")}
+               data-testId="login-toast"
+            />
+         )}
          <div className={styles.auth_heading_container}>
             <h1 className={styles.auth_heading}>Login</h1>
             <p className={styles.auth_description}>
