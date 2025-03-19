@@ -42,7 +42,11 @@ const LoginForm = () => {
             ...user,
             role: { ...role, permissions: [] }, //remove permissions from payload to declutter the user object before browser storage
          }
-         const payload = { token: data.data.token, user: userPayload }
+         const payload = {
+            token: data.data.token,
+            refreshToken: data.data.refreshToken,
+            user: userPayload,
+         }
 
          setMessage("Login successful")
 

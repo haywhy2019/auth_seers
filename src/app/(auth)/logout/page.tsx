@@ -2,17 +2,24 @@
 
 import { logout } from "@/redux/features/auth.slice"
 import { useAppDispatch } from "@/redux/hooks"
+import { useMutation } from "@tanstack/react-query"
 
 import React from "react"
 
-const Logout = () => {
+import authApi from "@/axios/auth.api"
+
+const LogoutPage = () => {
    const dispatch = useAppDispatch()
 
-   //TODO: hit logout endpoint here to destroy token
+   const { mutate: _logout } = useMutation({
+      mutationFn: authApi.logout,
+      onSuccess: () => dispatch(logout()),
+      onError: () => dispatch(logout()),
+   })
 
    React.useEffect(() => {
-      dispatch(logout())
-   }, [dispatch])
+      _logout()
+   }, [])
 }
 
-export default Logout
+export default LogoutPage

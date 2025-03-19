@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation"
 
 import authApi from "@/axios/auth.api"
 
-import { userStatus } from "@/helpers/enum"
+import { cookieOptions, userStatus } from "@/helpers/enum"
 import { getRedirectUrl } from "@/helpers/utils"
 
 import styles from "../auth.module.scss"
@@ -41,7 +41,9 @@ const VerifyForm = () => {
    const dispatch = useAppDispatch()
    const router = useRouter()
 
-   const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
+   const token =
+      Cookies.get(cookieOptions.ACCESS_TOKEN_COOKIE) &&
+      JSON.parse(Cookies.get(cookieOptions.ACCESS_TOKEN_COOKIE) || "")
 
    const handleLogout = () => dispatch(logout())
 
