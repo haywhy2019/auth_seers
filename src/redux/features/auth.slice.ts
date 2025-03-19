@@ -11,7 +11,7 @@ import { RootState } from "../store"
 const cookieConfig = {
    httpOnly: false,
    domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
-   secure: false,
+   secure: true,
    sameSite: "strict",
    path: "/",
    expires: 0.4167, //10 hours
