@@ -46,6 +46,7 @@ export const authSlice = createSlice({
       logout: (state) => {
          state.user = null as any
          Cookies.remove(cookieOptions.ACCESS_TOKEN_COOKIE, cookieConfig)
+         Cookies.remove(cookieOptions.REFRESH_TOKEN_COOKIE, cookieConfig)
          Cookies.remove(cookieOptions.USER_DETAILS_COOKIE, cookieConfig)
          Cookies.remove(cookieOptions.TENANT_ID_COOKIE, cookieConfig)
          Cookies.remove(cookieOptions.LAFIAHMS_CREDENTIALS_COOKIE, cookieConfig)
