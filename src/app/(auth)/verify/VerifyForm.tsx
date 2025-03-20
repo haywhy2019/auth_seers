@@ -185,6 +185,7 @@ const VerifyForm = () => {
                                  className={styles.auth_link}
                                  onClick={canResend ? handleResendOTP : undefined}
                                  style={{ cursor: !canResend ? "not-allowed" : "pointer" }}
+                                 data-testId="resend-otp-btn"
                               >
                                  Resend OTP
                               </CarbonLink>
