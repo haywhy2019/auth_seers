@@ -44,7 +44,11 @@ const LoginForm = () => {
             ...user,
             role: { ...role, permissions: [] }, //remove permissions from payload to declutter the user object before browser storage
          }
-         const payload = { token: data.data.token, user: userPayload }
+         const payload = {
+            token: data.data.token,
+            refreshToken: data.data.refreshToken,
+            user: userPayload,
+         }
 
          setMessage("Login successful")
 
@@ -93,6 +97,7 @@ const LoginForm = () => {
             <Toast
                kind={isError ? "error" : "success"}
                title={message || (isError ? "An error occurred" : "Success")}
+               data-testId="login-toast"
             />
          )}
          <div className={styles.auth_heading_container}>
@@ -174,7 +179,11 @@ const LoginForm = () => {
 
          <p className={styles.auth_description}>
             You do not have an account?{" "}
-            <Link href={authRoutes.signup} className={styles.auth_link}>
+            <Link
+               href={authRoutes.signup}
+               className={styles.auth_link}
+               data-testId="login-signup-link"
+            >
                Kindly Create Account
             </Link>
          </p>

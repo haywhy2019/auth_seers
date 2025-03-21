@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation"
 
 import authApi from "@/axios/auth.api"
 
-import { userStatus } from "@/helpers/enum"
+import { cookieOptions, userStatus } from "@/helpers/enum"
 import { getRedirectUrl } from "@/helpers/utils"
 
 import styles from "../auth.module.scss"
@@ -41,7 +41,9 @@ const VerifyForm = () => {
    const dispatch = useAppDispatch()
    const router = useRouter()
 
-   const token = Cookies.get("token") && JSON.parse(Cookies.get("token") || "")
+   const token =
+      Cookies.get(cookieOptions.ACCESS_TOKEN_COOKIE) &&
+      JSON.parse(Cookies.get(cookieOptions.ACCESS_TOKEN_COOKIE) || "")
 
    const handleLogout = () => dispatch(logout())
 
@@ -124,12 +126,15 @@ const VerifyForm = () => {
 
    return (
       <>
-         {isError && <Toast kind="error" title={message || "An error occurred"} />}
+         {isError && (
+            <Toast kind="error" title={message || "An error occurred"} data-testId="verify-toast" />
+         )}
 
          {(resendError || resendSuccess) && (
             <Toast
                kind={resendError ? "error" : "success"}
                title={message || (resendError ? "An error occurred" : "Success")}
+               data-testId="resend-toast"
             />
          )}
 
@@ -183,6 +188,7 @@ const VerifyForm = () => {
                                  className={styles.auth_link}
                                  onClick={canResend ? handleResendOTP : undefined}
                                  style={{ cursor: !canResend ? "not-allowed" : "pointer" }}
+                                 data-testId="resend-otp-btn"
                               >
                                  Resend OTP
                               </CarbonLink>
@@ -207,7 +213,11 @@ const VerifyForm = () => {
 
          <p className={styles.auth_description}>
             Something happened?{" "}
-            <Link className={styles.auth_link} onClick={handleLogout}>
+            <Link
+               className={styles.auth_link}
+               onClick={handleLogout}
+               data-testId="verify-logout-btn"
+            >
                Logout
             </Link>
          </p>

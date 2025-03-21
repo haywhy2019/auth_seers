@@ -16,7 +16,6 @@ export const onBoardSlice = createSlice({
       reset: (state) => {
          state.counter = 0
       },
-    
    },
 })
 

@@ -6,7 +6,7 @@ import { authRoutes } from "@/helpers/routes"
 
 import { User } from "@/types/general.types"
 
-import { userStatus } from "./helpers/enum"
+import { cookieOptions, userStatus } from "./helpers/enum"
 import { getRedirectUrl } from "./helpers/utils"
 
 const getJsonParsedCookie = (req: NextRequest, key: string) => {
@@ -32,8 +32,8 @@ export async function middleware(request: NextRequest) {
 
    const isAuthPage = authPages.some((page) => pathname.startsWith(page))
 
-   const token = getJsonParsedCookie(request, "token") as string
-   const user = getJsonParsedCookie(request, "user") as User
+   const token = getJsonParsedCookie(request, cookieOptions.ACCESS_TOKEN_COOKIE) as string
+   const user = getJsonParsedCookie(request, cookieOptions.USER_DETAILS_COOKIE) as User
 
    // Redirect to login page if user is not logged in & tries to access verify page
    if (!user && pathname === authRoutes.verify) {

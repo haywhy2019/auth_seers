@@ -2,6 +2,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import Cookies from "js-cookie"
 
+import { cookieOptions } from "@/helpers/enum"
 import { authRoutes } from "@/helpers/routes"
 
 import { initialState } from "../initialState"
@@ -10,7 +11,7 @@ import { RootState } from "../store"
 const cookieConfig = {
    httpOnly: false,
    domain: process.env.NEXT_PUBLIC_TL_DOMAIN,
-   secure: false,
+   secure: true,
    sameSite: "strict",
    path: "/",
    expires: 0.4167, //10 hours
@@ -25,19 +26,30 @@ export const authSlice = createSlice({
       },
       setAuth: (state, { payload }) => {
          state.user = payload.user
-         if (payload.token) Cookies.set("token", JSON.stringify(payload.token), cookieConfig)
-         Cookies.set("user", JSON.stringify(payload.user), cookieConfig)
-         Cookies.set("X-TenantID", payload.user.tenantId, cookieConfig)
+         if (payload.token)
+            Cookies.set(
+               cookieOptions.ACCESS_TOKEN_COOKIE,
+               JSON.stringify(payload.token),
+               cookieConfig,
+            )
+         Cookies.set(
+            cookieOptions.REFRESH_TOKEN_COOKIE,
+            JSON.stringify(payload.refreshToken),
+            cookieConfig,
+         )
+         Cookies.set(cookieOptions.USER_DETAILS_COOKIE, JSON.stringify(payload.user), cookieConfig)
+         Cookies.set(cookieOptions.TENANT_ID_COOKIE, payload.user.tenantId, cookieConfig)
       },
       saveEncodedCredentials: (_, { payload }) => {
-         Cookies.set("cred", payload, cookieConfig)
+         Cookies.set(cookieOptions.LAFIAHMS_CREDENTIALS_COOKIE, payload, cookieConfig)
       },
       logout: (state) => {
          state.user = null as any
-         Cookies.remove("token", cookieConfig)
-         Cookies.remove("user", cookieConfig)
-         Cookies.remove("X-TenantID", cookieConfig)
-         Cookies.remove("cred", cookieConfig)
+         Cookies.remove(cookieOptions.ACCESS_TOKEN_COOKIE, cookieConfig)
+         Cookies.remove(cookieOptions.REFRESH_TOKEN_COOKIE, cookieConfig)
+         Cookies.remove(cookieOptions.USER_DETAILS_COOKIE, cookieConfig)
+         Cookies.remove(cookieOptions.TENANT_ID_COOKIE, cookieConfig)
+         Cookies.remove(cookieOptions.LAFIAHMS_CREDENTIALS_COOKIE, cookieConfig)
          window.location.href = authRoutes.login
       },
    },

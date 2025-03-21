@@ -10,7 +10,7 @@ export default function OnboardingLayout({
    children: React.ReactNode
 }) {
    return (
-      <div style={{width: "100%", minWidth: "100%"}}>
+      <div style={{ width: "100%", minWidth: "100%" }}>
          <StepperIndicator />
          {children}
       </div>

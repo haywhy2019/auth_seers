@@ -77,6 +77,7 @@ const SignupForm = () => {
             <Toast
                kind={isError ? "error" : "success"}
                title={message || (isError ? "An error occurred" : "Success")}
+               data-testId="signup-toast"
             />
          )}
 
@@ -152,6 +153,7 @@ const SignupForm = () => {
                                  }
                                  onChange={props.handleChange}
                                  className={styles.auth_select}
+                                 data-testid="facility-type-select"
                               >
                                  <SelectItem value="" text="Select" data-testId="signup-select1" />
                                  {organizationTypeOptions.map((item) => (
@@ -246,11 +248,21 @@ const SignupForm = () => {
 
                         <p className={styles.auth_description}>
                            By Creating an account, you agree to Lafialink's{" "}
-                           <CarbonLink href="#" target="_blank" rel="noreferrer">
+                           <CarbonLink
+                              href="#"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-testId="signup-terms"
+                           >
                               Terms of Service
                            </CarbonLink>{" "}
                            and{" "}
-                           <CarbonLink href="#" target="_blank" rel="noreferrer">
+                           <CarbonLink
+                              href="#"
+                              target="_blank"
+                              rel="noreferrer"
+                              data-testId="signup-privacy"
+                           >
                               Privacy Policy
                            </CarbonLink>
                         </p>
@@ -277,7 +289,11 @@ const SignupForm = () => {
 
          <p className={styles.auth_description}>
             Already have an account?{" "}
-            <Link href={authRoutes.login} className={styles.auth_link}>
+            <Link
+               href={authRoutes.login}
+               className={styles.auth_link}
+               data-testId="signup-login-link"
+            >
                Kindly Login
             </Link>
          </p>

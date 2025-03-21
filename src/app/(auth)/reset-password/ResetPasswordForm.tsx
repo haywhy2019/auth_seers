@@ -71,6 +71,7 @@ const ResetPasswordForm: React.FC<Props> = ({ createPassword }) => {
             <Toast
                kind={isError ? "error" : "success"}
                title={message || (isError ? "An error occurred" : "Success")}
+               data-testId="reset-password-toast"
             />
          )}
 

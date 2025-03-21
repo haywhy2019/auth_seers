@@ -1,5 +1,4 @@
-import { organizationTypes } from "./enum";
-
+import { organizationTypes } from "./enum"
 
 export const organizationTypeOptions = [
    { display: "Hospital", value: organizationTypes.HOSPITAL },

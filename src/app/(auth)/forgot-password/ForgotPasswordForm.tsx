@@ -44,6 +44,7 @@ const ForgotPasswordForm = () => {
             <Toast
                kind={isError ? "error" : "success"}
                title={message || (isError ? "An error occurred" : "Success")}
+               data-testId="forgot-password-toast"
             />
          )}
 

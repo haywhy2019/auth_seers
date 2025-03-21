@@ -1,5 +1,4 @@
 import { User } from "@/types/general.types"
-import { Products } from "@/types/product.types"
 
 export const initialState = {
    app: {},
@@ -8,7 +7,5 @@ export const initialState = {
    },
    onBoard: {
       counter: 0,
-      
    },
-  
 }

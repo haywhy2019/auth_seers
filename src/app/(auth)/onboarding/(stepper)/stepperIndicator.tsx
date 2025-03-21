@@ -1,17 +1,11 @@
-"use client";
+"use client"
 
-import { useAppSelector } from "@/redux/hooks";
-import { Column, Grid, ProgressIndicator, ProgressStep } from "@carbon/react";
+import { useAppSelector } from "@/redux/hooks"
+import { ProgressIndicator, ProgressStep } from "@carbon/react"
 
+import React from "react"
 
-
-import React from "react";
-
-
-
-// import styles from "./stepper.module.scss"
-import styles from "../onBoarding.module.scss";
-
+import styles from "../onBoarding.module.scss"
 
 const OnBoardingSteper = () => {
    const count = useAppSelector((state) => state.onBoard.counter)

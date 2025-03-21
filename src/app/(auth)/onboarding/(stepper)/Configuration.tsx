@@ -33,7 +33,6 @@ function SetupPage() {
                   </p>
                </div>
 
-
                <div>
                   <Image
                      src="/svg/setup.svg"
