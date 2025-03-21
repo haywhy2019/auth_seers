@@ -1,8 +1,8 @@
 "use client"
 
-import StepperIndicator from "@/app/(auth)/onboarding/(stepper)/StepperIndicator"
-
 import React from "react"
+
+import StepperIndicator from "./(stepper)/StepperIndicator"
 
 export default function OnboardingLayout({
    children, // will be a page or nested layout
