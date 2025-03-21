@@ -11,7 +11,7 @@ import { healthCareGrouping } from "@/helpers/constants"
 import styles from "../newstyle.module.scss"
 import StepperButton from "./StepperButton"
 
-function SubscriptionPage() {
+function Classification() {
    const dispatch = useAppDispatch()
 
    return (
@@ -50,4 +50,4 @@ function SubscriptionPage() {
    )
 }
 
-export default SubscriptionPage
+export default Classification

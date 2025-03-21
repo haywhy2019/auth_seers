@@ -11,7 +11,7 @@ import Image from "next/image"
 
 import styles from "../newstyle.module.scss"
 
-function SetupPage() {
+function Configuration() {
    const dispatch = useAppDispatch()
    const [priColor, setPriColor] = useState(false)
 
@@ -105,4 +105,4 @@ function SetupPage() {
    )
 }
 
-export default SetupPage
+export default Configuration

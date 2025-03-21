@@ -1,6 +1,6 @@
 "use client"
 
-import StepperIndicator from "@/app/(auth)/onboarding/(stepper)/stepperIndicator"
+import StepperIndicator from "@/app/(auth)/onboarding/(stepper)/StepperIndicator"
 
 import React from "react"
 
