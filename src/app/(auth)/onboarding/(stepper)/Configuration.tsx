@@ -9,8 +9,7 @@ import React, { useState } from "react"
 
 import Image from "next/image"
 
-// import styles from "./configuration.module.scss"
-import styles from "../onBoarding.module.scss"
+import styles from "../onboarding1.module.scss"
 
 function SetupPage() {
    const dispatch = useAppDispatch()

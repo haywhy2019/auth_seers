@@ -8,7 +8,7 @@ import React from "react"
 
 import { healthCareGrouping } from "@/helpers/constants"
 
-import styles from "../onBoarding.module.scss"
+import styles from "../onboarding1.module.scss"
 import StepperButton from "./StepperButton"
 
 function SubscriptionPage() {
