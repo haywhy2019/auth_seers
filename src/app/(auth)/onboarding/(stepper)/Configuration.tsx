@@ -9,7 +9,7 @@ import React, { useState } from "react"
 
 import Image from "next/image"
 
-import styles from "../onboarding1.module.scss"
+import styles from "../newstyle.module.scss"
 
 function SetupPage() {
    const dispatch = useAppDispatch()

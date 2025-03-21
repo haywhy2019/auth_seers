@@ -5,7 +5,7 @@ import { ProgressIndicator, ProgressStep } from "@carbon/react"
 
 import React from "react"
 
-import styles from "../onboarding1.module.scss"
+import styles from "../newstyle.module.scss"
 
 const OnBoardingSteper = () => {
    const count = useAppSelector((state) => state.onBoard.counter)
