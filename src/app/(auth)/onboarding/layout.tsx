@@ -2,7 +2,7 @@
 
 import React from "react"
 
-import StepperIndicator from "./(stepper)/StepperIndicator34"
+import StepperIndicator from "./(stepper)/StepperIndicator1"
 
 export default function OnboardingLayout({
    children, // will be a page or nested layout
